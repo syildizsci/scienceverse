@@ -860,17 +860,133 @@ const scienceKnowledge = {
 // Default/fallback responses
 const defaultResponses = {
     en: [
-        "🤔 Hmm, I didn't quite understand that. Could you ask in a different way?",
-        "🔬 Interesting question! But it's not in my knowledge base. Try asking about the solar system, cells, DNA, or gravity!",
-        "📚 I don't have enough info on that topic. Try physics, chemistry, or biology questions!",
-        "🌟 Great question! But I haven't learned that yet. Ask about atoms, electricity, or earthquakes!"
+        "🤔 Hmm, let me ask you this instead - what do YOU think happens?",
+        "🔬 Interesting! But first, tell me - what do you already know about this?",
+        "📚 Good question! What's your best guess? 🤔",
+        "🌟 I want to hear YOUR ideas first! What do you think?"
     ],
     tr: [
-        "🤔 Hmm, bu konuyu tam anlayamadım. Başka bir şekilde sorabilir misin?",
-        "🔬 Bu ilginç bir soru! Ama benim bilgi havuzumda yok. Güneş sistemi, hücreler, DNA, yerçekimi gibi konular sorabilirsin!",
-        "📚 Bu konuda yeterli bilgim yok. Fizik, kimya veya biyoloji konularında soru sormayı dene!",
-        "🌟 Güzel soru! Ama henüz bu konuyu öğrenmedim. Atomlar, elektrik, depremler hakkında sorabilirsin!"
+        "🤔 Hmm, ben sana sorayım - SEN ne düşünüyorsun?",
+        "🔬 İlginç! Ama önce söyle - bu konu hakkında ne biliyorsun?",
+        "📚 Güzel soru! Senin tahmin ne? 🤔",
+        "🌟 Önce SENİN fikirlerini duymak istiyorum! Ne düşünüyorsun?"
     ]
+};
+
+// Socratic questioning - guide children through discovery
+const socraticQuestions = {
+    "solar system": {
+        en: [
+            "🌞 Let's think together! What do you see in the sky during the day?",
+            "🤔 If the Sun is a star, why do other stars look so tiny at night?",
+            "🌍 Why do you think we have day and night? What's moving?",
+            "🚀 If you could visit any planet, which one? What do you know about it?",
+            "⭐ How many planets can you name? Let's count together!"
+        ],
+        tr: [
+            "🌞 Birlikte düşünelim! Gündüz gökyüzünde ne görüyorsun?",
+            "🤔 Güneş bir yıldızsa, diğer yıldızlar gece neden çok küçük görünüyor?",
+            "🌍 Sence gece ve gündüz neden oluyor? Ne hareket ediyor?",
+            "🚀 Herhangi bir gezegene gidebilsen hangisine giderdin? Onun hakkında ne biliyorsun?",
+            "⭐ Kaç gezegen sayabilirsin? Birlikte sayalım!"
+        ]
+    },
+    "cell": {
+        en: [
+            "🔬 Your body is made of tiny pieces called cells. How tiny do you think they are?",
+            "🤔 Cells need energy to work. Where do YOU get your energy from?",
+            "🧠 Every cell has a 'brain' called the nucleus. What do you think it does?",
+            "💪 Muscle cells and brain cells look different. Why do you think that is?",
+            "🏠 If a cell was a house, what rooms would it need?"
+        ],
+        tr: [
+            "🔬 Vücudun hücre denen küçük parçalardan oluşuyor. Sence ne kadar küçükler?",
+            "🤔 Hücreler çalışmak için enerjiye ihtiyaç duyar. SEN enerjini nereden alıyorsun?",
+            "🧠 Her hücrenin 'çekirdek' denen bir beyni var. Sence ne iş yapıyor?",
+            "💪 Kas hücreleri ve beyin hücreleri farklı görünür. Sence neden?",
+            "🏠 Hücre bir ev olsaydı, hangi odalara ihtiyacı olurdu?"
+        ]
+    },
+    "gravity": {
+        en: [
+            "🍎 When you drop something, what happens? Why doesn't it float?",
+            "🌙 Astronauts float in space! Why don't we float on Earth?",
+            "⚽ If you throw a ball up, what happens? Why does it come back down?",
+            "🤔 Do you think a feather and a rock fall at the same speed? Why or why not?",
+            "🌍 What would happen if there was no gravity? What would your day be like?"
+        ],
+        tr: [
+            "🍎 Bir şeyi bıraktığında ne oluyor? Neden havada kalmıyor?",
+            "🌙 Astronotlar uzayda süzülüyor! Biz Dünya'da neden süzülmüyoruz?",
+            "⚽ Bir topu yukarı atarsan ne olur? Neden geri düşüyor?",
+            "🤔 Sence bir tüy ve bir taş aynı hızda mı düşer? Neden?",
+            "🌍 Yerçekimi olmasaydı ne olurdu? Günün nasıl geçerdi?"
+        ]
+    },
+    "dna": {
+        en: [
+            "👀 Why do you look like your parents? What do you think makes that happen?",
+            "🧬 DNA is like a recipe book. What 'recipes' do you think are in YOUR DNA?",
+            "👶 Brothers and sisters look similar but not identical. Why do you think?",
+            "🌈 What color are your eyes? Where did that color come from?",
+            "🤔 If DNA is instructions, what is it giving instructions TO?"
+        ],
+        tr: [
+            "👀 Neden ailene benziyorsun? Sence bunu ne sağlıyor?",
+            "🧬 DNA bir tarif kitabı gibi. SENİN DNA'nda hangi 'tarifler' var sence?",
+            "👶 Kardeşler benzer ama aynı değil. Sence neden?",
+            "🌈 Gözlerin ne renk? Bu renk nereden geldi?",
+            "🤔 DNA talimat ise, NEYİ yönetiyor bu talimatlar?"
+        ]
+    },
+    "atom": {
+        en: [
+            "🔍 Everything is made of atoms! What do you think atoms are made of?",
+            "🤔 Can you see atoms? Why or why not?",
+            "💨 Is air made of atoms too? How can you tell air exists?",
+            "⚡ Atoms have positive and negative parts. What else do you know that has + and -?",
+            "🧊 Ice, water, and steam are all H2O. What's different about their atoms?"
+        ],
+        tr: [
+            "🔍 Her şey atomlardan oluşuyor! Sence atomlar neden oluşuyor?",
+            "🤔 Atomları görebilir misin? Neden görebilir ya da göremezsin?",
+            "💨 Hava da atomlardan mı oluşuyor? Havanın var olduğunu nasıl anlarsın?",
+            "⚡ Atomların pozitif ve negatif parçaları var. + ve - olan başka ne biliyorsun?",
+            "🧊 Buz, su ve buhar hep H2O. Atomlarında ne farklı?"
+        ]
+    },
+    "water cycle": {
+        en: [
+            "💧 Where does rain come from? Where do you think clouds get their water?",
+            "☀️ What happens to a puddle on a sunny day? Where does the water go?",
+            "🤔 Is the water you drink today NEW water, or has it been around before?",
+            "🌧️ Why do you think it rains more in some places than others?",
+            "❄️ Rain, snow, and hail are all water. What makes them different?"
+        ],
+        tr: [
+            "💧 Yağmur nereden geliyor? Bulutlar suyunu nereden alıyor sence?",
+            "☀️ Güneşli bir günde su birikintisine ne olur? Su nereye gidiyor?",
+            "🤔 Bugün içtiğin su YENİ mi, yoksa daha önce var mıydı?",
+            "🌧️ Sence neden bazı yerlerde daha çok yağmur yağıyor?",
+            "❄️ Yağmur, kar ve dolu hep su. Onları farklı yapan ne?"
+        ]
+    },
+    "photosynthesis": {
+        en: [
+            "🌱 Plants make their own food! How do you think they do it?",
+            "☀️ Why do plants need sunlight? What happens if you put a plant in the dark?",
+            "🌿 Why are most plants green? What do you think makes that color?",
+            "💨 You breathe out CO2, plants 'breathe' it in. What do they give back to you?",
+            "🤔 Can a plant grow without soil? What does it really need?"
+        ],
+        tr: [
+            "🌱 Bitkiler kendi yemeklerini yapıyor! Sence nasıl yapıyorlar?",
+            "☀️ Bitkiler neden güneş ışığına ihtiyaç duyar? Karanlıkta ne olur?",
+            "🌿 Bitkilerin çoğu neden yeşil? Bu rengi ne yapıyor sence?",
+            "💨 Sen CO2 veriyorsun, bitkiler alıyor. Onlar sana ne veriyor?",
+            "🤔 Bitki topraksız büyüyebilir mi? Gerçekten neye ihtiyacı var?"
+        ]
+    }
 };
 
 // Quiz questions for "ask me" feature
@@ -1067,6 +1183,43 @@ function checkQuizAnswer(answer) {
     }
 }
 
+// Handle Socratic response - encourage thinking and ask follow-up
+function handleSocraticResponse(answer, lang) {
+    const topic = window.awaitingSocraticResponse;
+    window.awaitingSocraticResponse = null;
+    
+    // Encouraging responses that validate their thinking
+    const encouragements = {
+        en: [
+            "🌟 <strong>Great thinking!</strong> I love how you're figuring this out!",
+            "💡 <strong>Interesting idea!</strong> You're on the right track!",
+            "🧠 <strong>Wow!</strong> You're really using your brain!",
+            "👏 <strong>Nice!</strong> That's a smart observation!",
+            "🎯 <strong>Good guess!</strong> Let's explore more!"
+        ],
+        tr: [
+            "🌟 <strong>Harika düşünce!</strong> Bunu çözmeye çalışman süper!",
+            "💡 <strong>İlginç fikir!</strong> Doğru yoldasın!",
+            "🧠 <strong>Vay!</strong> Beynini gerçekten kullanıyorsun!",
+            "👏 <strong>Güzel!</strong> Bu akıllıca bir gözlem!",
+            "🎯 <strong>İyi tahmin!</strong> Hadi daha fazla keşfedelim!"
+        ]
+    };
+    
+    const encouragement = encouragements[lang][Math.floor(Math.random() * encouragements[lang].length)];
+    
+    // Ask a follow-up question from the same topic
+    if (socraticQuestions[topic]) {
+        const qs = socraticQuestions[topic][lang] || socraticQuestions[topic].en;
+        const followUp = qs[Math.floor(Math.random() * qs.length)];
+        window.awaitingSocraticResponse = topic; // Continue the conversation
+        
+        return `${encouragement}<br><br>${followUp}`;
+    }
+    
+    return encouragement;
+}
+
 function findBestAnswer(question) {
     const lowerQuestion = question.toLowerCase().replace(/[?!.,]/g, '');
     const lang = detectLanguage(question);
@@ -1082,11 +1235,52 @@ function findBestAnswer(question) {
         return checkQuizAnswer(question);
     }
     
-    // Search through knowledge base
-    for (const [topic, data] of Object.entries(scienceKnowledge)) {
-        for (const keyword of data.keywords) {
+    // Check if user is answering a Socratic question (store their response and ask follow-up)
+    if (window.awaitingSocraticResponse) {
+        return handleSocraticResponse(question, lang);
+    }
+    
+    // Use Socratic method - ask guiding questions instead of explaining
+    for (const [topic, questions] of Object.entries(socraticQuestions)) {
+        const topicKeywords = {
+            "solar system": ["solar", "planet", "sun", "star", "space", "güneş", "gezegen", "uzay", "yıldız", "mars", "jupiter"],
+            "cell": ["cell", "cells", "hücre", "mitochondria", "nucleus", "mitokondri", "çekirdek"],
+            "gravity": ["gravity", "fall", "weight", "yerçekimi", "düşme", "ağırlık", "newton"],
+            "dna": ["dna", "gene", "genetic", "gen", "genetik", "kalıtım"],
+            "atom": ["atom", "proton", "electron", "elektron", "nötron"],
+            "water cycle": ["water cycle", "rain", "cloud", "evaporation", "su döngüsü", "yağmur", "bulut", "buharlaşma"],
+            "photosynthesis": ["photosynthesis", "plant", "oxygen", "fotosentez", "bitki", "oksijen"]
+        };
+        
+        const keywords = topicKeywords[topic] || [];
+        for (const keyword of keywords) {
             if (lowerQuestion.includes(keyword.toLowerCase())) {
-                return data[lang] || data.en;
+                // Ask a Socratic question instead of explaining
+                const qs = questions[lang] || questions.en;
+                const randomQ = qs[Math.floor(Math.random() * qs.length)];
+                
+                // Store that we're waiting for a response
+                window.awaitingSocraticResponse = topic;
+                
+                return randomQ;
+            }
+        }
+    }
+    
+    // Fallback to knowledge base only if user specifically asks for facts/explanation
+    const wantsExplanation = lowerQuestion.match(/explain|tell me|what is|how does|anlat|açıkla|nedir|nasıl/i);
+    
+    if (wantsExplanation) {
+        for (const [topic, data] of Object.entries(scienceKnowledge)) {
+            for (const keyword of data.keywords) {
+                if (lowerQuestion.includes(keyword.toLowerCase())) {
+                    // Even when explaining, end with a question!
+                    const explanation = data[lang] || data.en;
+                    const followUp = lang === 'tr' 
+                        ? "<br><br>🤔 <strong>Şimdi sana bir soru:</strong> Bu bilgiler seni şaşırttı mı? En ilginç bulduğun ne?"
+                        : "<br><br>🤔 <strong>Now a question for you:</strong> Did any of this surprise you? What's the most interesting part?";
+                    return explanation + followUp;
+                }
             }
         }
     }
