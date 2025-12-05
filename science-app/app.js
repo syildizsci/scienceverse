@@ -1235,51 +1235,31 @@ function findBestAnswer(question) {
         return checkQuizAnswer(question);
     }
     
-    // Check if user is answering a Socratic question (store their response and ask follow-up)
+    // Check if user is answering a Socratic question
     if (window.awaitingSocraticResponse) {
         return handleSocraticResponse(question, lang);
     }
     
-    // Use Socratic method - ask guiding questions instead of explaining
-    for (const [topic, questions] of Object.entries(socraticQuestions)) {
-        const topicKeywords = {
-            "solar system": ["solar", "planet", "sun", "star", "space", "güneş", "gezegen", "uzay", "yıldız", "mars", "jupiter"],
-            "cell": ["cell", "cells", "hücre", "mitochondria", "nucleus", "mitokondri", "çekirdek"],
-            "gravity": ["gravity", "fall", "weight", "yerçekimi", "düşme", "ağırlık", "newton"],
-            "dna": ["dna", "gene", "genetic", "gen", "genetik", "kalıtım"],
-            "atom": ["atom", "proton", "electron", "elektron", "nötron"],
-            "water cycle": ["water cycle", "rain", "cloud", "evaporation", "su döngüsü", "yağmur", "bulut", "buharlaşma"],
-            "photosynthesis": ["photosynthesis", "plant", "oxygen", "fotosentez", "bitki", "oksijen"]
-        };
-        
-        const keywords = topicKeywords[topic] || [];
+    // ALWAYS use Socratic method - ask guiding questions, never explain directly!
+    const topicKeywords = {
+        "solar system": ["solar", "planet", "planets", "sun", "star", "space", "moon", "earth", "güneş", "gezegen", "uzay", "yıldız", "mars", "jupiter", "ay", "dünya"],
+        "cell": ["cell", "cells", "body", "hücre", "vücut", "mitochondria", "nucleus", "mitokondri", "çekirdek", "organ"],
+        "gravity": ["gravity", "fall", "falls", "falling", "weight", "heavy", "float", "yerçekimi", "düşme", "düşer", "ağırlık", "newton"],
+        "dna": ["dna", "gene", "genes", "genetic", "inherit", "parent", "gen", "genetik", "kalıtım", "anne", "baba"],
+        "atom": ["atom", "atoms", "matter", "proton", "electron", "element", "madde", "elektron", "nötron"],
+        "water cycle": ["water", "rain", "cloud", "clouds", "evaporation", "puddle", "su", "yağmur", "bulut", "buharlaşma"],
+        "photosynthesis": ["photosynthesis", "plant", "plants", "tree", "leaf", "green", "grow", "fotosentez", "bitki", "ağaç", "yaprak", "yeşil"]
+    };
+    
+    for (const [topic, keywords] of Object.entries(topicKeywords)) {
         for (const keyword of keywords) {
             if (lowerQuestion.includes(keyword.toLowerCase())) {
-                // Ask a Socratic question instead of explaining
-                const qs = questions[lang] || questions.en;
-                const randomQ = qs[Math.floor(Math.random() * qs.length)];
-                
-                // Store that we're waiting for a response
-                window.awaitingSocraticResponse = topic;
-                
-                return randomQ;
-            }
-        }
-    }
-    
-    // Fallback to knowledge base only if user specifically asks for facts/explanation
-    const wantsExplanation = lowerQuestion.match(/explain|tell me|what is|how does|anlat|açıkla|nedir|nasıl/i);
-    
-    if (wantsExplanation) {
-        for (const [topic, data] of Object.entries(scienceKnowledge)) {
-            for (const keyword of data.keywords) {
-                if (lowerQuestion.includes(keyword.toLowerCase())) {
-                    // Even when explaining, end with a question!
-                    const explanation = data[lang] || data.en;
-                    const followUp = lang === 'tr' 
-                        ? "<br><br>🤔 <strong>Şimdi sana bir soru:</strong> Bu bilgiler seni şaşırttı mı? En ilginç bulduğun ne?"
-                        : "<br><br>🤔 <strong>Now a question for you:</strong> Did any of this surprise you? What's the most interesting part?";
-                    return explanation + followUp;
+                // ALWAYS ask a Socratic question!
+                if (socraticQuestions[topic]) {
+                    const qs = socraticQuestions[topic][lang] || socraticQuestions[topic].en;
+                    const randomQ = qs[Math.floor(Math.random() * qs.length)];
+                    window.awaitingSocraticResponse = topic;
+                    return randomQ;
                 }
             }
         }
