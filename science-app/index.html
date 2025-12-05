@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScienceVerse.ai - Interactive Science Learning Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-icon">⚛</span>
+            <span class="logo-text">ScienceVerse<span class="logo-domain">.ai</span></span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-link" data-section="home">Home</a>
+            <a href="#" class="nav-link" data-section="periodic">Elements</a>
+            <a href="#" class="nav-link" data-section="physics">Physics</a>
+            <a href="#" class="nav-link" data-section="biology">Biology</a>
+            <a href="#" class="nav-link" data-section="quiz">Quiz</a>
+            <a href="#" class="nav-link active" data-section="ai-chat">🤖 AI Assistant</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="hero">
+                <h1 class="hero-title">
+                    <span class="title-line">Explore the</span>
+                    <span class="title-line accent">Universe of Science</span>
+                </h1>
+                <p class="hero-subtitle">Interactive learning experiences in Chemistry, Physics, and Biology</p>
+                <div class="hero-cards">
+                    <div class="feature-card" data-section="periodic">
+                        <div class="card-icon">🧪</div>
+                        <h3>Periodic Table</h3>
+                        <p>Explore 118 elements with detailed properties</p>
+                    </div>
+                    <div class="feature-card" data-section="physics">
+                        <div class="card-icon">⚡</div>
+                        <h3>Physics Lab</h3>
+                        <p>Interactive simulations and calculators</p>
+                    </div>
+                    <div class="feature-card" data-section="biology">
+                        <div class="card-icon">🧬</div>
+                        <h3>Biology Explorer</h3>
+                        <p>Discover cells, DNA, and ecosystems</p>
+                    </div>
+                    <div class="feature-card" data-section="quiz">
+                        <div class="card-icon">🎯</div>
+                        <h3>Science Quiz</h3>
+                        <p>Test your knowledge across all subjects</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Periodic Table Section -->
+        <section id="periodic" class="section">
+            <div class="section-header">
+                <h2>Periodic Table of Elements</h2>
+                <p>Click on any element to learn more</p>
+            </div>
+            <div class="element-legend">
+                <span class="legend-item"><span class="legend-color alkali"></span>Alkali Metals</span>
+                <span class="legend-item"><span class="legend-color alkaline"></span>Alkaline Earth</span>
+                <span class="legend-item"><span class="legend-color transition"></span>Transition Metals</span>
+                <span class="legend-item"><span class="legend-color post-transition"></span>Post-Transition</span>
+                <span class="legend-item"><span class="legend-color metalloid"></span>Metalloids</span>
+                <span class="legend-item"><span class="legend-color nonmetal"></span>Nonmetals</span>
+                <span class="legend-item"><span class="legend-color halogen"></span>Halogens</span>
+                <span class="legend-item"><span class="legend-color noble"></span>Noble Gases</span>
+            </div>
+            <div class="periodic-table" id="periodicTable"></div>
+            <div class="element-details" id="elementDetails">
+                <div class="details-placeholder">
+                    <span class="placeholder-icon">👆</span>
+                    <p>Select an element to view its properties</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Physics Section -->
+        <section id="physics" class="section">
+            <div class="section-header">
+                <h2>Physics Laboratory</h2>
+                <p>Explore fundamental physics concepts</p>
+            </div>
+            <div class="physics-grid">
+                <div class="physics-card">
+                    <h3>⚡ Ohm's Law Calculator</h3>
+                    <div class="calculator">
+                        <div class="calc-input">
+                            <label>Voltage (V)</label>
+                            <input type="number" id="voltage" placeholder="Enter voltage">
+                        </div>
+                        <div class="calc-input">
+                            <label>Current (A)</label>
+                            <input type="number" id="current" placeholder="Enter current">
+                        </div>
+                        <div class="calc-input">
+                            <label>Resistance (Ω)</label>
+                            <input type="number" id="resistance" placeholder="Enter resistance">
+                        </div>
+                        <button class="calc-btn" onclick="calculateOhm()">Calculate Missing Value</button>
+                        <div class="calc-result" id="ohmResult"></div>
+                    </div>
+                </div>
+                <div class="physics-card">
+                    <h3>🚀 Kinematic Equations</h3>
+                    <div class="calculator">
+                        <div class="calc-input">
+                            <label>Initial Velocity (m/s)</label>
+                            <input type="number" id="initVel" placeholder="v₀">
+                        </div>
+                        <div class="calc-input">
+                            <label>Acceleration (m/s²)</label>
+                            <input type="number" id="accel" placeholder="a">
+                        </div>
+                        <div class="calc-input">
+                            <label>Time (s)</label>
+                            <input type="number" id="time" placeholder="t">
+                        </div>
+                        <button class="calc-btn" onclick="calculateKinematics()">Calculate</button>
+                        <div class="calc-result" id="kinResult"></div>
+                    </div>
+                </div>
+                <div class="physics-card wide">
+                    <h3>🎱 Projectile Motion Simulator</h3>
+                    <div class="simulator">
+                        <canvas id="projectileCanvas" width="600" height="300"></canvas>
+                        <div class="sim-controls">
+                            <div class="calc-input">
+                                <label>Launch Angle (°)</label>
+                                <input type="range" id="angle" min="0" max="90" value="45">
+                                <span id="angleValue">45°</span>
+                            </div>
+                            <div class="calc-input">
+                                <label>Initial Speed (m/s)</label>
+                                <input type="range" id="speed" min="10" max="100" value="50">
+                                <span id="speedValue">50 m/s</span>
+                            </div>
+                            <button class="calc-btn" onclick="launchProjectile()">Launch!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Biology Section -->
+        <section id="biology" class="section">
+            <div class="section-header">
+                <h2>Biology Explorer</h2>
+                <p>Discover the wonders of life</p>
+            </div>
+            <div class="biology-tabs">
+                <button class="bio-tab active" data-bio="cell">Cell Structure</button>
+                <button class="bio-tab" data-bio="dna">DNA & Genetics</button>
+                <button class="bio-tab" data-bio="ecosystem">Ecosystems</button>
+            </div>
+            <div class="biology-content">
+                <div id="cell" class="bio-panel active">
+                    <div class="cell-diagram">
+                        <div class="cell-container">
+                            <svg viewBox="0 0 400 300" class="cell-svg">
+                                <ellipse cx="200" cy="150" rx="180" ry="130" class="cell-membrane" />
+                                <ellipse cx="200" cy="150" rx="170" ry="120" class="cytoplasm" />
+                                <ellipse cx="160" cy="140" rx="50" ry="40" class="nucleus" />
+                                <ellipse cx="160" cy="140" rx="15" ry="12" class="nucleolus" />
+                                <ellipse cx="280" cy="100" rx="25" ry="15" class="mitochondria" />
+                                <ellipse cx="300" cy="180" rx="20" ry="12" class="mitochondria" />
+                                <rect x="90" y="180" width="60" height="8" rx="4" class="er" />
+                                <rect x="95" y="195" width="50" height="8" rx="4" class="er" />
+                                <circle cx="250" cy="200" r="12" class="lysosome" />
+                                <ellipse cx="320" cy="130" rx="15" ry="20" class="golgi" />
+                            </svg>
+                        </div>
+                        <div class="cell-info">
+                            <h3>Animal Cell Components</h3>
+                            <div class="component-list">
+                                <div class="component" data-part="nucleus">
+                                    <span class="dot nucleus-dot"></span>
+                                    <strong>Nucleus</strong> - Contains DNA and controls cell activities
+                                </div>
+                                <div class="component" data-part="mitochondria">
+                                    <span class="dot mito-dot"></span>
+                                    <strong>Mitochondria</strong> - Powerhouse of the cell, produces ATP
+                                </div>
+                                <div class="component" data-part="er">
+                                    <span class="dot er-dot"></span>
+                                    <strong>Endoplasmic Reticulum</strong> - Protein and lipid synthesis
+                                </div>
+                                <div class="component" data-part="golgi">
+                                    <span class="dot golgi-dot"></span>
+                                    <strong>Golgi Apparatus</strong> - Packages and ships proteins
+                                </div>
+                                <div class="component" data-part="lysosome">
+                                    <span class="dot lyso-dot"></span>
+                                    <strong>Lysosome</strong> - Breaks down waste materials
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="dna" class="bio-panel">
+                    <div class="dna-explorer">
+                        <div class="dna-helix">
+                            <div class="helix-animation"></div>
+                        </div>
+                        <div class="dna-info">
+                            <h3>DNA: The Blueprint of Life</h3>
+                            <div class="base-pairs">
+                                <div class="base-pair">
+                                    <span class="base adenine">A</span>
+                                    <span class="bond">═══</span>
+                                    <span class="base thymine">T</span>
+                                    <p>Adenine pairs with Thymine</p>
+                                </div>
+                                <div class="base-pair">
+                                    <span class="base guanine">G</span>
+                                    <span class="bond">≡≡≡</span>
+                                    <span class="base cytosine">C</span>
+                                    <p>Guanine pairs with Cytosine</p>
+                                </div>
+                            </div>
+                            <div class="dna-facts">
+                                <h4>Quick Facts</h4>
+                                <ul>
+                                    <li>Human DNA has about 3 billion base pairs</li>
+                                    <li>If stretched out, DNA would be 6 feet long</li>
+                                    <li>99.9% of human DNA is identical between people</li>
+                                    <li>DNA replication occurs at 1000 nucleotides/second</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="ecosystem" class="bio-panel">
+                    <div class="ecosystem-view">
+                        <h3>Food Web Explorer</h3>
+                        <div class="food-chain">
+                            <div class="trophic-level">
+                                <div class="level-label">Apex Predators</div>
+                                <div class="organisms">
+                                    <span class="organism">🦅</span>
+                                    <span class="organism">🦁</span>
+                                    <span class="organism">🦈</span>
+                                </div>
+                            </div>
+                            <div class="energy-arrow">↑ 10% Energy Transfer</div>
+                            <div class="trophic-level">
+                                <div class="level-label">Secondary Consumers</div>
+                                <div class="organisms">
+                                    <span class="organism">🦊</span>
+                                    <span class="organism">🐍</span>
+                                    <span class="organism">🦉</span>
+                                </div>
+                            </div>
+                            <div class="energy-arrow">↑ 10% Energy Transfer</div>
+                            <div class="trophic-level">
+                                <div class="level-label">Primary Consumers</div>
+                                <div class="organisms">
+                                    <span class="organism">🐰</span>
+                                    <span class="organism">🦌</span>
+                                    <span class="organism">🐛</span>
+                                </div>
+                            </div>
+                            <div class="energy-arrow">↑ 10% Energy Transfer</div>
+                            <div class="trophic-level producers">
+                                <div class="level-label">Producers</div>
+                                <div class="organisms">
+                                    <span class="organism">🌿</span>
+                                    <span class="organism">🌻</span>
+                                    <span class="organism">🌲</span>
+                                </div>
+                            </div>
+                            <div class="energy-arrow sun">☀️ Solar Energy</div>
+                        </div>
+                        <div class="ecosystem-info">
+                            <p><strong>10% Rule:</strong> Only about 10% of energy is transferred between trophic levels. The rest is lost as heat through metabolic processes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="section-header">
+                <h2>Science Quiz Challenge</h2>
+                <p>Test your knowledge!</p>
+            </div>
+            <div class="quiz-container">
+                <div class="quiz-setup" id="quizSetup">
+                    <h3>Choose Your Challenge</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-category" data-category="chemistry">🧪 Chemistry</button>
+                        <button class="quiz-category" data-category="physics">⚡ Physics</button>
+                        <button class="quiz-category" data-category="biology">🧬 Biology</button>
+                        <button class="quiz-category" data-category="mixed">🎯 Mixed</button>
+                    </div>
+                </div>
+                <div class="quiz-game" id="quizGame" style="display: none;">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="question-count" id="questionCount">1/10</span>
+                    </div>
+                    <div class="quiz-score">Score: <span id="score">0</span></div>
+                    <div class="question-card">
+                        <h3 id="questionText"></h3>
+                        <div class="answers" id="answersContainer"></div>
+                    </div>
+                    <div class="quiz-feedback" id="feedback"></div>
+                </div>
+                <div class="quiz-results" id="quizResults" style="display: none;">
+                    <div class="results-content">
+                        <h3>Quiz Complete!</h3>
+                        <div class="final-score" id="finalScore"></div>
+                        <div class="score-message" id="scoreMessage"></div>
+                        <button class="calc-btn" onclick="resetQuiz()">Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Chat Section -->
+        <section id="ai-chat" class="section active">
+            <div class="section-header">
+                <h2>🤖 Science Assistant</h2>
+                <p>Ask questions about science and start learning!</p>
+            </div>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="chat-message bot">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <div class="message-bubble">
+                                Hello! I'm <strong>ScienceVerse AI</strong> 👋<br><br>
+                                I can help you learn science in 2 ways:<br><br>
+                                📚 <strong>Learn:</strong> Ask me to explain anything!<br>
+                                • "What is DNA?"<br>
+                                • "How does gravity work?"<br><br>
+                                🎯 <strong>Quiz:</strong> Test your knowledge!<br>
+                                • "Quiz me on the solar system"<br>
+                                • "Ask me about cells"<br><br>
+                                I speak multiple languages! 🌐 English, Turkish & more!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <div class="suggested-questions">
+                        <button class="suggestion-btn" onclick="askSuggestion('Tell me about the solar system')">🌞 Solar System</button>
+                        <button class="suggestion-btn" onclick="askSuggestion('What is a cell?')">🧬 Cells</button>
+                        <button class="suggestion-btn" onclick="askSuggestion('Quiz me on planets')">🎯 Quiz Me!</button>
+                        <button class="suggestion-btn" onclick="askSuggestion('Ask me about gravity')">❓ Test Me!</button>
+                    </div>
+                    <div class="chat-input-wrapper">
+                        <input type="text" id="chatInput" placeholder="Ask a science question..." onkeypress="handleChatKeypress(event)">
+                        <button class="send-btn" onclick="sendMessage()">
+                            <span>Send</span>
+                            <span class="send-icon">➤</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 ScienceVerse.ai | Interactive Science Learning Platform</p>
+        <p class="footer-link">www.scienceverse.ai</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
