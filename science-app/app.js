@@ -1,114 +1,213 @@
-// ===== Socratic Science Assistant =====
-// This AI ONLY asks questions - never explains directly!
+// ===== Socratic Science Assistant with OpenAI =====
+// This AI uses OpenAI GPT-4o-mini to ask guiding questions!
+
+const OPENAI_API_KEY = "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";
+const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
+
+// System prompt for Socratic teaching
+const SYSTEM_PROMPT = `You are a friendly science tutor for children aged 8-14. You have a warm, curious personality!
+
+HOW TO RESPOND:
+1. First, WARMLY ACKNOWLEDGE their question and show genuine curiosity about WHY they're asking
+2. Ask them what made them curious about this topic (this builds connection!)
+3. Give a SHORT, simple hint or clue about the answer
+4. Finally, ask ONE simple follow-up question to make them think deeper
+
+FORMAT: [Emoji] [Warm acknowledgment] + [Ask why they're curious OR give encouraging comment] + [Short hint] + [One question]
+
+RULES:
+- Keep it SHORT (3-4 sentences max)
+- Use simple words a child understands
+- Stay on the EXACT topic they asked about
+- Be encouraging, warm, and genuinely curious about the child!
+- Sound like a friendly mentor, not a quiz machine!
+
+EXAMPLES:
+
+Child: "Why is the sun active during the day?"
+GOOD: "🌞 Ooh, what a great question! I'm curious - what made you think about this? Here's a fun hint: the Sun is actually always shining, even at night! So why do you think we only see it during the day?"
+
+Child: "Why is the sky blue?"
+GOOD: "🤔 Hmm, I love this question! Did you notice the sky while looking outside today? The sky's color has a magical secret about how sunlight travels. What color do you think sunlight really is?"
+
+Child: "How do plants grow?"
+GOOD: "🌱 That's a wonderful thing to be curious about! Do you have a plant at home or did you see one that made you wonder? Plants are like tiny food factories. What do you think a plant needs to make its own food?"
+
+Child: "What are atoms?"
+GOOD: "⚛️ Wow, atoms! You're thinking about some really big science ideas! Everything around you - your desk, the air, even you - is made of tiny tiny pieces called atoms. What's the smallest thing you can see with just your eyes?"
+
+Child: "Tell me about dinosaurs"
+GOOD: "🦖 Ooh, dinosaurs - one of my favorite topics! What got you interested in dinosaurs? They lived millions of years ago and some were as tall as buildings! What's your favorite dinosaur, or would you like to learn about the biggest ones?"
+
+NEVER change the topic. If they ask about the Sun, talk about the Sun. If they ask about plants, talk about plants.
+Show genuine interest in the child as a person, not just their question!`;
+
+// Call OpenAI API
+async function callOpenAI(userMessage, conversationHistory = []) {
+    try {
+        const messages = [
+            { role: "system", content: SYSTEM_PROMPT },
+            ...conversationHistory,
+            { role: "user", content: userMessage }
+        ];
+
+        const response = await fetch(OPENAI_API_URL, {
+            method: "POST",
+            headers: { 
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${OPENAI_API_KEY}`
+            },
+            body: JSON.stringify({
+                model: "gpt-4o-mini",
+                messages: messages,
+                temperature: 0.8,
+                max_tokens: 200
+            })
+        });
+
+        const data = await response.json();
+        
+        if (data.choices && data.choices[0]?.message?.content) {
+            return data.choices[0].message.content;
+        }
+        
+        console.error("OpenAI API response:", data);
+        return null;
+    } catch (error) {
+        console.error("OpenAI API error:", error);
+        return null;
+    }
+}
+
+// Conversation history for context
+let conversationHistory = [];
+
+// Warm intro phrases to show curiosity about why they're asking
+const warmIntros = {
+    en: [
+        "Hmm, what a great question! I'm curious - what made you think about this?",
+        "Ooh, I love this topic! What got you interested in this?",
+        "That's a wonderful thing to wonder about! Did you see something that made you curious?",
+        "Wow, you're asking really good questions! Tell me, why are you curious about this?",
+        "Nice! I can tell you're really thinking today. What made you wonder about this?"
+    ],
+    tr: [
+        "Hmm, ne güzel bir soru! Merak ettim - bunu düşünmene ne sebep oldu?",
+        "Ooo, bu konuyu çok seviyorum! Seni bu konuya ne ilgi çekti?",
+        "Ne harika bir merak! Bunu merak etmene bir şey mi sebep oldu?",
+        "Vay, gerçekten güzel sorular soruyorsun! Söylesene, bunu neden merak ediyorsun?",
+        "Güzel! Bugün gerçekten düşünüyorsun. Bunu merak etmene ne sebep oldu?"
+    ]
+};
 
 // Socratic questions for each topic
 const socraticQuestions = {
     "space": [
-        "🌞 Let's think together! What do you see in the sky during the day?",
-        "🤔 If the Sun is a star, why do other stars look so tiny at night?",
-        "🌍 Why do you think we have day and night? What's moving?",
-        "🚀 If you could visit any planet, which one would you choose? Why?",
-        "⭐ How many planets can you name? Let's count together!",
-        "🌙 Why does the Moon look different on different nights?"
+        "Let's think together! What do you see in the sky during the day?",
+        "If the Sun is a star, why do other stars look so tiny at night?",
+        "Why do you think we have day and night? What's moving?",
+        "If you could visit any planet, which one would you choose? Why?",
+        "How many planets can you name? Let's count together!",
+        "Why does the Moon look different on different nights?"
     ],
     "gravity": [
-        "🍎 When you drop something, what happens? Why doesn't it float away?",
-        "🌙 Astronauts float in space! Why don't we float here on Earth?",
-        "⚽ If you throw a ball up, what happens? Why does it come back?",
-        "🤔 Do you think a feather and a rock fall at the same speed? Why?",
-        "🌍 What would happen if there was no gravity? What would your day be like?",
-        "🎈 Why do helium balloons float up but regular balloons fall down?"
+        "When you drop something, what happens? Why doesn't it float away?",
+        "Astronauts float in space! Why don't we float here on Earth?",
+        "If you throw a ball up, what happens? Why does it come back?",
+        "Do you think a feather and a rock fall at the same speed? Why?",
+        "What would happen if there was no gravity? What would your day be like?",
+        "Why do helium balloons float up but regular balloons fall down?"
     ],
     "body": [
-        "🔬 Your body is made of tiny pieces called cells. How tiny do you think they are?",
-        "🤔 Cells need energy to work. Where do YOU get your energy from?",
-        "🧠 Your brain is made of cells too! What do you think brain cells do?",
-        "💪 Why do you think your muscles get tired when you exercise?",
-        "❤️ Can you feel your heart beating? Why do you think it never stops?",
-        "🦴 What do you think is inside your bones?"
+        "Your body is made of tiny pieces called cells. How tiny do you think they are?",
+        "Cells need energy to work. Where do YOU get your energy from?",
+        "Your brain is made of cells too! What do you think brain cells do?",
+        "Why do you think your muscles get tired when you exercise?",
+        "Can you feel your heart beating? Why do you think it never stops?",
+        "What do you think is inside your bones?"
     ],
     "plants": [
-        "🌱 Plants make their own food! How do you think they do it without a mouth?",
-        "☀️ Why do plants need sunlight? What happens if you put a plant in the dark?",
-        "🌿 Why are most plants green? What do you think makes that color?",
-        "💧 What happens to a plant if you forget to water it? Why?",
-        "🌳 How do you think a tiny seed becomes a huge tree?",
-        "🍃 Why do leaves fall off trees in autumn?"
+        "Plants make their own food! How do you think they do it without a mouth?",
+        "Why do plants need sunlight? What happens if you put a plant in the dark?",
+        "Why are most plants green? What do you think makes that color?",
+        "What happens to a plant if you forget to water it? Why?",
+        "How do you think a tiny seed becomes a huge tree?",
+        "Why do leaves fall off trees in autumn?"
     ],
     "water": [
-        "💧 Where does rain come from? Where do clouds get their water?",
-        "☀️ What happens to a puddle on a sunny day? Where does the water go?",
-        "🤔 Is the water you drink today new, or has it been around before?",
-        "❄️ Why does water turn into ice when it's cold?",
-        "🌊 Where do rivers go? Do they ever run out of water?",
-        "☁️ What do you think clouds are made of?"
+        "Where does rain come from? Where do clouds get their water?",
+        "What happens to a puddle on a sunny day? Where does the water go?",
+        "Is the water you drink today new, or has it been around before?",
+        "Why does water turn into ice when it's cold?",
+        "Where do rivers go? Do they ever run out of water?",
+        "What do you think clouds are made of?"
     ],
     "atoms": [
-        "🔍 Everything is made of tiny things called atoms! What do you think atoms are made of?",
-        "🤔 Can you see atoms? Why or why not?",
-        "💨 Is air made of atoms too? How do you know air exists if you can't see it?",
-        "🧊 Ice and water are both made of the same atoms. What's different about them?",
-        "✨ What do you think is smaller - an atom or a grain of sand?",
-        "🎈 Why do you think some things are hard and some are soft?"
+        "Everything is made of tiny things called atoms! What do you think atoms are made of?",
+        "Can you see atoms? Why or why not?",
+        "Is air made of atoms too? How do you know air exists if you can't see it?",
+        "Ice and water are both made of the same atoms. What's different about them?",
+        "What do you think is smaller - an atom or a grain of sand?",
+        "Why do you think some things are hard and some are soft?"
     ]
 };
 
 // Turkish versions
 const socraticQuestionsTR = {
     "space": [
-        "🌞 Birlikte düşünelim! Gündüz gökyüzünde ne görüyorsun?",
-        "🤔 Güneş bir yıldızsa, diğer yıldızlar gece neden çok küçük görünüyor?",
-        "🌍 Sence gece ve gündüz neden oluyor? Ne hareket ediyor?",
-        "🚀 Herhangi bir gezegene gidebilsen hangisine giderdin? Neden?",
-        "⭐ Kaç gezegen sayabilirsin? Birlikte sayalım!",
-        "🌙 Ay neden her gece farklı görünüyor?"
+        "Birlikte düşünelim! Gündüz gökyüzünde ne görüyorsun?",
+        "Güneş bir yıldızsa, diğer yıldızlar gece neden çok küçük görünüyor?",
+        "Sence gece ve gündüz neden oluyor? Ne hareket ediyor?",
+        "Herhangi bir gezegene gidebilsen hangisine giderdin? Neden?",
+        "Kaç gezegen sayabilirsin? Birlikte sayalım!",
+        "Ay neden her gece farklı görünüyor?"
     ],
     "gravity": [
-        "🍎 Bir şeyi bıraktığında ne oluyor? Neden havada kalmıyor?",
-        "🌙 Astronotlar uzayda süzülüyor! Biz neden süzülmüyoruz?",
-        "⚽ Bir topu yukarı atarsan ne olur? Neden geri düşüyor?",
-        "🤔 Sence bir tüy ve bir taş aynı hızda mı düşer? Neden?",
-        "🌍 Yerçekimi olmasaydı ne olurdu? Günün nasıl geçerdi?",
-        "🎈 Helyum balonları neden uçuyor ama normal balonlar düşüyor?"
+        "Bir şeyi bıraktığında ne oluyor? Neden havada kalmıyor?",
+        "Astronotlar uzayda süzülüyor! Biz neden süzülmüyoruz?",
+        "Bir topu yukarı atarsan ne olur? Neden geri düşüyor?",
+        "Sence bir tüy ve bir taş aynı hızda mı düşer? Neden?",
+        "Yerçekimi olmasaydı ne olurdu? Günün nasıl geçerdi?",
+        "Helyum balonları neden uçuyor ama normal balonlar düşüyor?"
     ],
     "body": [
-        "🔬 Vücudun hücre denen küçük parçalardan oluşuyor. Sence ne kadar küçükler?",
-        "🤔 Hücreler çalışmak için enerji gerekir. SEN enerjini nereden alıyorsun?",
-        "🧠 Beynin de hücrelerden oluşuyor! Beyin hücreleri sence ne yapıyor?",
-        "💪 Egzersiz yapınca kasların neden yoruluyor sence?",
-        "❤️ Kalbinin attığını hissedebiliyor musun? Neden hiç durmuyor?",
-        "🦴 Kemiklerinin içinde ne var sence?"
+        "Vücudun hücre denen küçük parçalardan oluşuyor. Sence ne kadar küçükler?",
+        "Hücreler çalışmak için enerji gerekir. SEN enerjini nereden alıyorsun?",
+        "Beynin de hücrelerden oluşuyor! Beyin hücreleri sence ne yapıyor?",
+        "Egzersiz yapınca kasların neden yoruluyor sence?",
+        "Kalbinin attığını hissedebiliyor musun? Neden hiç durmuyor?",
+        "Kemiklerinin içinde ne var sence?"
     ],
     "plants": [
-        "🌱 Bitkiler kendi yemeklerini yapıyor! Ağızları olmadan nasıl yapıyorlar sence?",
-        "☀️ Bitkiler neden güneş ışığına ihtiyaç duyar? Karanlıkta ne olur?",
-        "🌿 Bitkilerin çoğu neden yeşil? Bu rengi ne yapıyor sence?",
-        "💧 Bir bitkiyi sulamayı unutursan ne olur? Neden?",
-        "🌳 Küçücük bir tohum nasıl kocaman bir ağaç oluyor sence?",
-        "🍃 Sonbaharda yapraklar neden dökülüyor?"
+        "Bitkiler kendi yemeklerini yapıyor! Ağızları olmadan nasıl yapıyorlar sence?",
+        "Bitkiler neden güneş ışığına ihtiyaç duyar? Karanlıkta ne olur?",
+        "Bitkilerin çoğu neden yeşil? Bu rengi ne yapıyor sence?",
+        "Bir bitkiyi sulamayı unutursan ne olur? Neden?",
+        "Küçücük bir tohum nasıl kocaman bir ağaç oluyor sence?",
+        "Sonbaharda yapraklar neden dökülüyor?"
     ],
     "water": [
-        "💧 Yağmur nereden geliyor? Bulutlar suyunu nereden alıyor?",
-        "☀️ Güneşli bir günde su birikintisine ne olur? Su nereye gidiyor?",
-        "🤔 Bugün içtiğin su yeni mi, yoksa daha önce var mıydı?",
-        "❄️ Su soğuyunca neden buza dönüşüyor?",
-        "🌊 Nehirler nereye gidiyor? Suları hiç bitiyor mu?",
-        "☁️ Bulutlar sence neden oluşuyor?"
+        "Yağmur nereden geliyor? Bulutlar suyunu nereden alıyor?",
+        "Güneşli bir günde su birikintisine ne olur? Su nereye gidiyor?",
+        "Bugün içtiğin su yeni mi, yoksa daha önce var mıydı?",
+        "Su soğuyunca neden buza dönüşüyor?",
+        "Nehirler nereye gidiyor? Suları hiç bitiyor mu?",
+        "Bulutlar sence neden oluşuyor?"
     ],
     "atoms": [
-        "🔍 Her şey atom denen küçük parçalardan oluşuyor! Atomlar neden oluşuyor sence?",
-        "🤔 Atomları görebilir misin? Neden?",
-        "💨 Hava da atomlardan mı oluşuyor? Havayı göremiyorsan var olduğunu nasıl biliyorsun?",
-        "🧊 Buz ve su aynı atomlardan oluşuyor. Farkları ne peki?",
-        "✨ Hangisi daha küçük sence - bir atom mu, bir kum tanesi mi?",
-        "🎈 Bazı şeyler neden sert, bazıları yumuşak sence?"
+        "Her şey atom denen küçük parçalardan oluşuyor! Atomlar neden oluşuyor sence?",
+        "Atomları görebilir misin? Neden?",
+        "Hava da atomlardan mı oluşuyor? Havayı göremiyorsan var olduğunu nasıl biliyorsun?",
+        "Buz ve su aynı atomlardan oluşuyor. Farkları ne peki?",
+        "Hangisi daha küçük sence - bir atom mu, bir kum tanesi mi?",
+        "Bazı şeyler neden sert, bazıları yumuşak sence?"
     ]
 };
 
 // Keywords that trigger each topic
 const topicKeywords = {
-    "space": ["space", "planet", "planets", "sun", "moon", "star", "stars", "earth", "mars", "jupiter", "saturn", "solar", "galaxy", "universe", "rocket", "astronaut", "uzay", "gezegen", "güneş", "ay", "yıldız", "dünya", "evren"],
-    "gravity": ["gravity", "fall", "falls", "falling", "drop", "float", "weight", "heavy", "light", "newton", "yerçekimi", "düşmek", "düşer", "ağırlık", "hafif", "ağır"],
+    "space": ["space", "planet", "planets", "sun", "moon", "star", "stars", "earth", "mars", "jupiter", "saturn", "solar", "galaxy", "universe", "rocket", "astronaut", "sky", "blue", "night", "day", "light", "uzay", "gezegen", "güneş", "ay", "yıldız", "dünya", "evren", "gökyüzü", "mavi", "gece", "gündüz", "ışık"],
+    "gravity": ["gravity", "fall", "falls", "falling", "drop", "float", "weight", "heavy", "newton", "yerçekimi", "düşmek", "düşer", "ağırlık", "hafif", "ağır"],
     "body": ["body", "cell", "cells", "organ", "heart", "brain", "blood", "bone", "muscle", "dna", "gene", "vücut", "hücre", "organ", "kalp", "beyin", "kan", "kemik", "kas"],
     "plants": ["plant", "plants", "tree", "leaf", "flower", "seed", "grow", "root", "photosynthesis", "green", "bitki", "ağaç", "yaprak", "çiçek", "tohum", "büyümek", "kök", "fotosentez", "yeşil"],
     "water": ["water", "rain", "cloud", "river", "ocean", "sea", "ice", "snow", "evaporation", "cycle", "su", "yağmur", "bulut", "nehir", "okyanus", "deniz", "buz", "kar"],
@@ -134,11 +233,37 @@ function findTopic(message) {
     return null;
 }
 
-// Get a random Socratic question for a topic
+// Topic-specific emojis
+const topicEmojis = {
+    "space": ["🌞", "🚀", "🌙", "⭐", "🌍"],
+    "gravity": ["🍎", "⚽", "🎈", "🌍", "🌙"],
+    "body": ["🔬", "🧠", "💪", "❤️", "🦴"],
+    "plants": ["🌱", "☀️", "🌿", "🌳", "🍃"],
+    "water": ["💧", "☀️", "❄️", "🌊", "☁️"],
+    "atoms": ["🔍", "⚛️", "✨", "🧊", "🎈"]
+};
+
+// Get a random Socratic question for a topic (with warm intro)
 function getSocraticQuestion(topic, lang) {
     const questions = lang === 'tr' ? socraticQuestionsTR[topic] : socraticQuestions[topic];
     if (!questions) return null;
-    return questions[Math.floor(Math.random() * questions.length)];
+    
+    const defaultIntroEN = "Hmm, what a great question! I'm curious - what made you think about this?";
+    const defaultIntroTR = "Hmm, ne güzel bir soru! Merak ettim - bunu düşünmene ne sebep oldu?";
+    
+    let intro;
+    if (warmIntros && warmIntros[lang] && warmIntros[lang].length > 0) {
+        const intros = warmIntros[lang];
+        intro = intros[Math.floor(Math.random() * intros.length)];
+    } else {
+        intro = lang === 'tr' ? defaultIntroTR : defaultIntroEN;
+    }
+    
+    const emojis = topicEmojis[topic] || ["🤔"];
+    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+    const question = questions[Math.floor(Math.random() * questions.length)];
+    
+    return `${emoji} ${intro}<br><br>${question}`;
 }
 
 // Encouraging responses for when child answers
@@ -161,23 +286,120 @@ const encouragements = {
 
 // Track conversation state
 let currentTopic = null;
+let lastQuestion = null;
 let awaitingResponse = false;
 
-// Main function to find answer
+// Follow-up questions based on child's answer
+const followUpQuestions = {
+    "sky_answer": {
+        en: {
+            "sun": "☀️ Yes, the Sun! It's actually a giant ball of fire. Why do you think it feels warm when you stand in sunlight?",
+            "blue": "💙 Yes, the sky looks blue! But wait... why do you think the sky is blue and not green or red?",
+            "clouds": "☁️ Good observation! Clouds! What do you think clouds are made of?",
+            "birds": "🐦 Yes, birds fly in the sky! How do you think birds can fly but we can't?",
+            "default": "👀 Interesting! And what color is the sky during the day? Why do you think it's that color?"
+        },
+        tr: {
+            "güneş": "☀️ Evet, Güneş! Aslında dev bir ateş topu. Güneş ışığında durduğunda neden sıcak hissediyorsun sence?",
+            "mavi": "💙 Evet, gökyüzü mavi görünüyor! Ama neden mavi sence? Neden yeşil veya kırmızı değil?",
+            "bulut": "☁️ Güzel gözlem! Bulutlar! Sence bulutlar neden oluşuyor?",
+            "kuş": "🐦 Evet, kuşlar gökyüzünde uçuyor! Kuşlar nasıl uçabiliyor ama biz uçamıyoruz sence?",
+            "default": "👀 İlginç! Peki gündüz gökyüzü ne renk? Sence neden o renk?"
+        }
+    },
+    "fall_answer": {
+        en: {
+            "ground": "⬇️ Right, it hits the ground! But WHY does it fall down instead of floating or going up?",
+            "down": "⬇️ Yes, down! But why always DOWN? Why not sideways or up?",
+            "gravity": "🎯 Wow, you know about gravity! What do you think gravity actually IS?",
+            "default": "🤔 Good! So things fall down... but why? What force is pulling them?"
+        },
+        tr: {
+            "yere": "⬇️ Doğru, yere düşüyor! Ama NEDEN aşağı düşüyor? Neden havada kalmıyor?",
+            "aşağı": "⬇️ Evet, aşağı! Ama neden hep AŞAĞI? Neden yukarı veya yana gitmiyor?",
+            "yerçekimi": "🎯 Vay, yerçekimini biliyorsun! Sence yerçekimi tam olarak NE?",
+            "default": "🤔 Güzel! Yani şeyler aşağı düşüyor... ama neden? Onları hangi kuvvet çekiyor?"
+        }
+    },
+    "energy_answer": {
+        en: {
+            "food": "🍎 Exactly! Food gives us energy! But how does the food BECOME energy inside your body?",
+            "eat": "🍽️ Yes, by eating! But what happens to the food after you swallow it?",
+            "sleep": "😴 Sleep helps us rest! But where does the actual ENERGY come from to move and think?",
+            "default": "🤔 Think about it... when you're hungry, you feel tired. What gives you energy to run and play?"
+        },
+        tr: {
+            "yemek": "🍎 Kesinlikle! Yemek bize enerji veriyor! Ama yemek vücudunda nasıl ENERJİYE dönüşüyor?",
+            "yiyecek": "🍽️ Evet, yiyerek! Ama yuttuğun yemeğe ne oluyor sonra?",
+            "uyku": "😴 Uyku dinlenmemize yardımcı oluyor! Ama hareket etmek için gerçek ENERJİ nereden geliyor?",
+            "default": "🤔 Düşün... açken yorgun hissedersin. Koşmak ve oynamak için enerjiyi ne veriyor?"
+        }
+    },
+    "generic": {
+        en: [
+            "🤔 Interesting answer! Can you tell me more about why you think that?",
+            "💡 Good thinking! What made you say that?",
+            "🧠 I like how you're thinking! What else do you know about this?",
+            "👏 Nice! And what do you think happens next?"
+        ],
+        tr: [
+            "🤔 İlginç cevap! Neden böyle düşündüğünü anlatır mısın?",
+            "💡 Güzel düşünce! Bunu neden söyledin?",
+            "🧠 Düşünme şeklini beğendim! Bu konuda başka ne biliyorsun?",
+            "👏 Güzel! Sence sonra ne oluyor?"
+        ]
+    }
+};
+
+function getQuestionType(questionText) {
+    const lower = questionText.toLowerCase();
+    if (lower.includes("sky") || lower.includes("gökyüzü")) return "sky_answer";
+    if (lower.includes("drop") || lower.includes("fall") || lower.includes("bırak") || lower.includes("düş")) return "fall_answer";
+    if (lower.includes("energy") || lower.includes("enerji")) return "energy_answer";
+    return "generic";
+}
+
+function getFollowUp(childAnswer, lang) {
+    if (!lastQuestion) return null;
+    
+    const questionType = getQuestionType(lastQuestion);
+    const lower = childAnswer.toLowerCase();
+    
+    if (questionType === "generic") {
+        const responses = followUpQuestions.generic[lang];
+        return responses[Math.floor(Math.random() * responses.length)];
+    }
+    
+    const followUps = followUpQuestions[questionType]?.[lang];
+    if (!followUps) return null;
+    
+    for (const [keyword, response] of Object.entries(followUps)) {
+        if (keyword !== "default" && lower.includes(keyword)) {
+            return response;
+        }
+    }
+    
+    return followUps.default || null;
+}
+
 function findBestAnswer(question) {
     const lang = detectLanguage(question);
     const lower = question.toLowerCase();
     
-    // If we're waiting for child's response to a question
     if (awaitingResponse && currentTopic) {
-        awaitingResponse = false;
+        const followUp = getFollowUp(question, lang);
+        
+        if (followUp) {
+            lastQuestion = followUp;
+            return followUp;
+        }
+        
         const encouragement = encouragements[lang][Math.floor(Math.random() * encouragements.length)];
         const nextQuestion = getSocraticQuestion(currentTopic, lang);
-        awaitingResponse = true;
+        lastQuestion = nextQuestion;
         return encouragement + "<br><br>" + nextQuestion;
     }
     
-    // Check for greetings
     if (lower.match(/^(hi|hello|hey|merhaba|selam)/)) {
         const greeting = lang === 'tr' 
             ? "👋 Merhaba! Ben ScienceVerse AI!<br><br>Birlikte bilim keşfedelim! Ne hakkında merak ediyorsun?<br>• Uzay 🚀<br>• Yerçekimi 🍎<br>• Vücudumuz 🧬<br>• Bitkiler 🌱"
@@ -185,25 +407,25 @@ function findBestAnswer(question) {
         return greeting;
     }
     
-    // Find topic and ask Socratic question
     const topic = findTopic(question);
     
     if (topic) {
         currentTopic = topic;
         awaitingResponse = true;
-        return getSocraticQuestion(topic, lang);
+        const q = getSocraticQuestion(topic, lang);
+        lastQuestion = q;
+        return q;
     }
     
-    // Default: encourage them to pick a topic
     const defaultResponse = lang === 'tr'
-        ? "🤔 İlginç! Birlikte düşünelim...<br><br>Ne hakkında konuşmak istersin?<br>• Uzay ve gezegenler 🚀<br>• Yerçekimi 🍎<br>• Vücudumuz 🧬<br>• Bitkiler 🌱<br>• Su döngüsü 💧<br>• Atomlar ⚛️"
-        : "🤔 Interesting! Let's think together...<br><br>What would you like to explore?<br>• Space and planets 🚀<br>• Gravity 🍎<br>• Our body 🧬<br>• Plants 🌱<br>• Water cycle 💧<br>• Atoms ⚛️";
+        ? "🤔 Hmm, ilginç bir soru! Bunu merak etmene ne sebep oldu? Biraz daha anlatır mısın?"
+        : "🤔 Hmm, that's an interesting question! What made you curious about this? Can you tell me a bit more?";
     
     return defaultResponse;
 }
 
 // ===== Chat Functions =====
-function sendMessage() {
+async function sendMessage() {
     const input = document.getElementById('chatInput');
     const message = input.value.trim();
     if (!message) return;
@@ -213,11 +435,23 @@ function sendMessage() {
     
     showTyping();
     
-    setTimeout(() => {
-        removeTyping();
+    const openaiResponse = await callOpenAI(message, conversationHistory);
+    
+    removeTyping();
+    
+    if (openaiResponse) {
+        conversationHistory.push({ role: "user", content: message });
+        conversationHistory.push({ role: "assistant", content: openaiResponse });
+        
+        if (conversationHistory.length > 10) {
+            conversationHistory = conversationHistory.slice(-10);
+        }
+        
+        addMessage(openaiResponse, 'bot');
+    } else {
         const response = findBestAnswer(message);
         addMessage(response, 'bot');
-    }, 800 + Math.random() * 700);
+    }
 }
 
 function addMessage(content, type) {
@@ -306,4 +540,3 @@ function calculateOhm() {
         result.innerHTML = 'Enter any 2 values to calculate the third.';
     }
 }
-
