@@ -245,9 +245,6 @@ const topicEmojis = {
 
 // Get a random Socratic question for a topic (with warm intro)
 function getSocraticQuestion(topic, lang) {
-    const questions = lang === 'tr' ? socraticQuestionsTR[topic] : socraticQuestions[topic];
-    if (!questions) return null;
-    
     const defaultIntroEN = "Hmm, what a great question! I'm curious - what made you think about this?";
     const defaultIntroTR = "Hmm, ne güzel bir soru! Merak ettim - bunu düşünmene ne sebep oldu?";
     
@@ -261,9 +258,9 @@ function getSocraticQuestion(topic, lang) {
     
     const emojis = topicEmojis[topic] || ["🤔"];
     const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-    const question = questions[Math.floor(Math.random() * questions.length)];
     
-    return `${emoji} ${intro}<br><br>${question}`;
+    // ONLY return warm intro - no extra question!
+    return `${emoji} ${intro}`;
 }
 
 // Encouraging responses for when child answers
