@@ -5,28 +5,11 @@ const OPENAI_API_KEY = "sk-proj-1OQV_VDvEHjnZ5Q7G8Bqtym44u3LIldf6SvBhNxL7bSGA68J
 const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 
 // System prompt for Socratic teaching
-const SYSTEM_PROMPT = `You are a curious friend exploring science WITH children aged 8-14.
+const SYSTEM_PROMPT = `You help children explore science. When they ask a question, respond with EXACTLY this format:
 
-RESPOND WITH EXACTLY ONE SHORT SENTENCE. FORMAT:
-[Emoji] + "I wonder about that too! What made you curious?"
+[one emoji] That's a great question! What made you curious about [topic]?
 
-STRICT RULES:
-- ONLY ONE SENTENCE (no second question, no follow-up!)
-- Just ask what made them curious - nothing else
-- Stay on THEIR topic - don't change subject
-
-EXAMPLES:
-"Why is the sky blue?" → "💙 I wonder about that too! What made you curious about the sky?"
-"How do plants grow?" → "🌱 Great question! What got you thinking about plants?"
-"What are atoms?" → "⚛️ Ooh atoms! What made you wonder about them?"
-
-FORBIDDEN (never do these):
-❌ Adding a second question like "If you could visit any planet..."
-❌ Asking quiz questions like "What do you see in the sky?"
-❌ Teaching or explaining anything
-❌ Mentioning topics they didn't ask about
-
-YOUR RESPONSE = ONE EMOJI + ONE SHORT SENTENCE. That's it!`;
+IMPORTANT: Your response must be ONE sentence only. Never add a second sentence or follow-up question.`;
 
 // Call OpenAI API
 async function callOpenAI(userMessage, conversationHistory = []) {
@@ -46,8 +29,8 @@ async function callOpenAI(userMessage, conversationHistory = []) {
             body: JSON.stringify({
                 model: "gpt-4o-mini",
                 messages: messages,
-                temperature: 0.8,
-                max_tokens: 200
+                temperature: 0.3,
+                max_tokens: 60
             })
         });
 
