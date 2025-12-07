@@ -451,6 +451,18 @@ async function sendMessage() {
     addMessage(message, 'user');
     input.value = '';
     
+    const lower = message.toLowerCase();
+    const lang = detectLanguage(message);
+    
+    // Handle greetings directly without API call
+    if (lower.match(/^(hi|hello|hey|merhaba|selam|sa)/)) {
+        const greeting = lang === 'tr' 
+            ? "👋 Merhaba! Ben ScienceVerse AI!<br><br>Birlikte bilim keşfedelim! Ne hakkında merak ediyorsun?"
+            : "👋 Hello! I'm ScienceVerse AI!<br><br>Let's discover science together! What are you curious about?";
+        addMessage(greeting, 'bot');
+        return;
+    }
+    
     showTyping();
     
     const openaiResponse = await callOpenAI(message, conversationHistory);
