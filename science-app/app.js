@@ -325,11 +325,63 @@ function getQuestionType(questionText) {
     return "generic";
 }
 
+// Helpful hints when child says "I don't know"
+const dontKnowResponses = {
+    en: [
+        "💡 That's okay! Let me share something cool - ",
+        "🌟 No worries! Here's a fun fact - ",
+        "✨ That's fine! Let me tell you something interesting - "
+    ],
+    tr: [
+        "💡 Sorun değil! Sana harika bir şey söyleyeyim - ",
+        "🌟 Önemli değil! İşte eğlenceli bir bilgi - ",
+        "✨ Tamam! Sana ilginç bir şey anlatayım - "
+    ]
+};
+
+const topicHints = {
+    "space": {
+        en: "The sky looks blue because sunlight bounces off tiny bits in the air, and blue light bounces the most! 🌈",
+        tr: "Gökyüzü mavi görünüyor çünkü güneş ışığı havadaki küçük parçacıklardan sekiyor ve mavi ışık en çok sekiyor! 🌈"
+    },
+    "water": {
+        en: "Water goes up into the sky as invisible vapor, then comes back down as rain! It's like a big recycling system. 💧",
+        tr: "Su görünmez buhar olarak gökyüzüne çıkıyor, sonra yağmur olarak geri iniyor! Büyük bir geri dönüşüm sistemi gibi. 💧"
+    },
+    "plants": {
+        en: "Plants are amazing - they eat sunlight! They turn light into food through their green leaves. 🌿",
+        tr: "Bitkiler harika - güneş ışığı yiyorlar! Yeşil yapraklarıyla ışığı yemeğe çeviriyorlar. 🌿"
+    },
+    "body": {
+        en: "Your body is made of trillions of tiny cells - that's more than all the stars you can see! 🔬",
+        tr: "Vücudun trilyonlarca küçük hücreden oluşuyor - görebildiğin tüm yıldızlardan daha fazla! 🔬"
+    },
+    "atoms": {
+        en: "Everything around you - your chair, the air, even you - is made of tiny atoms! They're like invisible LEGO blocks. ⚛️",
+        tr: "Etrafındaki her şey - sandalyen, hava, hatta sen - küçük atomlardan oluşuyor! Görünmez LEGO parçaları gibi. ⚛️"
+    },
+    "gravity": {
+        en: "Gravity is like an invisible force that pulls everything down. That's why when you jump, you always come back! 🍎",
+        tr: "Yerçekimi her şeyi aşağı çeken görünmez bir güç gibi. Bu yüzden zıpladığında her zaman geri iniyorsun! 🍎"
+    }
+};
+
 function getFollowUp(childAnswer, lang) {
     if (!lastQuestion) return null;
     
-    const questionType = getQuestionType(lastQuestion);
     const lower = childAnswer.toLowerCase();
+    
+    // Check if child says "I don't know"
+    const dontKnowPatterns = ["don't know", "dont know", "idk", "no idea", "bilmiyorum", "bilmiom", "bilmem", "hiç bilmiyorum"];
+    const isDontKnow = dontKnowPatterns.some(pattern => lower.includes(pattern));
+    
+    if (isDontKnow && currentTopic) {
+        const intro = dontKnowResponses[lang][Math.floor(Math.random() * dontKnowResponses.length)];
+        const hint = topicHints[currentTopic]?.[lang] || topicHints["space"][lang];
+        return intro + hint;
+    }
+    
+    const questionType = getQuestionType(lastQuestion);
     
     if (questionType === "generic") {
         const responses = followUpQuestions.generic[lang];
