@@ -1485,6 +1485,72 @@ body {
     top: 100px;
 }
 
+/* Main Grade Section (Parent of all grades) */
+.main-grade-section {
+    margin-bottom: 1rem;
+}
+
+.main-grade-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-magenta));
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.75rem;
+}
+
+.main-grade-title:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.all-grades-container {
+    padding-left: 0.5rem;
+    border-left: 3px solid rgba(255, 215, 0, 0.3);
+    margin-left: 0.75rem;
+}
+
+.grade-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(255, 0, 170, 0.1));
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.grade-btn:hover {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.25), rgba(255, 0, 170, 0.15));
+    border-color: var(--accent-cyan);
+}
+
+.grade-btn.active {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+    color: white;
+    border-color: transparent;
+}
+
+.grade-btn .expand-icon {
+    margin-left: auto;
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
 .grade-section {
     margin-bottom: 1rem;
 }

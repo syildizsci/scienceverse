@@ -491,7 +491,14 @@ document.addEventListener('DOMContentLoaded', () => {
 function toggleGrade(gradeId) {
     const gradeEl = document.getElementById(gradeId);
     if (gradeEl) {
-        gradeEl.classList.toggle('collapsed');
+        const isHidden = gradeEl.style.display === 'none';
+        gradeEl.style.display = isHidden ? 'block' : 'none';
+        
+        // Update button active state
+        const parentBtn = gradeEl.previousElementSibling;
+        if (parentBtn && (parentBtn.classList.contains('grade-btn') || parentBtn.classList.contains('main-grade-title'))) {
+            parentBtn.classList.toggle('active', isHidden);
+        }
     }
 }
 

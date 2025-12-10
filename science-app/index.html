@@ -75,37 +75,50 @@
             </div>
             <div class="curriculum-container">
                 <div class="curriculum-sidebar">
-                    <div class="grade-section">
-                        <h3 class="grade-title" onclick="toggleGrade('grade5')">
-                            <span class="grade-icon">📖</span>
-                            5th Grade
+                    <!-- Main Grade Section -->
+                    <div class="main-grade-section">
+                        <h3 class="main-grade-title" onclick="toggleGrade('all-grades')">
+                            <span class="grade-icon">🎓</span>
+                            Grade
                             <span class="toggle-icon">▼</span>
                         </h3>
-                        <div class="grade-lessons" id="grade5">
-                            <div class="lesson-group">
-                                <button class="lesson-btn parent active" onclick="toggleLessonGroup('force-weeks')">
-                                    <span class="lesson-icon">⚡</span>
-                                    Force & Motion
+                        <div class="all-grades-container" id="all-grades">
+                            <!-- 5th Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn active" onclick="toggleGrade('grade5')">
+                                    <span class="grade-icon">📖</span>
+                                    5th Grade
                                     <span class="expand-icon">▼</span>
                                 </button>
-                                <div class="lesson-weeks" id="force-weeks">
-                                    <button class="week-btn" onclick="showLesson('force-overview')">📋 Overview</button>
-                                    <button class="week-btn active" onclick="showLesson('force-week1')">📅 Week 1</button>
-                                    <button class="week-btn" onclick="showLesson('force-week2')">📅 Week 2</button>
+                                <div class="grade-lessons" id="grade5">
+                                    <div class="lesson-group">
+                                        <button class="lesson-btn parent active" onclick="toggleLessonGroup('force-weeks')">
+                                            <span class="lesson-icon">⚡</span>
+                                            Force & Motion
+                                            <span class="expand-icon">▼</span>
+                                        </button>
+                                        <div class="lesson-weeks" id="force-weeks">
+                                            <button class="week-btn" onclick="showLesson('force-overview')">📋 Overview</button>
+                                            <button class="week-btn active" onclick="showLesson('force-week1')">📅 Week 1</button>
+                                            <button class="week-btn" onclick="showLesson('force-week2')">📅 Week 2</button>
+                                        </div>
+                                    </div>
+                                    <div class="lesson-group">
+                                        <button class="lesson-btn parent" onclick="toggleLessonGroup('weather-weeks')">
+                                            <span class="lesson-icon">🌦️</span>
+                                            Weather & Climate
+                                            <span class="expand-icon">▼</span>
+                                        </button>
+                                        <div class="lesson-weeks" id="weather-weeks" style="display: none;">
+                                            <button class="week-btn" onclick="showLesson('weather-overview')">📋 Overview</button>
+                                            <button class="week-btn" onclick="showLesson('weather-week1')">📅 Week 1</button>
+                                            <button class="week-btn" onclick="showLesson('weather-week2')">📅 Week 2</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="lesson-group">
-                                <button class="lesson-btn parent" onclick="toggleLessonGroup('weather-weeks')">
-                                    <span class="lesson-icon">🌦️</span>
-                                    Weather & Climate
-                                    <span class="expand-icon">▼</span>
-                                </button>
-                                <div class="lesson-weeks" id="weather-weeks" style="display: none;">
-                                    <button class="week-btn" onclick="showLesson('weather-overview')">📋 Overview</button>
-                                    <button class="week-btn" onclick="showLesson('weather-week1')">📅 Week 1</button>
-                                    <button class="week-btn" onclick="showLesson('weather-week2')">📅 Week 2</button>
-                                </div>
-                            </div>
+                            <!-- Future grades will be added here -->
+                            <!-- 6th Grade, 7th Grade, 8th Grade, etc. -->
                         </div>
                     </div>
                 </div>
