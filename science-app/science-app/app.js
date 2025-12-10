@@ -500,6 +500,52 @@ function resetQuiz() {
     document.getElementById('quizResults').style.display = 'none';
 }
 
+// ===== Curriculum Navigation Functions =====
+function toggleGrade(gradeId) {
+    const gradeEl = document.getElementById(gradeId);
+    if (gradeEl) {
+        gradeEl.classList.toggle('collapsed');
+    }
+}
+
+function toggleLessonGroup(groupId) {
+    const group = document.getElementById(groupId);
+    if (group) {
+        const isHidden = group.style.display === 'none';
+        group.style.display = isHidden ? 'block' : 'none';
+        
+        // Update parent button active state
+        const parentBtn = group.previousElementSibling;
+        if (parentBtn && parentBtn.classList.contains('parent')) {
+            parentBtn.classList.toggle('active', isHidden);
+        }
+    }
+}
+
+function showLesson(lessonId) {
+    // Hide all lesson plans
+    document.querySelectorAll('.lesson-plan').forEach(plan => {
+        plan.classList.remove('active');
+    });
+    
+    // Show selected lesson
+    const selectedLesson = document.getElementById('lesson-' + lessonId);
+    if (selectedLesson) {
+        selectedLesson.classList.add('active');
+    }
+    
+    // Update week buttons active state
+    document.querySelectorAll('.week-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Find and activate the clicked button
+    const clickedBtn = document.querySelector(`.week-btn[onclick="showLesson('${lessonId}')"]`);
+    if (clickedBtn) {
+        clickedBtn.classList.add('active');
+    }
+}
+
 function shuffleArray(array) {
     const arr = [...array];
     for (let i = arr.length - 1; i > 0; i--) {
