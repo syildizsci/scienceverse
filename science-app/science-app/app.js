@@ -1434,6 +1434,45 @@ function askSuggestion(question) {
     sendMessage();
 }
 
+// ===== Curriculum Navigation =====
+function toggleGrade(gradeId) {
+    const gradeElement = document.getElementById(gradeId);
+    if (gradeElement) {
+        gradeElement.classList.toggle('collapsed');
+    }
+}
+
+function toggleLessonGroup(groupId) {
+    const group = document.getElementById(groupId);
+    if (group) {
+        group.classList.toggle('collapsed');
+    }
+}
+
+function showLesson(lessonId) {
+    // Hide all lesson plans
+    document.querySelectorAll('.lesson-plan').forEach(plan => {
+        plan.classList.remove('active');
+    });
+    
+    // Show selected lesson plan
+    const selectedLesson = document.getElementById('lesson-' + lessonId);
+    if (selectedLesson) {
+        selectedLesson.classList.add('active');
+    }
+    
+    // Update week button states
+    document.querySelectorAll('.week-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Find and activate the clicked button
+    const clickedBtn = document.querySelector(`.week-btn[onclick="showLesson('${lessonId}')"]`);
+    if (clickedBtn) {
+        clickedBtn.classList.add('active');
+    }
+}
+
 // ===== Initialize =====
 document.addEventListener('DOMContentLoaded', () => {
     initPeriodicTable();
