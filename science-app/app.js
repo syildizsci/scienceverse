@@ -71,6 +71,13 @@ const warmIntros = {
 
 // Socratic questions for each topic
 const socraticQuestions = {
+    "light": [
+        "The sky is blue! But why blue and not green or purple? What do you think is happening to sunlight?",
+        "When you see a rainbow, where do all those colors come from? What makes them appear?",
+        "Sunlight looks white, but is it really just one color? What do you think?",
+        "Why do you think sunsets are red and orange, but the daytime sky is blue?",
+        "If you shine light through a glass of water, what do you think might happen to the light?"
+    ],
     "space": [
         "Let's think together! What do you see in the sky during the day?",
         "If the Sun is a star, why do other stars look so tiny at night?",
@@ -123,6 +130,13 @@ const socraticQuestions = {
 
 // Turkish versions
 const socraticQuestionsTR = {
+    "light": [
+        "Gökyüzü mavi! Ama neden yeşil veya mor değil? Sence güneş ışığına ne oluyor?",
+        "Gökkuşağı gördüğünde, tüm o renkler nereden geliyor? Onları ne ortaya çıkarıyor?",
+        "Güneş ışığı beyaz görünüyor, ama gerçekten tek renk mi? Ne düşünüyorsun?",
+        "Sence gün batımı neden kırmızı ve turuncu, ama gündüz gökyüzü mavi?",
+        "Işığı bir bardak suyun içinden geçirsen, ışığa ne olur sence?"
+    ],
     "space": [
         "Birlikte düşünelim! Gündüz gökyüzünde ne görüyorsun?",
         "Güneş bir yıldızsa, diğer yıldızlar gece neden çok küçük görünüyor?",
@@ -175,7 +189,8 @@ const socraticQuestionsTR = {
 
 // Keywords that trigger each topic
 const topicKeywords = {
-    "space": ["space", "planet", "planets", "sun", "moon", "star", "stars", "earth", "mars", "jupiter", "saturn", "solar", "galaxy", "universe", "rocket", "astronaut", "sky", "blue", "night", "day", "light", "uzay", "gezegen", "güneş", "ay", "yıldız", "dünya", "evren", "gökyüzü", "mavi", "gece", "gündüz", "ışık"],
+    "light": ["sky blue", "sky is blue", "is the sky blue", "why is sky", "why sky", "blue sky", "rainbow", "color of sky", "light scatter", "refraction", "prism", "gökyüzü mavi", "gökyüzü neden mavi", "neden mavi", "mavi gökyüzü", "gökkuşağı", "ışık kırılma", "renk"],
+    "space": ["planet", "planets", "sun", "moon", "star", "stars", "earth", "mars", "jupiter", "saturn", "solar", "galaxy", "universe", "rocket", "astronaut", "night sky", "outer space", "asteroid", "comet", "uzay", "gezegen", "güneş", "ay", "yıldız", "dünya", "evren", "gece gökyüzü", "meteor"],
     "gravity": ["gravity", "fall", "falls", "falling", "drop", "float", "weight", "heavy", "newton", "yerçekimi", "düşmek", "düşer", "ağırlık", "hafif", "ağır"],
     "body": ["body", "cell", "cells", "organ", "heart", "brain", "blood", "bone", "muscle", "dna", "gene", "vücut", "hücre", "organ", "kalp", "beyin", "kan", "kemik", "kas"],
     "plants": ["plant", "plants", "tree", "leaf", "flower", "seed", "grow", "root", "photosynthesis", "green", "bitki", "ağaç", "yaprak", "çiçek", "tohum", "büyümek", "kök", "fotosentez", "yeşil"],
@@ -204,6 +219,7 @@ function findTopic(message) {
 
 // Topic-specific emojis
 const topicEmojis = {
+    "light": ["🌈", "💡", "☀️", "🔵", "✨"],
     "space": ["🌞", "🚀", "🌙", "⭐", "🌍"],
     "gravity": ["🍎", "⚽", "🎈", "🌍", "🌙"],
     "body": ["🔬", "🧠", "💪", "❤️", "🦴"],
@@ -212,24 +228,22 @@ const topicEmojis = {
     "atoms": ["🔍", "⚛️", "✨", "🧊", "🎈"]
 };
 
-// Get a random Socratic question for a topic (with warm intro)
+// Get a random Socratic question for a topic
 function getSocraticQuestion(topic, lang) {
-    const defaultIntroEN = "Hmm, what a great question! I'm curious - what made you think about this?";
-    const defaultIntroTR = "Hmm, ne güzel bir soru! Merak ettim - bunu düşünmene ne sebep oldu?";
+    // Get the appropriate question list based on topic and language
+    const questions = lang === 'tr' ? socraticQuestionsTR[topic] : socraticQuestions[topic];
     
-    let intro;
-    if (warmIntros && warmIntros[lang] && warmIntros[lang].length > 0) {
-        const intros = warmIntros[lang];
-        intro = intros[Math.floor(Math.random() * intros.length)];
-    } else {
-        intro = lang === 'tr' ? defaultIntroTR : defaultIntroEN;
+    if (questions && questions.length > 0) {
+        const randomQ = questions[Math.floor(Math.random() * questions.length)];
+        const emojis = topicEmojis[topic] || ["🤔"];
+        const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+        return `${emoji} ${randomQ}`;
     }
     
-    const emojis = topicEmojis[topic] || ["🤔"];
-    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-    
-    // ONLY return warm intro - no extra question!
-    return `${emoji} ${intro}`;
+    // Fallback if topic not found
+    return lang === 'tr' 
+        ? "🤔 Hmm, ilginç bir soru! Bunu merak etmene ne sebep oldu?"
+        : "🤔 Hmm, that's interesting! What made you curious about this?";
 }
 
 // Encouraging responses for when child answers
@@ -340,9 +354,13 @@ const dontKnowResponses = {
 };
 
 const topicHints = {
-    "space": {
+    "light": {
         en: "The sky looks blue because sunlight bounces off tiny bits in the air, and blue light bounces the most! 🌈",
         tr: "Gökyüzü mavi görünüyor çünkü güneş ışığı havadaki küçük parçacıklardan sekiyor ve mavi ışık en çok sekiyor! 🌈"
+    },
+    "space": {
+        en: "Our Sun is actually a star - it just looks bigger because it's much closer to us than other stars! ⭐",
+        tr: "Güneşimiz aslında bir yıldız - sadece bize diğer yıldızlardan çok daha yakın olduğu için daha büyük görünüyor! ⭐"
     },
     "water": {
         en: "Water goes up into the sky as invisible vapor, then comes back down as rain! It's like a big recycling system. 💧",

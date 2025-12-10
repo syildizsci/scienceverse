@@ -875,6 +875,22 @@ const defaultResponses = {
 
 // Socratic questioning - guide children through discovery
 const socraticQuestions = {
+    "light": {
+        en: [
+            "🌈 Hmm, that's a wonderful thing to wonder about! Have you ever seen a rainbow? What colors did you notice in it?",
+            "💡 Interesting question! When you see sunlight coming through a window, does it look like it has colors, or just white light?",
+            "🔵 Great question! Look at the sky now - is it the same blue everywhere, or different shades? What do you notice?",
+            "✨ I wonder about that too! When the sun sets, what color does the sky become? Why do you think it changes?",
+            "🌈 Have you ever shined light through a glass of water or a prism? What happened to the light?"
+        ],
+        tr: [
+            "🌈 Hmm, bu harika bir merak! Hiç gökkuşağı gördün mü? Hangi renkleri fark ettin?",
+            "💡 İlginç soru! Pencereden gelen güneş ışığına baktığında, renkli mi görünüyor yoksa sadece beyaz ışık mı?",
+            "🔵 Güzel soru! Şimdi gökyüzüne bak - her yerde aynı mavi mi, yoksa farklı tonlar mı var? Ne fark ediyorsun?",
+            "✨ Ben de bunu merak ediyorum! Güneş batarken gökyüzü ne renk oluyor? Sence neden değişiyor?",
+            "🌈 Hiç ışığı bir bardak suyun ya da prizmanın içinden geçirdin mi? Işığa ne oldu?"
+        ]
+    },
     "solar system": {
         en: [
             "🌞 Let's think together! What do you see in the sky during the day?",
@@ -1243,7 +1259,8 @@ function findBestAnswer(question) {
     // Use Socratic method - ask guiding questions instead of explaining
     for (const [topic, questions] of Object.entries(socraticQuestions)) {
         const topicKeywords = {
-            "solar system": ["solar", "planet", "sun", "star", "space", "güneş", "gezegen", "uzay", "yıldız", "mars", "jupiter"],
+            "light": ["sky blue", "sky is blue", "is the sky blue", "why is sky", "why sky", "blue sky", "rainbow", "color of sky", "light scatter", "refraction", "prism", "gökyüzü mavi", "gökyüzü neden mavi", "neden mavi", "mavi gökyüzü", "gökkuşağı", "ışık kırılma", "renk"],
+            "solar system": ["planet", "planets", "sun", "moon", "star", "stars", "earth", "mars", "jupiter", "saturn", "solar", "galaxy", "universe", "rocket", "astronaut", "night sky", "outer space", "uzay", "gezegen", "güneş", "ay", "yıldız", "dünya", "evren", "meteor"],
             "cell": ["cell", "cells", "hücre", "mitochondria", "nucleus", "mitokondri", "çekirdek"],
             "gravity": ["gravity", "fall", "weight", "yerçekimi", "düşme", "ağırlık", "newton"],
             "dna": ["dna", "gene", "genetic", "gen", "genetik", "kalıtım"],
