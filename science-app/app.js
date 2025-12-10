@@ -72,11 +72,11 @@ const warmIntros = {
 // Socratic questions for each topic
 const socraticQuestions = {
     "light": [
-        "The sky is blue! But why blue and not green or purple? What do you think is happening to sunlight?",
-        "When you see a rainbow, where do all those colors come from? What makes them appear?",
-        "Sunlight looks white, but is it really just one color? What do you think?",
-        "Why do you think sunsets are red and orange, but the daytime sky is blue?",
-        "If you shine light through a glass of water, what do you think might happen to the light?"
+        "Great question! Look at the sky right now - is it the same shade of blue everywhere, or different? What do you notice?",
+        "I wonder about that too! Here's a clue: sunlight looks white, but it's actually made of ALL colors mixed together. So why do we only see blue in the sky?",
+        "Hmm, let's think about this together! During sunset, the sky turns red and orange. But during the day it's blue. Why do you think the color changes?",
+        "That's such a good question! The Sun sends us white light. But somehow, the sky looks blue. What do you think is happening to the light up there?",
+        "I love that you're curious about this! Think about it - the sky is blue, but space is black. What's different between the sky and space that might cause this?"
     ],
     "space": [
         "Let's think together! What do you see in the sky during the day?",
@@ -131,11 +131,11 @@ const socraticQuestions = {
 // Turkish versions
 const socraticQuestionsTR = {
     "light": [
-        "Gökyüzü mavi! Ama neden yeşil veya mor değil? Sence güneş ışığına ne oluyor?",
-        "Gökkuşağı gördüğünde, tüm o renkler nereden geliyor? Onları ne ortaya çıkarıyor?",
-        "Güneş ışığı beyaz görünüyor, ama gerçekten tek renk mi? Ne düşünüyorsun?",
-        "Sence gün batımı neden kırmızı ve turuncu, ama gündüz gökyüzü mavi?",
-        "Işığı bir bardak suyun içinden geçirsen, ışığa ne olur sence?"
+        "Harika soru! Şimdi gökyüzüne bak - her yerde aynı mavi mi, yoksa farklı tonlar mı var? Ne fark ediyorsun?",
+        "Ben de bunu merak ediyorum! İşte bir ipucu: Güneş ışığı beyaz görünüyor ama aslında TÜM renklerin karışımı. Peki neden gökyüzünde sadece maviyi görüyoruz?",
+        "Hmm, birlikte düşünelim! Gün batımında gökyüzü kırmızı ve turuncu oluyor. Ama gündüz mavi. Sence renk neden değişiyor?",
+        "Çok güzel bir soru! Güneş bize beyaz ışık gönderiyor. Ama bir şekilde gökyüzü mavi görünüyor. Sence orada ışığa ne oluyor?",
+        "Bunu merak etmene bayıldım! Düşünsene - gökyüzü mavi ama uzay siyah. Gökyüzü ile uzay arasında buna sebep olan ne fark var sence?"
     ],
     "space": [
         "Birlikte düşünelim! Gündüz gökyüzünde ne görüyorsun?",

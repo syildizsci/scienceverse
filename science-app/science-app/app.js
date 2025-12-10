@@ -877,18 +877,18 @@ const defaultResponses = {
 const socraticQuestions = {
     "light": {
         en: [
-            "🌈 Hmm, that's a wonderful thing to wonder about! Have you ever seen a rainbow? What colors did you notice in it?",
-            "💡 Interesting question! When you see sunlight coming through a window, does it look like it has colors, or just white light?",
-            "🔵 Great question! Look at the sky now - is it the same blue everywhere, or different shades? What do you notice?",
-            "✨ I wonder about that too! When the sun sets, what color does the sky become? Why do you think it changes?",
-            "🌈 Have you ever shined light through a glass of water or a prism? What happened to the light?"
+            "🌈 Great question! Look at the sky right now - is it the same shade of blue everywhere, or different? What do you notice?",
+            "💡 I wonder about that too! Here's a clue: sunlight looks white, but it's actually made of ALL colors mixed together. So why do we only see blue in the sky?",
+            "🔵 Hmm, let's think about this together! During sunset, the sky turns red and orange. But during the day it's blue. Why do you think the color changes?",
+            "✨ That's such a good question! The Sun sends us white light. But somehow, the sky looks blue. What do you think is happening to the light up there?",
+            "🌈 I love that you're curious about this! Think about it - the sky is blue, but space is black. What's different between the sky and space that might cause this?"
         ],
         tr: [
-            "🌈 Hmm, bu harika bir merak! Hiç gökkuşağı gördün mü? Hangi renkleri fark ettin?",
-            "💡 İlginç soru! Pencereden gelen güneş ışığına baktığında, renkli mi görünüyor yoksa sadece beyaz ışık mı?",
-            "🔵 Güzel soru! Şimdi gökyüzüne bak - her yerde aynı mavi mi, yoksa farklı tonlar mı var? Ne fark ediyorsun?",
-            "✨ Ben de bunu merak ediyorum! Güneş batarken gökyüzü ne renk oluyor? Sence neden değişiyor?",
-            "🌈 Hiç ışığı bir bardak suyun ya da prizmanın içinden geçirdin mi? Işığa ne oldu?"
+            "🌈 Harika soru! Şimdi gökyüzüne bak - her yerde aynı mavi mi, yoksa farklı tonlar mı var? Ne fark ediyorsun?",
+            "💡 Ben de bunu merak ediyorum! İşte bir ipucu: Güneş ışığı beyaz görünüyor ama aslında TÜM renklerin karışımı. Peki neden gökyüzünde sadece maviyi görüyoruz?",
+            "🔵 Hmm, birlikte düşünelim! Gün batımında gökyüzü kırmızı ve turuncu oluyor. Ama gündüz mavi. Sence renk neden değişiyor?",
+            "✨ Çok güzel bir soru! Güneş bize beyaz ışık gönderiyor. Ama bir şekilde gökyüzü mavi görünüyor. Sence orada ışığa ne oluyor?",
+            "🌈 Bunu merak etmene bayıldım! Düşünsene - gökyüzü mavi ama uzay siyah. Gökyüzü ile uzay arasında buna sebep olan ne fark var sence?"
         ]
     },
     "solar system": {
