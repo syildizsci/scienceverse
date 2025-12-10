@@ -77,15 +77,75 @@
                 <div class="curriculum-sidebar">
                     <!-- Main Grade Section -->
                     <div class="main-grade-section">
-                        <h3 class="main-grade-title" onclick="toggleGrade('all-grades')">
+                        <h3 class="main-grade-title">
                             <span class="grade-icon">🎓</span>
                             Grade
-                            <span class="toggle-icon">▼</span>
                         </h3>
                         <div class="all-grades-container" id="all-grades">
+                            
+                            <!-- Kindergarten -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('gradeK')">
+                                    <span class="grade-icon">🌈</span>
+                                    Kindergarten
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="gradeK" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
+                            <!-- 1st Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade1')">
+                                    <span class="grade-icon">📗</span>
+                                    1st Grade
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="grade1" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
+                            <!-- 2nd Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade2')">
+                                    <span class="grade-icon">📘</span>
+                                    2nd Grade
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="grade2" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
+                            <!-- 3rd Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade3')">
+                                    <span class="grade-icon">📙</span>
+                                    3rd Grade
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="grade3" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
+                            <!-- 4th Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade4')">
+                                    <span class="grade-icon">📕</span>
+                                    4th Grade
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="grade4" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
                             <!-- 5th Grade -->
                             <div class="grade-section">
-                                <button class="grade-btn active" onclick="toggleGrade('grade5')">
+                                <button class="grade-btn active" onclick="toggleGradeContent('grade5')">
                                     <span class="grade-icon">📖</span>
                                     5th Grade
                                     <span class="expand-icon">▼</span>
@@ -117,8 +177,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Future grades will be added here -->
-                            <!-- 6th Grade, 7th Grade, 8th Grade, etc. -->
+
                         </div>
                     </div>
                 </div>

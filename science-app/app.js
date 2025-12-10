@@ -488,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== Curriculum Navigation Functions =====
-function toggleGrade(gradeId) {
+function toggleGradeContent(gradeId) {
     const gradeEl = document.getElementById(gradeId);
     if (gradeEl) {
         const isHidden = gradeEl.style.display === 'none';
@@ -496,10 +496,18 @@ function toggleGrade(gradeId) {
         
         // Update button active state
         const parentBtn = gradeEl.previousElementSibling;
-        if (parentBtn && (parentBtn.classList.contains('grade-btn') || parentBtn.classList.contains('main-grade-title'))) {
-            parentBtn.classList.toggle('active', isHidden);
+        if (parentBtn && parentBtn.classList.contains('grade-btn')) {
+            if (isHidden) {
+                parentBtn.classList.add('active');
+            } else {
+                parentBtn.classList.remove('active');
+            }
         }
     }
+}
+
+function toggleGrade(gradeId) {
+    toggleGradeContent(gradeId);
 }
 
 function toggleLessonGroup(groupId) {
