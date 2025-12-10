@@ -2257,3 +2257,298 @@ body {
     font-size: 0.95rem;
 }
 
+/* ===== Weather & Climate Lesson Styles ===== */
+
+/* Standards List */
+.standards-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.standard-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+}
+
+.standard-code {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.standard-item p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Week Overview Grid */
+.week-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.week-overview-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-subtle);
+}
+
+.week-overview-card h4 {
+    color: var(--accent-cyan);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.week-overview-card .week-theme {
+    color: var(--accent-gold);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.week-overview-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.week-overview-card li {
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.week-overview-card li::before {
+    content: "📅";
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+}
+
+/* Project Options */
+.project-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.project-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    transition: all 0.3s ease;
+}
+
+.project-option:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-3px);
+}
+
+.project-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.project-option p {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+/* Rubric Box */
+.rubric-box {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.rubric-box h5 {
+    color: var(--accent-gold);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.rubric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+.rubric-item {
+    text-align: center;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+}
+
+.rubric-score {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+}
+
+.rubric-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Objective & Assessment Boxes */
+.objective-box {
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
+    border-radius: 10px;
+    border-left: 4px solid var(--accent-cyan);
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.assessment-box {
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), transparent);
+    border-radius: 10px;
+    border-left: 4px solid var(--accent-green);
+    margin: 1rem 0;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+/* Day Standard Badge */
+.day-standard {
+    margin-left: auto;
+    background: rgba(255, 215, 0, 0.2);
+    color: var(--accent-gold);
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Project Choices for Day 10 */
+.project-choices {
+    background: rgba(255, 215, 0, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.project-choices h5 {
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.choice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.choice-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.25rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 2px solid var(--border-subtle);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.choice-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.15);
+}
+
+.choice-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.choice-card p {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Rubric Display Table */
+.rubric-display {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 1.25rem;
+}
+
+.rubric-display h5 {
+    color: var(--accent-green);
+    margin-bottom: 1rem;
+}
+
+.rubric-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rubric-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.rubric-table td:first-child {
+    color: var(--text-primary);
+}
+
+.rubric-table td:last-child {
+    text-align: right;
+    color: var(--accent-cyan);
+    font-weight: 600;
+}
+
+.rubric-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Responsive adjustments for Weather lessons */
+@media (max-width: 768px) {
+    .rubric-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .standards-list {
+        gap: 0.75rem;
+    }
+    
+    .standard-item {
+        flex-direction: column;
+    }
+    
+    .week-overview-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

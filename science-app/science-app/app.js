@@ -875,22 +875,6 @@ const defaultResponses = {
 
 // Socratic questioning - guide children through discovery
 const socraticQuestions = {
-    "light": {
-        en: [
-            "🌈 Great question! Look at the sky right now - is it the same shade of blue everywhere, or different? What do you notice?",
-            "💡 I wonder about that too! Here's a clue: sunlight looks white, but it's actually made of ALL colors mixed together. So why do we only see blue in the sky?",
-            "🔵 Hmm, let's think about this together! During sunset, the sky turns red and orange. But during the day it's blue. Why do you think the color changes?",
-            "✨ That's such a good question! The Sun sends us white light. But somehow, the sky looks blue. What do you think is happening to the light up there?",
-            "🌈 I love that you're curious about this! Think about it - the sky is blue, but space is black. What's different between the sky and space that might cause this?"
-        ],
-        tr: [
-            "🌈 Harika soru! Şimdi gökyüzüne bak - her yerde aynı mavi mi, yoksa farklı tonlar mı var? Ne fark ediyorsun?",
-            "💡 Ben de bunu merak ediyorum! İşte bir ipucu: Güneş ışığı beyaz görünüyor ama aslında TÜM renklerin karışımı. Peki neden gökyüzünde sadece maviyi görüyoruz?",
-            "🔵 Hmm, birlikte düşünelim! Gün batımında gökyüzü kırmızı ve turuncu oluyor. Ama gündüz mavi. Sence renk neden değişiyor?",
-            "✨ Çok güzel bir soru! Güneş bize beyaz ışık gönderiyor. Ama bir şekilde gökyüzü mavi görünüyor. Sence orada ışığa ne oluyor?",
-            "🌈 Bunu merak etmene bayıldım! Düşünsene - gökyüzü mavi ama uzay siyah. Gökyüzü ile uzay arasında buna sebep olan ne fark var sence?"
-        ]
-    },
     "solar system": {
         en: [
             "🌞 Let's think together! What do you see in the sky during the day?",
@@ -1259,8 +1243,7 @@ function findBestAnswer(question) {
     // Use Socratic method - ask guiding questions instead of explaining
     for (const [topic, questions] of Object.entries(socraticQuestions)) {
         const topicKeywords = {
-            "light": ["sky blue", "sky is blue", "is the sky blue", "why is sky", "why sky", "blue sky", "rainbow", "color of sky", "light scatter", "refraction", "prism", "gökyüzü mavi", "gökyüzü neden mavi", "neden mavi", "mavi gökyüzü", "gökkuşağı", "ışık kırılma", "renk"],
-            "solar system": ["planet", "planets", "sun", "moon", "star", "stars", "earth", "mars", "jupiter", "saturn", "solar", "galaxy", "universe", "rocket", "astronaut", "night sky", "outer space", "uzay", "gezegen", "güneş", "ay", "yıldız", "dünya", "evren", "meteor"],
+            "solar system": ["solar", "planet", "sun", "star", "space", "güneş", "gezegen", "uzay", "yıldız", "mars", "jupiter"],
             "cell": ["cell", "cells", "hücre", "mitochondria", "nucleus", "mitokondri", "çekirdek"],
             "gravity": ["gravity", "fall", "weight", "yerçekimi", "düşme", "ağırlık", "newton"],
             "dna": ["dna", "gene", "genetic", "gen", "genetik", "kalıtım"],
@@ -1432,45 +1415,6 @@ function handleChatKeypress(event) {
 function askSuggestion(question) {
     document.getElementById('chatInput').value = question;
     sendMessage();
-}
-
-// ===== Curriculum Navigation =====
-function toggleGrade(gradeId) {
-    const gradeElement = document.getElementById(gradeId);
-    if (gradeElement) {
-        gradeElement.classList.toggle('collapsed');
-    }
-}
-
-function toggleLessonGroup(groupId) {
-    const group = document.getElementById(groupId);
-    if (group) {
-        group.classList.toggle('collapsed');
-    }
-}
-
-function showLesson(lessonId) {
-    // Hide all lesson plans
-    document.querySelectorAll('.lesson-plan').forEach(plan => {
-        plan.classList.remove('active');
-    });
-    
-    // Show selected lesson plan
-    const selectedLesson = document.getElementById('lesson-' + lessonId);
-    if (selectedLesson) {
-        selectedLesson.classList.add('active');
-    }
-    
-    // Update week button states
-    document.querySelectorAll('.week-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    // Find and activate the clicked button
-    const clickedBtn = document.querySelector(`.week-btn[onclick="showLesson('${lessonId}')"]`);
-    if (clickedBtn) {
-        clickedBtn.classList.add('active');
-    }
 }
 
 // ===== Initialize =====

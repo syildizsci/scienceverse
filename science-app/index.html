@@ -94,6 +94,18 @@
                                     <button class="week-btn" onclick="showLesson('force-week2')">📅 Week 2</button>
                                 </div>
                             </div>
+                            <div class="lesson-group">
+                                <button class="lesson-btn parent" onclick="toggleLessonGroup('weather-weeks')">
+                                    <span class="lesson-icon">🌦️</span>
+                                    Weather & Climate
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="lesson-weeks" id="weather-weeks" style="display: none;">
+                                    <button class="week-btn" onclick="showLesson('weather-overview')">📋 Overview</button>
+                                    <button class="week-btn" onclick="showLesson('weather-week1')">📅 Week 1</button>
+                                    <button class="week-btn" onclick="showLesson('weather-week2')">📅 Week 2</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -761,6 +773,678 @@
                                 </div>
                             </div>
                             <p class="summary-note">Students can now explain how gravity, friction, mass, and applied force affect motion using evidence from multiple sources.</p>
+                        </div>
+                    </div>
+
+                    <!-- ========== WEATHER & CLIMATE LESSONS ========== -->
+                    
+                    <!-- Weather Overview -->
+                    <div id="lesson-weather-overview" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 5.E.1</div>
+                            <h2>Weather, Atmosphere & Climate</h2>
+                            <p class="lesson-subtitle">Students explore daily and seasonal weather changes, use weather tools, and understand how weather data helps people make decisions.</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📋 NC 5th Grade Standard Alignment</h3>
+                            <div class="lesson-card highlight">
+                                <div class="standards-list">
+                                    <div class="standard-item">
+                                        <span class="standard-code">5.E.1.1</span>
+                                        <p>Compare daily and seasonal changes in weather.</p>
+                                    </div>
+                                    <div class="standard-item">
+                                        <span class="standard-code">5.E.1.2</span>
+                                        <p>Predict weather using tools (thermometer, barometer, anemometer, rain gauge).</p>
+                                    </div>
+                                    <div class="standard-item">
+                                        <span class="standard-code">5.E.1.3</span>
+                                        <p>Explain how clouds, temperature, and wind affect weather patterns.</p>
+                                    </div>
+                                    <div class="standard-item">
+                                        <span class="standard-code">5.E.1.4</span>
+                                        <p>Explain how humans use weather data to make decisions (safety, agriculture, travel).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>1. Unit Title</h3>
+                            <div class="lesson-card highlight">
+                                <p class="big-text">Weather, Atmosphere & Climate</p>
+                                <p><strong>Grade:</strong> 5 | <strong>Duration:</strong> 10 Days (2 Weeks) | <strong>Daily Length:</strong> 45–60 minutes</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>2. Essential Questions</h3>
+                            <div class="lesson-card essential">
+                                <p class="essential-q">"How do the atmosphere and hydrosphere interact to create weather patterns?"</p>
+                            </div>
+                            <div class="supporting-questions">
+                                <h4>Supporting Socratic Questions:</h4>
+                                <ul>
+                                    <li>"How does heat energy move through the atmosphere?"</li>
+                                    <li>"What evidence shows water is constantly cycling through Earth's systems?"</li>
+                                    <li>"How can we use data to predict tomorrow's weather?"</li>
+                                    <li>"What responsibility do humans have for climate and water quality?"</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>3. Learning Objectives</h3>
+                            <div class="lesson-card">
+                                <p><strong>Students will:</strong></p>
+                                <ul class="objectives-list">
+                                    <li>Describe the layers of the atmosphere and explain their properties</li>
+                                    <li>Model and explain the water cycle (evaporation, condensation, precipitation)</li>
+                                    <li>Analyze how heat transfer creates wind and weather patterns</li>
+                                    <li>Use weather tools, maps, and data to make predictions</li>
+                                    <li>Evaluate human impacts on water systems and climate change</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>4. Materials & Resources</h3>
+                            <div class="materials-grid">
+                                <div class="material-item">
+                                    <span class="material-icon">🎈</span>
+                                    <p>Air pressure balloon experiment supplies</p>
+                                </div>
+                                <div class="material-item">
+                                    <span class="material-icon">🎨</span>
+                                    <p>Food coloring for convection demo</p>
+                                </div>
+                                <div class="material-item">
+                                    <span class="material-icon">💧</span>
+                                    <p>Water cycle in a bag materials</p>
+                                </div>
+                                <div class="material-item">
+                                    <span class="material-icon">🌡️</span>
+                                    <p>Weather instruments: thermometer, barometer, anemometer</p>
+                                </div>
+                                <div class="material-item">
+                                    <span class="material-icon">🗺️</span>
+                                    <p>NOAA weather maps</p>
+                                </div>
+                                <div class="material-item">
+                                    <span class="material-icon">🌪️</span>
+                                    <p>Tornado tube for storm demo</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>5. Unit Overview: Two-Week Structure</h3>
+                            <div class="week-overview-grid">
+                                <div class="week-overview-card">
+                                    <h4>⭐ Week 1</h4>
+                                    <p class="week-theme">Atmosphere, Heat Transfer & Weather Fundamentals</p>
+                                    <ul>
+                                        <li>Day 1: Introduction to Atmosphere</li>
+                                        <li>Day 2: Heat Transfer (CCR)</li>
+                                        <li>Day 3: Water Cycle & Hydrosphere</li>
+                                        <li>Day 4: Air Pressure & Wind</li>
+                                        <li>Day 5: Clouds & Precipitation</li>
+                                    </ul>
+                                </div>
+                                <div class="week-overview-card">
+                                    <h4>⭐ Week 2</h4>
+                                    <p class="week-theme">Weather Tools, Maps, Data & Human Impact</p>
+                                    <ul>
+                                        <li>Day 6: Weather Tools & Data</li>
+                                        <li>Day 7: Weather Maps & Fronts</li>
+                                        <li>Day 8: Storms & Severe Weather</li>
+                                        <li>Day 9: Human Impact on Climate</li>
+                                        <li>Day 10: Performance Task</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>6. Final Assessment: Performance Task</h3>
+                            <div class="lesson-card assessment">
+                                <h4>Choose ONE Project:</h4>
+                                <div class="project-options">
+                                    <div class="project-option">
+                                        <span class="project-icon">📹</span>
+                                        <p>Create a weather forecast video</p>
+                                    </div>
+                                    <div class="project-option">
+                                        <span class="project-icon">🔧</span>
+                                        <p>Build a weather model (heat transfer, water cycle, wind pattern)</p>
+                                    </div>
+                                    <div class="project-option">
+                                        <span class="project-icon">🏙️</span>
+                                        <p>Design a sustainable city plan focusing on water & climate</p>
+                                    </div>
+                                </div>
+                                <div class="rubric-box">
+                                    <h5>Assessment Rubric:</h5>
+                                    <div class="rubric-grid">
+                                        <div class="rubric-item">
+                                            <span class="rubric-score">40%</span>
+                                            <span class="rubric-label">Accuracy</span>
+                                        </div>
+                                        <div class="rubric-item">
+                                            <span class="rubric-score">20%</span>
+                                            <span class="rubric-label">Creativity</span>
+                                        </div>
+                                        <div class="rubric-item">
+                                            <span class="rubric-score">30%</span>
+                                            <span class="rubric-label">Explanation</span>
+                                        </div>
+                                        <div class="rubric-item">
+                                            <span class="rubric-score">10%</span>
+                                            <span class="rubric-label">Neatness/Clarity</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>7. Differentiation</h3>
+                            <div class="differentiation-grid">
+                                <div class="diff-card ell">
+                                    <h4>🌍 ELL Support</h4>
+                                    <p>Vocabulary cards (atmosphere, precipitation, condensation, evaporation) + visual diagrams + sentence starters</p>
+                                </div>
+                                <div class="diff-card advanced">
+                                    <h4>🚀 Advanced Learners</h4>
+                                    <p>Research connections between climate change and severe weather patterns; present findings</p>
+                                </div>
+                                <div class="diff-card support">
+                                    <h4>💡 Support</h4>
+                                    <p>Graphic organizers, guided notes templates, peer partnerships</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather Week 1 -->
+                    <div id="lesson-weather-week1" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 8.E.1 • Week 1</div>
+                            <h2>Atmosphere, Heat Transfer & Weather Fundamentals</h2>
+                            <p class="lesson-subtitle">Days 1-5: Understanding atmospheric layers, heat transfer, water cycle, and basic weather concepts</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Week 1 Focus</h3>
+                            <div class="lesson-card essential">
+                                <p class="essential-q">"How does the atmosphere work and what drives weather patterns?"</p>
+                                <div class="week-info">
+                                    <p><strong>Standards:</strong> 8.E.1.1, 8.E.1.2</p>
+                                    <p><strong>Duration:</strong> 45-60 min per day</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day 1 -->
+                        <div class="day-card">
+                            <div class="day-header">
+                                <span class="day-number">Day 1</span>
+                                <h4>Introduction to Atmosphere & Weather Systems</h4>
+                                <span class="day-standard">8.E.1.2</span>
+                            </div>
+                            <div class="day-content">
+                                <div class="objective-box">
+                                    <strong>Objective:</strong> Students will describe the layers of the atmosphere and identify basic weather variables.
+                                </div>
+                                <div class="day-activities">
+                                    <div class="activity">
+                                        <span class="activity-icon">🎬</span>
+                                        <p>Short intro video on atmosphere</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">📝</span>
+                                        <p>Mini-lecture + guided notes</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">🏷️</span>
+                                        <p>Diagram labeling: Troposphere, Stratosphere, Mesosphere, Thermosphere</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">🎈</span>
+                                        <p>Quick demo: air pressure balloon experiment</p>
+                                    </div>
+                                </div>
+                                <div class="assessment-box">
+                                    <strong>📋 Assessment:</strong> Exit ticket — "What controls weather on Earth?"
+                                </div>
+                                <div class="socratic-box">
+                                    <h5>Socratic Questions:</h5>
+                                    <ul>
+                                        <li>"Which layer of the atmosphere do we live in? Why does it matter?"</li>
+                                        <li>"What happens to air pressure as you go higher? Why?"</li>
+                                        <li>"Where does weather actually happen? Why only there?"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day 2 -->
+                        <div class="day-card">
+                            <div class="day-header">
+                                <span class="day-number">Day 2</span>
+                                <h4>Heat Transfer: Conduction, Convection, Radiation</h4>
+                                <span class="day-standard">8.E.1.2</span>
+                            </div>
+                            <div class="day-content">
+                                <div class="objective-box">
+                                    <strong>Objective:</strong> Students explain how heat moves in the atmosphere.
+                                </div>
+                                <div class="day-activities">
+                                    <div class="activity">
+                                        <span class="activity-icon">🧪</span>
+                                        <p>Teacher demo: convection currents with food coloring in warm/cool water</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">⭕</span>
+                                        <p>Students create a 3-circle Venn Diagram (Conduction, Convection, Radiation)</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">💬</span>
+                                        <p>Pair discussion: Which type of heat transfer drives winds?</p>
+                                    </div>
+                                </div>
+                                <div class="assessment-box">
+                                    <strong>📋 Assessment:</strong> Venn Diagram check
+                                </div>
+                                <div class="socratic-box">
+                                    <h5>Socratic Questions:</h5>
+                                    <ul>
+                                        <li>"How does heat from the sun reach Earth if space is a vacuum?"</li>
+                                        <li>"Why does hot air rise? What evidence do we have?"</li>
+                                        <li>"Which type of heat transfer is most important for weather? Why?"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day 3 -->
+                        <div class="day-card">
+                            <div class="day-header">
+                                <span class="day-number">Day 3</span>
+                                <h4>The Water Cycle & Hydrosphere Review</h4>
+                                <span class="day-standard">8.E.1.1</span>
+                            </div>
+                            <div class="day-content">
+                                <div class="objective-box">
+                                    <strong>Objective:</strong> Students model evaporation, condensation, and precipitation.
+                                </div>
+                                <div class="day-activities">
+                                    <div class="activity">
+                                        <span class="activity-icon">💧</span>
+                                        <p>Interactive modeling: "Water cycle in a bag" experiment</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">🏷️</span>
+                                        <p>Hydrosphere diagram labeling</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">📖</span>
+                                        <p>Short reading + annotation</p>
+                                    </div>
+                                </div>
+                                <div class="assessment-box">
+                                    <strong>📋 Assessment:</strong> Water cycle quick quiz (5 questions)
+                                </div>
+                                <div class="socratic-box">
+                                    <h5>Socratic Questions:</h5>
+                                    <ul>
+                                        <li>"Is the water you drink today new, or has it been around for millions of years?"</li>
+                                        <li>"What evidence in your bag shows the water cycle in action?"</li>
+                                        <li>"Where does the energy come from to power the water cycle?"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day 4 -->
+                        <div class="day-card">
+                            <div class="day-header">
+                                <span class="day-number">Day 4</span>
+                                <h4>Air Pressure, Wind & Weather Patterns</h4>
+                                <span class="day-standard">8.E.1.2</span>
+                            </div>
+                            <div class="day-content">
+                                <div class="objective-box">
+                                    <strong>Objective:</strong> Students analyze how differences in temperature create wind.
+                                </div>
+                                <div class="day-activities">
+                                    <div class="activity">
+                                        <span class="activity-icon">🔥</span>
+                                        <p>Simulation: heating of land vs water</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">🗺️</span>
+                                        <p>Students map high/low pressure zones</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">💬</span>
+                                        <p>Group discussion: How does heat transfer create global winds?</p>
+                                    </div>
+                                </div>
+                                <div class="assessment-box">
+                                    <strong>📋 Assessment:</strong> Diagram + explanation
+                                </div>
+                                <div class="socratic-box">
+                                    <h5>Socratic Questions:</h5>
+                                    <ul>
+                                        <li>"Why do coastal areas often have sea breezes during the day?"</li>
+                                        <li>"What happens when high pressure meets low pressure?"</li>
+                                        <li>"How do pressure differences create wind?"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day 5 -->
+                        <div class="day-card">
+                            <div class="day-header">
+                                <span class="day-number">Day 5</span>
+                                <h4>Clouds & Precipitation</h4>
+                                <span class="day-standard">8.E.1.2</span>
+                            </div>
+                            <div class="day-content">
+                                <div class="objective-box">
+                                    <strong>Objective:</strong> Students identify cloud types and connect them to weather predictions.
+                                </div>
+                                <div class="day-activities">
+                                    <div class="activity">
+                                        <span class="activity-icon">🃏</span>
+                                        <p>Cloud card sorting activity</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">💨</span>
+                                        <p>Cloud formation explanation using condensation demo</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">📊</span>
+                                        <p>Students complete a cloud identification chart</p>
+                                    </div>
+                                </div>
+                                <div class="assessment-box">
+                                    <strong>📋 Assessment:</strong> Cloud exit ticket (match cloud → weather)
+                                </div>
+                                <div class="socratic-box">
+                                    <h5>Socratic Questions:</h5>
+                                    <ul>
+                                        <li>"What do cloud shapes tell us about upcoming weather?"</li>
+                                        <li>"How do clouds form? What conditions are needed?"</li>
+                                        <li>"If you see cumulonimbus clouds, what should you expect?"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="week-summary">
+                            <h4>✅ Week 1 Summary</h4>
+                            <ul>
+                                <li>Explored the layers of the atmosphere and their properties</li>
+                                <li>Investigated heat transfer methods (conduction, convection, radiation)</li>
+                                <li>Modeled the water cycle and hydrosphere connections</li>
+                                <li>Analyzed pressure systems and wind patterns</li>
+                                <li>Connected cloud types to weather prediction</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Weather Week 2 -->
+                    <div id="lesson-weather-week2" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 8.E.1 • Week 2</div>
+                            <h2>Weather Tools, Maps, Data & Human Impact</h2>
+                            <p class="lesson-subtitle">Days 6-10: Using weather instruments, interpreting data, and evaluating human impact on climate</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Week 2 Focus</h3>
+                            <div class="lesson-card essential">
+                                <p class="essential-q">"How can we predict weather and what is our responsibility to protect Earth's climate?"</p>
+                                <div class="week-info">
+                                    <p><strong>Standards:</strong> 8.E.1.3, 8.E.1.4</p>
+                                    <p><strong>Duration:</strong> 45-60 min per day</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day 6 -->
+                        <div class="day-card">
+                            <div class="day-header">
+                                <span class="day-number">Day 6</span>
+                                <h4>Weather Tools & Data Collection</h4>
+                                <span class="day-standard">8.E.1.3</span>
+                            </div>
+                            <div class="day-content">
+                                <div class="objective-box">
+                                    <strong>Objective:</strong> Students use weather instruments to collect real data.
+                                </div>
+                                <div class="day-activities">
+                                    <div class="activity">
+                                        <span class="activity-icon">🔬</span>
+                                        <p>Stations: thermometer, barometer, anemometer, rain gauge</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">📏</span>
+                                        <p>Practice reading weather tools</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">📊</span>
+                                        <p>Students record classroom weather data</p>
+                                    </div>
+                                </div>
+                                <div class="assessment-box">
+                                    <strong>📋 Assessment:</strong> Tool identification worksheet
+                                </div>
+                                <div class="socratic-box">
+                                    <h5>Socratic Questions:</h5>
+                                    <ul>
+                                        <li>"Why do meteorologists need multiple tools instead of just one?"</li>
+                                        <li>"Which tool gives us the most useful information? Why?"</li>
+                                        <li>"How accurate are our measurements? What could affect them?"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day 7 -->
+                        <div class="day-card">
+                            <div class="day-header">
+                                <span class="day-number">Day 7</span>
+                                <h4>Weather Maps & Fronts</h4>
+                                <span class="day-standard">8.E.1.3</span>
+                            </div>
+                            <div class="day-content">
+                                <div class="objective-box">
+                                    <strong>Objective:</strong> Students interpret weather maps and fronts (warm, cold, stationary).
+                                </div>
+                                <div class="day-activities">
+                                    <div class="activity">
+                                        <span class="activity-icon">🗺️</span>
+                                        <p>NOAA map analysis</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">✏️</span>
+                                        <p>Students draw their own weather map</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">👥</span>
+                                        <p>Pair work: Predict tomorrow's weather</p>
+                                    </div>
+                                </div>
+                                <div class="assessment-box">
+                                    <strong>📋 Assessment:</strong> Weather prediction paragraph
+                                </div>
+                                <div class="socratic-box">
+                                    <h5>Socratic Questions:</h5>
+                                    <ul>
+                                        <li>"What happens when a cold front meets a warm front?"</li>
+                                        <li>"How do the symbols on weather maps help us predict weather?"</li>
+                                        <li>"Why do weather patterns generally move west to east in the US?"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day 8 -->
+                        <div class="day-card">
+                            <div class="day-header">
+                                <span class="day-number">Day 8</span>
+                                <h4>Air Masses, Storms & Severe Weather</h4>
+                                <span class="day-standard">8.E.1.2</span>
+                            </div>
+                            <div class="day-content">
+                                <div class="objective-box">
+                                    <strong>Objective:</strong> Students explain how air masses form storms.
+                                </div>
+                                <div class="day-activities">
+                                    <div class="activity">
+                                        <span class="activity-icon">🌪️</span>
+                                        <p>Tornado tube demo</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">📝</span>
+                                        <p>Notes: hurricanes, thunderstorms, tornadoes</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">🛡️</span>
+                                        <p>Safety planning mini-task</p>
+                                    </div>
+                                </div>
+                                <div class="assessment-box">
+                                    <strong>📋 Assessment:</strong> Create a severe weather safety infographic
+                                </div>
+                                <div class="socratic-box">
+                                    <h5>Socratic Questions:</h5>
+                                    <ul>
+                                        <li>"What conditions are needed for a tornado to form?"</li>
+                                        <li>"Why are hurricanes so powerful? What fuels them?"</li>
+                                        <li>"How can understanding severe weather help save lives?"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day 9 -->
+                        <div class="day-card">
+                            <div class="day-header">
+                                <span class="day-number">Day 9</span>
+                                <h4>Human Impact: Water Quality, Pollution & Climate Change</h4>
+                                <span class="day-standard">8.E.1.4</span>
+                            </div>
+                            <div class="day-content">
+                                <div class="objective-box">
+                                    <strong>Objective:</strong> Students evaluate how humans affect the hydrosphere and atmosphere.
+                                </div>
+                                <div class="day-activities">
+                                    <div class="activity">
+                                        <span class="activity-icon">🎬</span>
+                                        <p>Water testing video + discussion</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">📖</span>
+                                        <p>Text: human impact on water systems</p>
+                                    </div>
+                                    <div class="activity">
+                                        <span class="activity-icon">📊</span>
+                                        <p>Students complete a cause-effect chart</p>
+                                    </div>
+                                </div>
+                                <div class="assessment-box">
+                                    <strong>📋 Assessment:</strong> Short response: "One way humans impact water systems"
+                                </div>
+                                <div class="socratic-box">
+                                    <h5>Socratic Questions:</h5>
+                                    <ul>
+                                        <li>"How do our daily actions affect water quality in our community?"</li>
+                                        <li>"What evidence shows that climate is changing?"</li>
+                                        <li>"What can individuals do to reduce their impact on water and climate?"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day 10 -->
+                        <div class="day-card day-final">
+                            <div class="day-header">
+                                <span class="day-number">Day 10</span>
+                                <h4>Performance Task: Weather & Hydrosphere Project</h4>
+                                <span class="day-standard">8.E.1.1–8.E.1.4</span>
+                            </div>
+                            <div class="day-content">
+                                <div class="objective-box">
+                                    <strong>Objective:</strong> Students integrate their learning into a final product.
+                                </div>
+                                <div class="project-choices">
+                                    <h5>Choose ONE Project:</h5>
+                                    <div class="choice-grid">
+                                        <div class="choice-card">
+                                            <span class="choice-icon">📹</span>
+                                            <p>Create a weather forecast video</p>
+                                        </div>
+                                        <div class="choice-card">
+                                            <span class="choice-icon">🔧</span>
+                                            <p>Build a weather model (heat transfer, water cycle, wind pattern, etc.)</p>
+                                        </div>
+                                        <div class="choice-card">
+                                            <span class="choice-icon">🏙️</span>
+                                            <p>Design a sustainable city plan focusing on water & climate</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="rubric-display">
+                                    <h5>Assessment Rubric:</h5>
+                                    <table class="rubric-table">
+                                        <tr>
+                                            <td><strong>Accuracy</strong></td>
+                                            <td>40 points</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Creativity</strong></td>
+                                            <td>20 points</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Explanation</strong></td>
+                                            <td>30 points</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Neatness/Clarity</strong></td>
+                                            <td>10 points</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="week-summary final">
+                            <h4>✅ Unit Complete!</h4>
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <span class="summary-icon">🌡️</span>
+                                    <p>Weather tools mastered</p>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-icon">🗺️</span>
+                                    <p>Weather maps interpreted</p>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-icon">🌪️</span>
+                                    <p>Severe weather understood</p>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-icon">🌍</span>
+                                    <p>Human impact evaluated</p>
+                                </div>
+                            </div>
+                            <p class="summary-note">Students can now explain the water cycle, analyze weather patterns, use data to make predictions, and evaluate human impact on climate.</p>
                         </div>
                     </div>
                 </div>
