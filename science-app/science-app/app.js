@@ -491,7 +491,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function toggleGradeContent(gradeId) {
     const gradeEl = document.getElementById(gradeId);
     if (gradeEl) {
-        const isHidden = gradeEl.style.display === 'none';
+        // Get computed style to check actual display value
+        const computedStyle = window.getComputedStyle(gradeEl);
+        const isHidden = gradeEl.style.display === 'none' || computedStyle.display === 'none';
+        
         gradeEl.style.display = isHidden ? 'block' : 'none';
         
         // Update button active state
@@ -501,6 +504,11 @@ function toggleGradeContent(gradeId) {
                 parentBtn.classList.add('active');
             } else {
                 parentBtn.classList.remove('active');
+            }
+            // Rotate expand icon
+            const expandIcon = parentBtn.querySelector('.expand-icon');
+            if (expandIcon) {
+                expandIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
             }
         }
     }
@@ -513,13 +521,20 @@ function toggleGrade(gradeId) {
 function toggleLessonGroup(groupId) {
     const group = document.getElementById(groupId);
     if (group) {
-        const isHidden = group.style.display === 'none';
+        const computedStyle = window.getComputedStyle(group);
+        const isHidden = group.style.display === 'none' || computedStyle.display === 'none';
+        
         group.style.display = isHidden ? 'block' : 'none';
         
         // Update parent button active state
         const parentBtn = group.previousElementSibling;
         if (parentBtn && parentBtn.classList.contains('parent')) {
             parentBtn.classList.toggle('active', isHidden);
+            // Rotate expand icon
+            const expandIcon = parentBtn.querySelector('.expand-icon');
+            if (expandIcon) {
+                expandIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
         }
     }
 }
