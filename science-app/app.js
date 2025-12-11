@@ -488,6 +488,22 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== Curriculum Navigation Functions =====
+function toggleAllGrades() {
+    const container = document.getElementById('all-grades');
+    const expandIcon = document.getElementById('main-grade-expand');
+    
+    if (container) {
+        const computedStyle = window.getComputedStyle(container);
+        const isHidden = container.style.display === 'none' || computedStyle.display === 'none';
+        
+        container.style.display = isHidden ? 'block' : 'none';
+        
+        if (expandIcon) {
+            expandIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    }
+}
+
 function toggleGradeContent(gradeId) {
     const gradeEl = document.getElementById(gradeId);
     if (gradeEl) {

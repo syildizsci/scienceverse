@@ -1503,6 +1503,18 @@ body {
     font-weight: 700;
     color: var(--accent-cyan);
     margin-bottom: 0.75rem;
+    cursor: pointer;
+}
+
+.main-grade-title:hover {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(255, 0, 170, 0.25));
+    border-color: var(--accent-cyan);
+}
+
+.main-grade-title .expand-icon {
+    margin-left: auto;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
 }
 
 .all-grades-container {
