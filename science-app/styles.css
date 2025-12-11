@@ -1624,6 +1624,17 @@ body {
     transform: rotate(180deg);
 }
 
+.grade-btn.elective-btn {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 100, 0, 0.1));
+    border-color: rgba(255, 215, 0, 0.3);
+    color: var(--accent-gold);
+}
+
+.grade-btn.elective-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 100, 0, 0.15));
+    border-color: var(--accent-gold);
+}
+
 .grade-section {
     margin-bottom: 0.5rem;
 }

@@ -306,24 +306,36 @@
                                 </div>
                             </div>
 
-                            <!-- Flight & Space (High School Elective) -->
+                            <!-- Elective Courses -->
                             <div class="grade-section">
-                                <button class="grade-btn" onclick="toggleGradeContent('flight-space')">
-                                    <span class="grade-icon">✈️</span>
-                                    Flight & Space
+                                <button class="grade-btn elective-btn" onclick="toggleGradeContent('elective-courses')">
+                                    <span class="grade-icon">⭐</span>
+                                    Elective Courses
                                     <span class="expand-icon">▼</span>
                                 </button>
-                                <div class="grade-lessons" id="flight-space" style="display: none;">
+                                <div class="grade-lessons" id="elective-courses" style="display: none;">
+                                    
+                                    <!-- Flight & Space -->
                                     <div class="lesson-group">
-                                        <button class="lesson-btn parent" onclick="toggleLessonGroup('flight-instruments-weeks')">
-                                            <span class="lesson-icon">🛫</span>
-                                            Flight Instruments
+                                        <button class="lesson-btn parent" onclick="toggleLessonGroup('flight-space-units')">
+                                            <span class="lesson-icon">✈️</span>
+                                            Flight & Space
                                             <span class="expand-icon">▼</span>
                                         </button>
-                                        <div class="lesson-weeks" id="flight-instruments-weeks" style="display: none;">
-                                            <button class="week-btn" onclick="showLesson('flight-instruments')">📋 Lesson Plan</button>
+                                        <div class="lesson-weeks" id="flight-space-units" style="display: none;">
+                                            <div class="lesson-group" style="margin-left: 0.5rem;">
+                                                <button class="lesson-btn parent" onclick="toggleLessonGroup('flight-instruments-weeks')">
+                                                    <span class="lesson-icon">🛫</span>
+                                                    Flight Instruments
+                                                    <span class="expand-icon">▼</span>
+                                                </button>
+                                                <div class="lesson-weeks" id="flight-instruments-weeks" style="display: none;">
+                                                    <button class="week-btn" onclick="showLesson('flight-instruments')">📋 Lesson Plan</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
 
@@ -360,7 +372,7 @@
                                         <strong style="color: var(--accent-magenta);">🎒 Middle School:</strong> Coming Soon!
                                     </div>
                                     <div style="padding: 0.75rem; background: rgba(255, 215, 0, 0.1); border-radius: 8px;">
-                                        <strong style="color: var(--accent-gold);">🎓 High School:</strong> Flight & Space - Flight Instruments
+                                        <strong style="color: var(--accent-gold);">🎓 High School:</strong> Elective Courses → Flight & Space
                                     </div>
                                 </div>
                             </div>
