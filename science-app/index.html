@@ -75,14 +75,14 @@
             </div>
             <div class="curriculum-container">
                 <div class="curriculum-sidebar">
-                    <!-- Main Grade Section -->
-                    <div class="main-grade-section">
-                        <button class="main-grade-title" onclick="toggleAllGrades()">
-                            <span class="grade-icon">🎓</span>
-                            Grade
-                            <span class="expand-icon" id="main-grade-expand">▼</span>
+                    <!-- ========== ELEMENTARY SCHOOL ========== -->
+                    <div class="school-level-section">
+                        <button class="school-level-title" onclick="toggleSchoolLevel('elementary-grades')">
+                            <span class="school-icon">🏫</span>
+                            Elementary School
+                            <span class="expand-icon" id="elementary-expand">▼</span>
                         </button>
-                        <div class="all-grades-container" id="all-grades" style="display: none;">
+                        <div class="school-grades-container" id="elementary-grades" style="display: none;">
                             
                             <!-- Kindergarten -->
                             <div class="grade-section">
@@ -181,6 +181,135 @@
 
                         </div>
                     </div>
+
+                    <!-- ========== MIDDLE SCHOOL ========== -->
+                    <div class="school-level-section">
+                        <button class="school-level-title" onclick="toggleSchoolLevel('middle-grades')">
+                            <span class="school-icon">🎒</span>
+                            Middle School
+                            <span class="expand-icon" id="middle-expand">▼</span>
+                        </button>
+                        <div class="school-grades-container" id="middle-grades" style="display: none;">
+                            
+                            <!-- 6th Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade6')">
+                                    <span class="grade-icon">📚</span>
+                                    6th Grade
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="grade6" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
+                            <!-- 7th Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade7')">
+                                    <span class="grade-icon">📓</span>
+                                    7th Grade
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="grade7" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
+                            <!-- 8th Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade8')">
+                                    <span class="grade-icon">📔</span>
+                                    8th Grade
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="grade8" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
+                            <!-- Flight & Space (Middle School Elective) -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('flight-space')">
+                                    <span class="grade-icon">✈️</span>
+                                    Flight & Space
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="flight-space" style="display: none;">
+                                    <div class="lesson-group">
+                                        <button class="lesson-btn parent" onclick="toggleLessonGroup('flight-instruments-weeks')">
+                                            <span class="lesson-icon">🛫</span>
+                                            Flight Instruments
+                                            <span class="expand-icon">▼</span>
+                                        </button>
+                                        <div class="lesson-weeks" id="flight-instruments-weeks" style="display: none;">
+                                            <button class="week-btn" onclick="showLesson('flight-instruments')">📋 Lesson Plan</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ========== HIGH SCHOOL ========== -->
+                    <div class="school-level-section">
+                        <button class="school-level-title" onclick="toggleSchoolLevel('high-grades')">
+                            <span class="school-icon">🎓</span>
+                            High School
+                            <span class="expand-icon" id="high-expand">▼</span>
+                        </button>
+                        <div class="school-grades-container" id="high-grades" style="display: none;">
+                            
+                            <!-- 9th Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade9')">
+                                    <span class="grade-icon">🔬</span>
+                                    9th Grade
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="grade9" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
+                            <!-- 10th Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade10')">
+                                    <span class="grade-icon">🧪</span>
+                                    10th Grade
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="grade10" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
+                            <!-- 11th Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade11')">
+                                    <span class="grade-icon">⚗️</span>
+                                    11th Grade
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="grade11" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
+                            <!-- 12th Grade -->
+                            <div class="grade-section">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade12')">
+                                    <span class="grade-icon">🚀</span>
+                                    12th Grade
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="grade-lessons" id="grade12" style="display: none;">
+                                    <p class="coming-soon">📚 Coming Soon...</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
                 <div class="curriculum-content">
                     <!-- Welcome Placeholder -->
@@ -194,18 +323,250 @@
                             <h3>🎯 How to Navigate</h3>
                             <div class="lesson-card">
                                 <ul class="objectives-list">
-                                    <li>Click on <strong>"Grade"</strong> to expand grade levels</li>
-                                    <li>Select a grade (K-5) to see available units</li>
-                                    <li>Click on a unit to see weekly lessons</li>
-                                    <li>Choose Overview, Week 1, or Week 2 to view content</li>
+                                    <li>Click on a <strong>school level</strong> (Elementary, Middle, High School)</li>
+                                    <li>Select a <strong>grade</strong> to see available units</li>
+                                    <li>Click on a <strong>unit</strong> to see lesson plans</li>
+                                    <li>Choose Overview or Weekly lessons to view content</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="lesson-section">
                             <h3>✨ Available Content</h3>
                             <div class="lesson-card highlight">
-                                <p class="big-text">5th Grade: Force & Motion, Weather & Climate</p>
-                                <p style="text-align: center; color: var(--text-secondary); margin-top: 1rem;">More grades coming soon!</p>
+                                <div style="display: grid; gap: 1rem;">
+                                    <div style="padding: 0.75rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px;">
+                                        <strong style="color: var(--accent-cyan);">🏫 Elementary:</strong> 5th Grade - Force & Motion, Weather & Climate
+                                    </div>
+                                    <div style="padding: 0.75rem; background: rgba(255, 0, 170, 0.1); border-radius: 8px;">
+                                        <strong style="color: var(--accent-magenta);">🎒 Middle School:</strong> Flight & Space - Flight Instruments
+                                    </div>
+                                    <div style="padding: 0.75rem; background: rgba(255, 215, 0, 0.1); border-radius: 8px;">
+                                        <strong style="color: var(--accent-gold);">🎓 High School:</strong> Coming Soon!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ========== FLIGHT INSTRUMENTS LESSON ========== -->
+                    <div id="lesson-flight-instruments" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">✈️ Middle School • Flight & Space</div>
+                            <h2>Flight Instruments</h2>
+                            <p class="lesson-subtitle">Student-centered, application-based, NGSS-aligned</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📋 Lesson Overview</h3>
+                            <div class="lesson-card highlight">
+                                <p><strong>Grade Level:</strong> Middle School / Flight & Space</p>
+                                <p><strong>Duration:</strong> 45–60 minutes</p>
+                                <p><strong>Instructional Approach:</strong> Student-centered, application-based</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Learning Objectives</h3>
+                            <div class="lesson-card">
+                                <p>Students will be able to:</p>
+                                <ul class="objectives-list">
+                                    <li>Identify key flight instruments and explain the type of information each provides</li>
+                                    <li>Interpret instrument readings in real time</li>
+                                    <li>Apply knowledge of flight instruments to make decisions during a simulated flight scenario</li>
+                                    <li>Use scientific reasoning to explain how instrument data informs safe flight operations</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🧰 Materials</h3>
+                            <div class="materials-grid">
+                                <div class="material-item">
+                                    <span class="material-icon">📄</span>
+                                    <p>Short reference sheet of flight instruments (altimeter, heading indicator, airspeed indicator, attitude indicator, turn coordinator)</p>
+                                </div>
+                                <div class="material-item">
+                                    <span class="material-icon">💻</span>
+                                    <p>Tablets/Chromebooks with free flight simulator (GeoFS, FlightGear, Microsoft Flight Simulator Demo)</p>
+                                </div>
+                                <div class="material-item">
+                                    <span class="material-icon">📝</span>
+                                    <p>Student note sheet: "Instrument Reading Log"</p>
+                                </div>
+                                <div class="material-item">
+                                    <span class="material-icon">📊</span>
+                                    <p>Whiteboard for debrief</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📚 Lesson Phases</h3>
+
+                            <!-- Phase 1: Engage -->
+                            <div class="lesson-phase">
+                                <div class="phase-header">
+                                    <div class="phase-letter">E</div>
+                                    <h4>Engage</h4>
+                                    <span class="phase-time">5 min</span>
+                                </div>
+                                <div class="phase-content">
+                                    <p>Teacher shows a 1-minute cockpit clip of a pilot scanning instruments.</p>
+                                    <div class="socratic-box">
+                                        <h5>❓ Teacher asks ONLY one question:</h5>
+                                        <ul>
+                                            <li>"What do you think the pilot is looking for?"</li>
+                                        </ul>
+                                    </div>
+                                    <p class="phase-note">💡 Students share quick ideas. No explanations from teacher.</p>
+                                </div>
+                            </div>
+
+                            <!-- Phase 2: Explore -->
+                            <div class="lesson-phase">
+                                <div class="phase-header">
+                                    <div class="phase-letter">E</div>
+                                    <h4>Explore (Student Investigation)</h4>
+                                    <span class="phase-time">10 min</span>
+                                </div>
+                                <div class="phase-content">
+                                    <p>Students work in pairs with a reference sheet of flight instruments.</p>
+                                    <div class="lesson-card">
+                                        <h5 style="color: var(--accent-cyan); margin-bottom: 0.75rem;">📋 Task:</h5>
+                                        <ul class="concept-list">
+                                            <li>Identify each instrument</li>
+                                            <li>Predict: "When would a pilot need this instrument?"</li>
+                                            <li>Record ideas on their log sheet</li>
+                                        </ul>
+                                    </div>
+                                    <p class="phase-note">👨‍🏫 Teacher circulates, asks probing questions (no lecturing).</p>
+                                </div>
+                            </div>
+
+                            <!-- Phase 3: Explain -->
+                            <div class="lesson-phase">
+                                <div class="phase-header">
+                                    <div class="phase-letter">E</div>
+                                    <h4>Explain (Brief)</h4>
+                                    <span class="phase-time">5 min</span>
+                                </div>
+                                <div class="phase-content">
+                                    <p>Students share their ideas. Teacher clarifies ONLY misconceptions.</p>
+                                    <div class="lesson-card highlight">
+                                        <h5 style="color: var(--accent-gold); margin-bottom: 0.75rem;">✨ Very short summary:</h5>
+                                        <ul class="concept-list">
+                                            <li>Each instrument gives a different type of information</li>
+                                            <li>Pilots use all indicators together to make decisions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Phase 4: Apply -->
+                            <div class="lesson-phase">
+                                <div class="phase-header" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 100, 0, 0.1));">
+                                    <div class="phase-letter" style="background: linear-gradient(135deg, var(--accent-gold), #ff6b00);">A</div>
+                                    <h4>Apply (Core of the Lesson)</h4>
+                                    <span class="phase-time">20 min</span>
+                                </div>
+                                <div class="phase-content">
+                                    <p><strong>This is the project-based-application part.</strong></p>
+                                    <p>Students use the flight simulator to practice reading instruments in real time.</p>
+                                    
+                                    <div class="lesson-card essential">
+                                        <h5 style="color: var(--accent-gold); margin-bottom: 1rem;">🎮 Student Task:</h5>
+                                        <ul class="concept-list">
+                                            <li>Start the simulator on the runway</li>
+                                            <li>Monitor 3 instruments: <strong>Airspeed Indicator</strong>, <strong>Altimeter</strong>, <strong>Heading Indicator</strong></li>
+                                            <li>Fly straight and level for 2 minutes</li>
+                                            <li>Record changes every 15 seconds</li>
+                                        </ul>
+                                        <div style="margin-top: 1rem;">
+                                            <h5 style="color: var(--accent-cyan); margin-bottom: 0.5rem;">Answer these questions:</h5>
+                                            <ul class="socratic-questions">
+                                                <li>"What is happening?"</li>
+                                                <li>"What does this indicator tell me?"</li>
+                                                <li>"What should I adjust?" (pitch, throttle, heading)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="lesson-card teacher-role" style="margin-top: 1rem;">
+                                        <h5 style="color: var(--accent-magenta); margin-bottom: 0.75rem;">👨‍🏫 Teacher Role:</h5>
+                                        <ul class="teacher-rules">
+                                            <li><span class="rule-icon">🚫</span> Does NOT teach</li>
+                                            <li><span class="rule-icon">❓</span> Only asks questions like:</li>
+                                        </ul>
+                                        <ul class="socratic-questions" style="margin-left: 1.5rem;">
+                                            <li>"What is your altimeter showing right now?"</li>
+                                            <li>"Why do you think your airspeed dropped?"</li>
+                                            <li>"What adjustment will you make?"</li>
+                                        </ul>
+                                        <p class="phase-note" style="margin-top: 1rem;">⚡ Students must use knowledge, not just recall it.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Phase 5: Evaluate -->
+                            <div class="lesson-phase">
+                                <div class="phase-header" style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.1));">
+                                    <div class="phase-letter" style="background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));">E</div>
+                                    <h4>Evaluate (Reasoning)</h4>
+                                    <span class="phase-time">10 min</span>
+                                </div>
+                                <div class="phase-content">
+                                    <p>Students complete a <strong>CER (Claim–Evidence–Reasoning)</strong>:</p>
+                                    <div class="lesson-card assessment">
+                                        <div class="prompt-box">
+                                            <p><strong style="color: var(--accent-cyan);">Claim:</strong> Which instrument was the most important during your flight?</p>
+                                            <p><strong style="color: var(--accent-magenta);">Evidence:</strong> What readings did you rely on?</p>
+                                            <p><strong style="color: var(--accent-gold);">Reasoning:</strong> Why does this instrument matter for safe flight?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🚀 Extension (Optional)</h3>
+                            <div class="lesson-card">
+                                <p>Students replay the simulation but simulate a problem:</p>
+                                <div class="project-options" style="margin-top: 1rem;">
+                                    <div class="project-option">
+                                        <span class="project-icon">📉</span>
+                                        <p>Sudden drop in altitude</p>
+                                    </div>
+                                    <div class="project-option">
+                                        <span class="project-icon">💨</span>
+                                        <p>Crosswind</p>
+                                    </div>
+                                    <div class="project-option">
+                                        <span class="project-icon">🔻</span>
+                                        <p>Airspeed loss</p>
+                                    </div>
+                                </div>
+                                <p style="margin-top: 1rem; color: var(--text-secondary);"><em>They must use instrument readings to correct the issue.</em></p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📖 Why This Lesson Is Research-Based</h3>
+                            <div class="lesson-card highlight">
+                                <ul class="objectives-list">
+                                    <li>Students <strong>apply</strong> knowledge, not memorize it</li>
+                                    <li>Uses <strong>authentic, real-world context</strong> (flight simulator)</li>
+                                    <li>Uses <strong>phenomena-based learning</strong></li>
+                                    <li>Incorporates <strong>student talk, reasoning, and sense-making</strong></li>
+                                </ul>
+                                <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 10px;">
+                                    <h5 style="color: var(--accent-cyan); margin-bottom: 0.75rem;">🔬 NGSS Science Practices:</h5>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                        <span style="background: rgba(0, 212, 255, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.85rem;">Analyzing data</span>
+                                        <span style="background: rgba(255, 0, 170, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.85rem;">Using models</span>
+                                        <span style="background: rgba(255, 215, 0, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.85rem;">Constructing explanations</span>
+                                        <span style="background: rgba(0, 255, 136, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.85rem;">Asking questions</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

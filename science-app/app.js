@@ -488,6 +488,28 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== Curriculum Navigation Functions =====
+function toggleSchoolLevel(containerId) {
+    const container = document.getElementById(containerId);
+    
+    if (container) {
+        const computedStyle = window.getComputedStyle(container);
+        const isHidden = container.style.display === 'none' || computedStyle.display === 'none';
+        
+        container.style.display = isHidden ? 'block' : 'none';
+        
+        // Update expand icon
+        let expandIconId;
+        if (containerId === 'elementary-grades') expandIconId = 'elementary-expand';
+        else if (containerId === 'middle-grades') expandIconId = 'middle-expand';
+        else if (containerId === 'high-grades') expandIconId = 'high-expand';
+        
+        const expandIcon = document.getElementById(expandIconId);
+        if (expandIcon) {
+            expandIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    }
+}
+
 function toggleAllGrades() {
     const container = document.getElementById('all-grades');
     const expandIcon = document.getElementById('main-grade-expand');
