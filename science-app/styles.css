@@ -1665,8 +1665,18 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
+    width: 100%;
     padding: 1rem 1.25rem;
     background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 170, 0.05));
+    border: none;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.sim-header:hover {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 170, 0.1));
 }
 
 .sim-icon {

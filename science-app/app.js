@@ -489,18 +489,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ===== Simulation Toggle Function =====
 function toggleSimulation(simId) {
+    event.stopPropagation();
     const content = document.getElementById(simId);
-    const card = content.closest('.simulation-card');
-    const expandIcon = card.querySelector('.sim-expand');
     
-    if (content) {
-        const isHidden = content.style.display === 'none' || content.style.display === '';
-        content.style.display = isHidden ? 'block' : 'none';
-        
-        if (expandIcon) {
-            expandIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
-        }
-        
+    if (!content) {
+        console.error('Simulation content not found:', simId);
+        return;
+    }
+    
+    const card = content.closest('.simulation-card');
+    const expandIcon = card ? card.querySelector('.sim-expand') : null;
+    
+    const isHidden = content.style.display === 'none' || content.style.display === '';
+    content.style.display = isHidden ? 'block' : 'none';
+    
+    if (expandIcon) {
+        expandIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+    
+    if (card) {
         card.classList.toggle('active', isHidden);
     }
 }
