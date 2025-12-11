@@ -1487,7 +1487,7 @@ body {
 
 /* School Level Sections (Elementary, Middle, High) */
 .school-level-section {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .school-level-title {
@@ -1495,14 +1495,14 @@ body {
     align-items: center;
     gap: 0.75rem;
     width: 100%;
-    padding: 1rem 1.25rem;
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 170, 0.15));
-    border: 1px solid rgba(0, 212, 255, 0.3);
-    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    background: rgba(20, 30, 50, 0.9);
+    border: 1px solid rgba(0, 212, 255, 0.25);
+    border-radius: 10px;
     transition: all 0.3s ease;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--accent-cyan);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
     cursor: pointer;
     font-family: 'Outfit', sans-serif;
@@ -1510,23 +1510,25 @@ body {
 }
 
 .school-level-title:hover {
-    background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(255, 0, 170, 0.25));
+    background: rgba(0, 212, 255, 0.15);
     border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
 }
 
 .school-level-title .expand-icon {
     margin-left: auto;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     transition: transform 0.3s ease;
+    color: var(--text-secondary);
 }
 
 .school-icon {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .school-grades-container {
     padding-left: 0.5rem;
-    border-left: 2px solid rgba(0, 212, 255, 0.2);
+    border-left: 2px solid rgba(0, 212, 255, 0.15);
     margin-left: 0.75rem;
     margin-bottom: 0.5rem;
 }
