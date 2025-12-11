@@ -1635,6 +1635,173 @@ body {
     border-color: var(--accent-gold);
 }
 
+/* ===== Interactive Simulation Cards ===== */
+.simulation-scenarios {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.simulation-card {
+    background: rgba(20, 30, 50, 0.8);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.simulation-card:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15);
+}
+
+.simulation-card.active {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 212, 255, 0.05);
+}
+
+.sim-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 170, 0.05));
+}
+
+.sim-icon {
+    font-size: 1.5rem;
+}
+
+.sim-title {
+    flex: 1;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.sim-expand {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    transition: transform 0.3s ease;
+}
+
+.sim-content {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(0, 212, 255, 0.1);
+    cursor: default;
+}
+
+.sim-content > div {
+    margin-bottom: 1.25rem;
+}
+
+.sim-content > div:last-child {
+    margin-bottom: 0;
+}
+
+.sim-content h5 {
+    color: var(--accent-cyan);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.sim-scenario {
+    background: rgba(255, 215, 0, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-gold);
+}
+
+.sim-scenario h5 {
+    color: var(--accent-gold);
+}
+
+.sim-scenario p {
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.sim-instruments {
+    background: rgba(0, 212, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.sim-instruments ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sim-instruments li {
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+}
+
+.sim-instruments li::before {
+    content: "📊";
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+}
+
+.sim-solution {
+    background: rgba(0, 255, 136, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-green);
+}
+
+.sim-solution h5 {
+    color: var(--accent-green);
+}
+
+.sim-solution ol {
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.sim-solution li {
+    padding: 0.3rem 0;
+    color: var(--text-primary);
+}
+
+.sim-warning {
+    background: rgba(255, 107, 107, 0.15);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #ff6b6b;
+}
+
+.sim-warning h5 {
+    color: #ff6b6b;
+}
+
+.sim-warning p {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.sim-question {
+    background: rgba(255, 0, 170, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-magenta);
+}
+
+.sim-question h5 {
+    color: var(--accent-magenta);
+}
+
+.sim-question p {
+    color: var(--text-primary);
+    font-style: italic;
+}
+
 .grade-section {
     margin-bottom: 0.5rem;
 }

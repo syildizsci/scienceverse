@@ -559,24 +559,125 @@
                         </div>
 
                         <div class="lesson-section">
-                            <h3>🚀 Extension (Optional)</h3>
+                            <h3>🚀 Extension (Optional) - Interactive Scenarios</h3>
                             <div class="lesson-card">
-                                <p>Students replay the simulation but simulate a problem:</p>
-                                <div class="project-options" style="margin-top: 1rem;">
-                                    <div class="project-option">
-                                        <span class="project-icon">📉</span>
-                                        <p>Sudden drop in altitude</p>
+                                <p>Students replay the simulation but simulate a problem. <strong>Click a scenario to see the challenge:</strong></p>
+                                <div class="simulation-scenarios" style="margin-top: 1rem;">
+                                    
+                                    <!-- Scenario 1: Altitude Drop -->
+                                    <div class="simulation-card" onclick="toggleSimulation('sim-altitude')">
+                                        <div class="sim-header">
+                                            <span class="sim-icon">📉</span>
+                                            <span class="sim-title">Sudden Drop in Altitude</span>
+                                            <span class="sim-expand">▼</span>
+                                        </div>
+                                        <div class="sim-content" id="sim-altitude" style="display: none;">
+                                            <div class="sim-scenario">
+                                                <h5>🎬 Scenario:</h5>
+                                                <p>You're flying at 5,000 feet when suddenly your altimeter shows a rapid descent to 4,200 feet!</p>
+                                            </div>
+                                            <div class="sim-instruments">
+                                                <h5>📊 Check These Instruments:</h5>
+                                                <ul>
+                                                    <li><strong>Altimeter:</strong> Watch for continued descent</li>
+                                                    <li><strong>Vertical Speed Indicator:</strong> Shows rate of descent</li>
+                                                    <li><strong>Attitude Indicator:</strong> Is nose pitched down?</li>
+                                                </ul>
+                                            </div>
+                                            <div class="sim-solution">
+                                                <h5>✅ Correction Steps:</h5>
+                                                <ol>
+                                                    <li>Pull back gently on the yoke/stick</li>
+                                                    <li>Add throttle to increase power</li>
+                                                    <li>Level the attitude indicator</li>
+                                                    <li>Monitor altimeter until stable at target altitude</li>
+                                                </ol>
+                                            </div>
+                                            <div class="sim-question">
+                                                <h5>❓ Student Question:</h5>
+                                                <p><em>"What would happen if you only added power but didn't adjust pitch?"</em></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="project-option">
-                                        <span class="project-icon">💨</span>
-                                        <p>Crosswind</p>
+
+                                    <!-- Scenario 2: Crosswind -->
+                                    <div class="simulation-card" onclick="toggleSimulation('sim-crosswind')">
+                                        <div class="sim-header">
+                                            <span class="sim-icon">💨</span>
+                                            <span class="sim-title">Crosswind Challenge</span>
+                                            <span class="sim-expand">▼</span>
+                                        </div>
+                                        <div class="sim-content" id="sim-crosswind" style="display: none;">
+                                            <div class="sim-scenario">
+                                                <h5>🎬 Scenario:</h5>
+                                                <p>You're trying to maintain heading 270° but a strong wind from the south keeps pushing you off course!</p>
+                                            </div>
+                                            <div class="sim-instruments">
+                                                <h5>📊 Check These Instruments:</h5>
+                                                <ul>
+                                                    <li><strong>Heading Indicator:</strong> Shows your current heading</li>
+                                                    <li><strong>Turn Coordinator:</strong> Shows if you're turning</li>
+                                                    <li><strong>Attitude Indicator:</strong> Check wing level</li>
+                                                </ul>
+                                            </div>
+                                            <div class="sim-solution">
+                                                <h5>✅ Correction Steps:</h5>
+                                                <ol>
+                                                    <li>Turn INTO the wind (toward the south)</li>
+                                                    <li>Adjust heading 5-10° into the wind</li>
+                                                    <li>Monitor heading indicator</li>
+                                                    <li>Fine-tune until ground track is straight</li>
+                                                </ol>
+                                            </div>
+                                            <div class="sim-question">
+                                                <h5>❓ Student Question:</h5>
+                                                <p><em>"Why do pilots 'crab' into the wind? What would happen without correction?"</em></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="project-option">
-                                        <span class="project-icon">🔻</span>
-                                        <p>Airspeed loss</p>
+
+                                    <!-- Scenario 3: Airspeed Loss -->
+                                    <div class="simulation-card" onclick="toggleSimulation('sim-airspeed')">
+                                        <div class="sim-header">
+                                            <span class="sim-icon">🔻</span>
+                                            <span class="sim-title">Airspeed Loss</span>
+                                            <span class="sim-expand">▼</span>
+                                        </div>
+                                        <div class="sim-content" id="sim-airspeed" style="display: none;">
+                                            <div class="sim-scenario">
+                                                <h5>🎬 Scenario:</h5>
+                                                <p>Your airspeed drops from 120 knots to 85 knots. Warning! You're approaching stall speed!</p>
+                                            </div>
+                                            <div class="sim-instruments">
+                                                <h5>📊 Check These Instruments:</h5>
+                                                <ul>
+                                                    <li><strong>Airspeed Indicator:</strong> Watch the needle carefully</li>
+                                                    <li><strong>Attitude Indicator:</strong> Is nose too high?</li>
+                                                    <li><strong>Engine RPM:</strong> Is power sufficient?</li>
+                                                </ul>
+                                            </div>
+                                            <div class="sim-solution">
+                                                <h5>✅ Correction Steps:</h5>
+                                                <ol>
+                                                    <li>⚠️ IMMEDIATELY lower the nose</li>
+                                                    <li>Add FULL throttle</li>
+                                                    <li>Allow airspeed to build</li>
+                                                    <li>Gradually return to level flight</li>
+                                                </ol>
+                                            </div>
+                                            <div class="sim-warning">
+                                                <h5>⚠️ Critical Note:</h5>
+                                                <p>Airspeed loss is dangerous! If too slow, the wings can't generate lift = STALL!</p>
+                                            </div>
+                                            <div class="sim-question">
+                                                <h5>❓ Student Question:</h5>
+                                                <p><em>"What causes an airplane to stall? Is it related to the engine?"</em></p>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
-                                <p style="margin-top: 1rem; color: var(--text-secondary);"><em>They must use instrument readings to correct the issue.</em></p>
+                                <p style="margin-top: 1rem; color: var(--text-secondary);"><em>Click each scenario to see detailed instructions. Students must use instrument readings to correct the issue.</em></p>
                             </div>
                         </div>
 

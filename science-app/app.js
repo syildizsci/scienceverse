@@ -487,6 +487,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// ===== Simulation Toggle Function =====
+function toggleSimulation(simId) {
+    const content = document.getElementById(simId);
+    const card = content.closest('.simulation-card');
+    const expandIcon = card.querySelector('.sim-expand');
+    
+    if (content) {
+        const isHidden = content.style.display === 'none' || content.style.display === '';
+        content.style.display = isHidden ? 'block' : 'none';
+        
+        if (expandIcon) {
+            expandIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+        
+        card.classList.toggle('active', isHidden);
+    }
+}
+
 // ===== Curriculum Navigation Functions =====
 function toggleSchoolLevel(containerId) {
     const container = document.getElementById(containerId);
