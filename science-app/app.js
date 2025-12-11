@@ -556,7 +556,7 @@ function toggleLessonGroup(groupId) {
 }
 
 function showLesson(lessonId) {
-    // Hide all lesson plans
+    // Hide all lesson plans including welcome
     document.querySelectorAll('.lesson-plan').forEach(plan => {
         plan.classList.remove('active');
     });

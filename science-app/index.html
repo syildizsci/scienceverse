@@ -82,7 +82,7 @@
                             Grade
                             <span class="expand-icon" id="main-grade-expand">▼</span>
                         </button>
-                        <div class="all-grades-container" id="all-grades">
+                        <div class="all-grades-container" id="all-grades" style="display: none;">
                             
                             <!-- Kindergarten -->
                             <div class="grade-section">
@@ -146,21 +146,21 @@
 
                             <!-- 5th Grade -->
                             <div class="grade-section">
-                                <button class="grade-btn active" onclick="toggleGradeContent('grade5')">
+                                <button class="grade-btn" onclick="toggleGradeContent('grade5')">
                                     <span class="grade-icon">📖</span>
                                     5th Grade
                                     <span class="expand-icon">▼</span>
                                 </button>
-                                <div class="grade-lessons" id="grade5">
+                                <div class="grade-lessons" id="grade5" style="display: none;">
                                     <div class="lesson-group">
-                                        <button class="lesson-btn parent active" onclick="toggleLessonGroup('force-weeks')">
+                                        <button class="lesson-btn parent" onclick="toggleLessonGroup('force-weeks')">
                                             <span class="lesson-icon">⚡</span>
                                             Force & Motion
                                             <span class="expand-icon">▼</span>
                                         </button>
-                                        <div class="lesson-weeks" id="force-weeks">
+                                        <div class="lesson-weeks" id="force-weeks" style="display: none;">
                                             <button class="week-btn" onclick="showLesson('force-overview')">📋 Overview</button>
-                                            <button class="week-btn active" onclick="showLesson('force-week1')">📅 Week 1</button>
+                                            <button class="week-btn" onclick="showLesson('force-week1')">📅 Week 1</button>
                                             <button class="week-btn" onclick="showLesson('force-week2')">📅 Week 2</button>
                                         </div>
                                     </div>
@@ -183,6 +183,33 @@
                     </div>
                 </div>
                 <div class="curriculum-content">
+                    <!-- Welcome Placeholder -->
+                    <div id="lesson-welcome" class="lesson-plan active">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">📚 Curriculum</div>
+                            <h2>Welcome to Science Curriculum</h2>
+                            <p class="lesson-subtitle">Select a grade and lesson from the sidebar to begin exploring!</p>
+                        </div>
+                        <div class="lesson-section">
+                            <h3>🎯 How to Navigate</h3>
+                            <div class="lesson-card">
+                                <ul class="objectives-list">
+                                    <li>Click on <strong>"Grade"</strong> to expand grade levels</li>
+                                    <li>Select a grade (K-5) to see available units</li>
+                                    <li>Click on a unit to see weekly lessons</li>
+                                    <li>Choose Overview, Week 1, or Week 2 to view content</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="lesson-section">
+                            <h3>✨ Available Content</h3>
+                            <div class="lesson-card highlight">
+                                <p class="big-text">5th Grade: Force & Motion, Weather & Climate</p>
+                                <p style="text-align: center; color: var(--text-secondary); margin-top: 1rem;">More grades coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Force Overview -->
                     <div id="lesson-force-overview" class="lesson-plan">
                         <div class="lesson-header">
@@ -435,7 +462,7 @@
                     </div>
 
                     <!-- Week 1: Introduction to Forces -->
-                    <div id="lesson-force-week1" class="lesson-plan active">
+                    <div id="lesson-force-week1" class="lesson-plan">
                         <div class="lesson-header">
                             <div class="lesson-badge">NC 5.P.1 • Week 1</div>
                             <h2>Introduction to Forces & Evidence-Based Inquiry</h2>
