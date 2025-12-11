@@ -1817,6 +1817,38 @@ body {
     padding-top: 1rem;
 }
 
+.main-page-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.main-page-title h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta), var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+}
+
+.main-subtitle {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .main-page-title h1 {
+        font-size: 2rem;
+    }
+    
+    .main-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
 .skills-hero {
     text-align: center;
     margin-bottom: 3rem;
