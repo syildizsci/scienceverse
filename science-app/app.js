@@ -492,9 +492,7 @@ function toggleSchoolLevel(containerId) {
     const container = document.getElementById(containerId);
     
     if (container) {
-        const computedStyle = window.getComputedStyle(container);
-        const isHidden = container.style.display === 'none' || computedStyle.display === 'none';
-        
+        const isHidden = container.style.display === 'none' || container.style.display === '';
         container.style.display = isHidden ? 'block' : 'none';
         
         // Update expand icon
@@ -506,6 +504,12 @@ function toggleSchoolLevel(containerId) {
         const expandIcon = document.getElementById(expandIconId);
         if (expandIcon) {
             expandIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+        
+        // Update button active state
+        const btn = container.previousElementSibling;
+        if (btn) {
+            btn.classList.toggle('active', isHidden);
         }
     }
 }
