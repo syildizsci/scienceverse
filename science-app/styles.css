@@ -1812,6 +1812,460 @@ body {
     font-style: italic;
 }
 
+/* ===== 21st Century Skills Section ===== */
+.century-skills-section {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.skills-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.skills-flow-diagram {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.flow-item.age-box {
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+}
+
+.flow-item.age-box.current {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 170, 0.15));
+    border-color: var(--accent-cyan);
+}
+
+.age-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.flow-arrow {
+    color: var(--accent-cyan);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.skills-pyramid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pyramid-level {
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    max-width: 500px;
+}
+
+.pyramid-level.highlight {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 170, 0.08));
+    border-color: rgba(0, 212, 255, 0.3);
+    padding: 1.5rem 2rem;
+}
+
+.pyramid-level.highlight h4 {
+    color: var(--accent-cyan);
+    margin-bottom: 1rem;
+}
+
+.pyramid-level.formula {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 100, 0, 0.1));
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.formula-text {
+    font-size: 1.1rem;
+    color: var(--accent-gold);
+}
+
+.pyramid-level.final {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.1));
+    border-color: rgba(0, 255, 136, 0.3);
+}
+
+.pyramid-level.final strong {
+    color: var(--accent-green);
+}
+
+.pyramid-arrow {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.skill-tag {
+    background: rgba(0, 212, 255, 0.15);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+}
+
+.skills-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skills-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.skills-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.skills-tagline {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.skills-intro {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-subtle);
+}
+
+.skills-intro p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.skills-intro p:last-child {
+    margin-bottom: 0;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 170, 0.08));
+    border-left: 4px solid var(--accent-cyan);
+    padding: 1rem 1.5rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+}
+
+.highlight-box p {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.skills-list-section {
+    margin-bottom: 3rem;
+}
+
+.skills-list-section h3 {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.skill-cards {
+    display: grid;
+    gap: 1rem;
+}
+
+.skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.1);
+}
+
+.skill-number {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.skill-card h4 {
+    color: var(--accent-cyan);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.skill-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.skill-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.skill-card ul li {
+    padding: 0.25rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+}
+
+.skill-card ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent-green);
+}
+
+.skill-progression {
+    background: rgba(0, 212, 255, 0.1);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    color: var(--accent-cyan);
+    font-weight: 500;
+    margin-top: 0.75rem;
+}
+
+.why-section {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-subtle);
+}
+
+.why-section h3 {
+    color: var(--accent-magenta);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.why-intro {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.knowledge-examples ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1rem 1rem;
+}
+
+.knowledge-examples ul li {
+    padding: 0.3rem 0;
+    color: var(--text-secondary);
+}
+
+.but-question {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.key-questions {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 100, 0, 0.08));
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+}
+
+.key-questions p {
+    margin: 0.5rem 0;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+}
+
+.conclusion {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--accent-green);
+    margin-top: 1.5rem;
+    font-weight: 600;
+}
+
+.progression-section {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid var(--border-subtle);
+}
+
+.progression-section h3 {
+    color: var(--accent-cyan);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.progression-subtitle {
+    text-align: center;
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.progression-steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.progression-step {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 1.25rem;
+    flex: 1;
+    min-width: 180px;
+    max-width: 220px;
+    text-align: center;
+}
+
+.progression-step.highlight-step {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.08));
+    border-color: rgba(0, 255, 136, 0.3);
+}
+
+.step-number {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin: 0 auto 0.75rem;
+}
+
+.progression-step h4 {
+    color: var(--accent-cyan);
+    margin-bottom: 0.5rem;
+}
+
+.progression-step p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.progression-step .note {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.progression-arrow {
+    color: var(--accent-gold);
+    font-size: 1.5rem;
+    font-weight: bold;
+    align-self: center;
+    margin-top: 1rem;
+}
+
+.identity-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+    margin-top: 0.75rem;
+}
+
+.identity-tags span {
+    background: rgba(0, 255, 136, 0.2);
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: var(--accent-green);
+}
+
+.final-message {
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 100, 0, 0.1));
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+
+.final-message p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+}
+
+/* Responsive for skills section */
+@media (max-width: 768px) {
+    .skills-flow-diagram {
+        flex-direction: column;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .progression-steps {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .progression-arrow {
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+    }
+    
+    .progression-step {
+        max-width: 100%;
+    }
+    
+    .skill-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
 .grade-section {
     margin-bottom: 0.5rem;
 }
