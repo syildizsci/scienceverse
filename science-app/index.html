@@ -176,6 +176,25 @@
                                             <button class="week-btn" onclick="showLesson('weather-week2')">📅 Week 2</button>
                                         </div>
                                     </div>
+                                    <div class="lesson-group">
+                                        <button class="lesson-btn parent" onclick="toggleLessonGroup('ecosystem-weeks')">
+                                            <span class="lesson-icon">🌿</span>
+                                            Ecosystem
+                                            <span class="expand-icon">▼</span>
+                                        </button>
+                                        <div class="lesson-weeks" id="ecosystem-weeks" style="display: none;">
+                                            <button class="week-btn" onclick="showLesson('ecosystem-overview')">📋 Overview</button>
+                                            <button class="week-btn" onclick="showLesson('ecosystem-lesson1')">📅 Lesson 1</button>
+                                            <button class="week-btn" onclick="showLesson('ecosystem-lesson2')">📅 Lesson 2</button>
+                                            <button class="week-btn" onclick="showLesson('ecosystem-lesson3')">📅 Lesson 3</button>
+                                            <button class="week-btn" onclick="showLesson('ecosystem-lesson4')">📅 Lesson 4</button>
+                                            <button class="week-btn" onclick="showLesson('ecosystem-lesson5')">📅 Lesson 5</button>
+                                            <button class="week-btn" onclick="showLesson('ecosystem-lesson6')">📅 Lesson 6</button>
+                                            <button class="week-btn" onclick="showLesson('ecosystem-lesson7')">📅 Lesson 7</button>
+                                            <button class="week-btn" onclick="showLesson('ecosystem-lesson8')">📅 Lesson 8</button>
+                                            <button class="week-btn" onclick="showLesson('ecosystem-lesson9')">📅 Lesson 9</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -335,7 +354,7 @@
                             <div class="lesson-card highlight">
                                 <div style="display: grid; gap: 1rem;">
                                     <div style="padding: 0.75rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px;">
-                                        <strong style="color: var(--accent-cyan);">🏫 Elementary:</strong> 5th Grade - Force & Motion, Weather & Climate
+                                        <strong style="color: var(--accent-cyan);">🏫 Elementary:</strong> 5th Grade - Force & Motion, Weather & Climate, Ecosystem (9 lessons)
                                     </div>
                                     <div style="padding: 0.75rem; background: rgba(255, 0, 170, 0.1); border-radius: 8px;">
                                         <strong style="color: var(--accent-magenta);">🎒 Middle School:</strong> Flight & Space - Flight Instruments
@@ -568,6 +587,968 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- ========== ECOSYSTEM UNIT - 5TH GRADE ========== -->
+                    
+                    <!-- Ecosystem Overview -->
+                    <div id="lesson-ecosystem-overview" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 5.L.2 • Ecosystem Unit</div>
+                            <h2>Ecosystem: Interdependence of Plants & Animals</h2>
+                            <p class="lesson-subtitle">Understanding how organisms depend on each other within an ecosystem</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📋 Unit Overview</h3>
+                            <div class="lesson-card highlight">
+                                <p><strong>Grade Level:</strong> 5th Grade</p>
+                                <p><strong>Duration:</strong> 9 Lessons (approximately 2 weeks)</p>
+                                <p><strong>Instructional Approach:</strong> Student-centered, Socratic dialogue, NGSS-aligned</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📖 NC Essential Standard 5.L.2</h3>
+                            <div class="lesson-card essential">
+                                <p class="essential-q">"Understand the interdependence of plants and animals with their ecosystem."</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Clarifying Objectives</h3>
+                            <div class="standards-list">
+                                <div class="standard-item">
+                                    <span class="standard-code">5.L.2.1</span>
+                                    <p>Classify the organisms within an ecosystem according to the function they serve: producers, consumers, decomposers (such as herbivores, carnivores, omnivores).</p>
+                                </div>
+                                <div class="standard-item">
+                                    <span class="standard-code">5.L.2.2</span>
+                                    <p>Infer the effects that may result from the interconnected relationship of plants and animals to their ecosystem.</p>
+                                </div>
+                                <div class="standard-item">
+                                    <span class="standard-code">5.L.2.3</span>
+                                    <p>Infer the effects of changes in the environment on the interdependence of plants and animals.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📅 Unit Structure</h3>
+                            <div class="week-overview-grid">
+                                <div class="week-overview-card">
+                                    <h4>Week 1: Building Understanding</h4>
+                                    <p class="week-theme">Food Chains & Webs</p>
+                                    <ul>
+                                        <li>Lesson 1: Phenomenon Launch (Yellowstone)</li>
+                                        <li>Lesson 2: Food Chains</li>
+                                        <li>Lesson 3: Food Webs</li>
+                                        <li>Lesson 4: Population Simulation</li>
+                                        <li>Lesson 5: Decomposers Matter</li>
+                                    </ul>
+                                </div>
+                                <div class="week-overview-card">
+                                    <h4>Week 2: Deepening & Assessment</h4>
+                                    <p class="week-theme">Application & Evaluation</p>
+                                    <ul>
+                                        <li>Lesson 6: Plants as Energy Base</li>
+                                        <li>Lesson 7: Card Sort Challenge</li>
+                                        <li>Lesson 8: Student-Led Discussion</li>
+                                        <li>Lesson 9: Final Assessment</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🔑 Key Vocabulary</h3>
+                            <div class="lesson-card">
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                    <span style="background: rgba(0, 255, 136, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">Producer</span>
+                                    <span style="background: rgba(255, 107, 107, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">Consumer</span>
+                                    <span style="background: rgba(139, 69, 19, 0.3); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">Decomposer</span>
+                                    <span style="background: rgba(0, 212, 255, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">Herbivore</span>
+                                    <span style="background: rgba(255, 0, 170, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">Carnivore</span>
+                                    <span style="background: rgba(255, 215, 0, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">Omnivore</span>
+                                    <span style="background: rgba(116, 143, 252, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">Food Chain</span>
+                                    <span style="background: rgba(218, 119, 242, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">Food Web</span>
+                                    <span style="background: rgba(56, 217, 169, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">Interdependence</span>
+                                    <span style="background: rgba(255, 169, 77, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">Ecosystem</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ecosystem Lesson 1: Phenomenon Launch -->
+                    <div id="lesson-ecosystem-lesson1" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 5.L.2 • Lesson 1</div>
+                            <h2>Phenomenon Launch: Yellowstone Wolves</h2>
+                            <p class="lesson-subtitle">Students see that changing one species affects the whole ecosystem</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Lesson Focus</h3>
+                            <div class="lesson-card highlight">
+                                <p class="big-text">How does removing one species affect an entire ecosystem?</p>
+                                <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary);">Standard: NC 5.L.2 | Duration: 45-50 minutes</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📚 Teacher Script – Step by Step</h3>
+
+                            <!-- Step 1: Hook -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 1</span>
+                                    <h4>Hook (Teacher says, students watch)</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"Today we're going to look at something that really happened in Yellowstone National Park. I don't want answers yet. Just watch, notice, and wonder."</p>
+                                    </div>
+                                    <p style="margin-top: 1rem;">▶️ Play the 1–2 minute video about wolves in Yellowstone.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Notice/Wonder -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 2</span>
+                                    <h4>Notice/Wonder (Teacher instructs, students write)</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"Individually, write down three things you noticed and three things you wonder. Remember—there are no wrong 'notices' or 'wonders.' Write what you truly saw and what questions came to your mind."</p>
+                                    </div>
+                                    <p style="margin-top: 1rem; color: var(--text-secondary);">📝 Students write quietly.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Table Talk -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 3</span>
+                                    <h4>Table Talk (Teacher sets routine)</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"At your table, each person will share one 'notice' and one 'wonder.' Use these sentence starters:"</p>
+                                    </div>
+                                    <div class="lesson-card" style="margin-top: 1rem;">
+                                        <h5 style="color: var(--accent-gold); margin-bottom: 0.75rem;">💬 Sentence Starters:</h5>
+                                        <ul class="concept-list">
+                                            <li>"I noticed that…"</li>
+                                            <li>"I wonder why…"</li>
+                                            <li>"I agree with ___ because…"</li>
+                                        </ul>
+                                    </div>
+                                    <p style="margin-top: 1rem; color: var(--text-secondary);">👨‍🏫 Teacher circulates and listens.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Whole-Class Share -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 4</span>
+                                    <h4>Whole-Class Share (Teacher facilitates, does NOT teach)</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher asks:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"Group 1, what is one notice you had? Group 2, one wonder?"</p>
+                                    </div>
+                                    <p style="margin-top: 1rem;">📋 Teacher writes responses on chart paper.</p>
+                                    <div class="socratic-box" style="margin-top: 1rem;">
+                                        <h5>❓ Teacher Talk Moves:</h5>
+                                        <ul>
+                                            <li>"Who can add on to that?"</li>
+                                            <li>"Does anyone see it differently?"</li>
+                                            <li>"What makes you think that?"</li>
+                                        </ul>
+                                    </div>
+                                    <p class="phase-note">⚠️ No teaching yet. Only facilitating.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Quick Sense-Making -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 5</span>
+                                    <h4>Quick Sense-Making (Teacher guides lightly)</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="socratic-box">
+                                        <h5>❓ Guiding Questions:</h5>
+                                        <ul>
+                                            <li>"What changed in this ecosystem when the wolves were removed?"</li>
+                                            <li>"How did the deer, the plants, and the river change?"</li>
+                                        </ul>
+                                    </div>
+                                    <p style="margin-top: 1rem;">Students explain their thinking.</p>
+                                    <div class="lesson-card highlight" style="margin-top: 1rem;">
+                                        <p><strong>Teacher connects lightly:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-gold);">"What you're describing is called <strong>interdependence</strong>—how plants and animals depend on each other."</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 6: Exit Ticket -->
+                            <div class="day-card day-final">
+                                <div class="day-header">
+                                    <span class="day-number">Step 6</span>
+                                    <h4>Exit Ticket</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card assessment">
+                                        <h4>📝 Exit Ticket Prompt:</h4>
+                                        <div class="prompt-box">
+                                            <p class="prompt-text">"In your own words, describe one way plants or animals depended on each other in the Yellowstone story."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ecosystem Lesson 2: Food Chains -->
+                    <div id="lesson-ecosystem-lesson2" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 5.L.2.1 • Lesson 2</div>
+                            <h2>Food Chains</h2>
+                            <p class="lesson-subtitle">Students build food chains and explain roles</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Lesson Goal</h3>
+                            <div class="lesson-card highlight">
+                                <p class="big-text">Students build food chains and explain the role of each organism</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📚 Teacher Script – Step by Step</h3>
+
+                            <!-- Step 1: Review Phenomenon -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 1</span>
+                                    <h4>Review Phenomenon</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"Yesterday, we saw that when wolves changed, the entire system changed. Today, we're going to see how energy moves through an ecosystem."</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Mini Intro -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 2</span>
+                                    <h4>Mini Intro</h4>
+                                </div>
+                                <div class="day-content">
+                                    <p>On the board: <strong>producer – consumer – decomposer</strong></p>
+                                    <div class="socratic-box" style="margin-top: 1rem;">
+                                        <h5>❓ Ask First:</h5>
+                                        <ul>
+                                            <li>"What do you think these words mean?"</li>
+                                        </ul>
+                                    </div>
+                                    <p style="margin-top: 1rem;">Students guess first.</p>
+                                    <div class="lesson-card highlight" style="margin-top: 1rem;">
+                                        <p><strong>Teacher clarifies (only 1–2 sentences each):</strong></p>
+                                        <ul class="concept-list">
+                                            <li>A <strong>producer</strong> makes its own food.</li>
+                                            <li>A <strong>consumer</strong> eats other organisms.</li>
+                                            <li>A <strong>decomposer</strong> breaks things down.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Group Food Chain Build -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 3</span>
+                                    <h4>Group Food Chain Build</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"You're going to build at least two different food chains using these cards. Your instructions are on the board:"</p>
+                                    </div>
+                                    <div class="lesson-card essential" style="margin-top: 1rem;">
+                                        <h5 style="color: var(--accent-gold); margin-bottom: 0.75rem;">📋 Instructions:</h5>
+                                        <ol class="concept-list">
+                                            <li>Choose at least 4 organisms.</li>
+                                            <li>Arrange them into a chain.</li>
+                                            <li>Use arrows to show where energy goes.</li>
+                                            <li>Label each organism.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="socratic-box" style="margin-top: 1rem;">
+                                        <h5>❓ Teacher Guiding Questions:</h5>
+                                        <ul>
+                                            <li>"Where does the energy start?"</li>
+                                            <li>"How do you know this is a producer?"</li>
+                                            <li>"What would happen if this organism disappeared?"</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Gallery Walk -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 4</span>
+                                    <h4>Gallery Walk</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"Leave your chains on your desk. Walk around and look at other chains. Leave one sticky note with either: 'I like…' or 'I wonder…'"</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Whole-Class Discussion -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 5</span>
+                                    <h4>Whole-Class Discussion</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="socratic-box">
+                                        <h5>❓ Discussion Questions:</h5>
+                                        <ul>
+                                            <li>"What do all food chains have in common?"</li>
+                                            <li>"What would happen if the producer disappeared?"</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 6: Exit Ticket -->
+                            <div class="day-card day-final">
+                                <div class="day-header">
+                                    <span class="day-number">Step 6</span>
+                                    <h4>Exit Ticket</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card assessment">
+                                        <h4>📝 Exit Ticket Prompt:</h4>
+                                        <div class="prompt-box">
+                                            <p class="prompt-text">"Draw a food chain with four organisms. Circle the producer. Explain: Why is the producer important?"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ecosystem Lesson 3: Food Webs -->
+                    <div id="lesson-ecosystem-lesson3" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 5.L.2.2 • Lesson 3</div>
+                            <h2>Food Webs</h2>
+                            <p class="lesson-subtitle">Students see how food chains connect</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Lesson Goal</h3>
+                            <div class="lesson-card highlight">
+                                <p class="big-text">Students see how food chains connect to form food webs</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📚 Teacher Script – Step by Step</h3>
+
+                            <!-- Step 1: Launch -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 1</span>
+                                    <h4>Launch</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"Yesterday you built food chains. In real life, organisms are part of many chains at the same time. That creates a food web."</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Build a Class Food Web -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 2</span>
+                                    <h4>Build a Class Food Web</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"We're going to build a giant food web together. When I call your name, come up, pick two organisms, connect them with yarn, and explain your connection."</p>
+                                    </div>
+                                    <div class="lesson-card" style="margin-top: 1rem;">
+                                        <h5 style="color: var(--accent-gold); margin-bottom: 0.75rem;">💬 Student Phrases:</h5>
+                                        <ul class="concept-list">
+                                            <li>"The frog eats the insect…"</li>
+                                            <li>"The hawk depends on…"</li>
+                                        </ul>
+                                    </div>
+                                    <p style="margin-top: 1rem; color: var(--text-secondary);">🕸️ Large web forms on the board.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Remove a Species -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 3</span>
+                                    <h4>Remove a Species</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card essential">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-gold); padding: 1rem; background: rgba(255, 215, 0, 0.1); border-radius: 8px; margin-top: 0.5rem;">"What if all the frogs disappeared?"</p>
+                                    </div>
+                                    <p style="margin-top: 1rem;">✂️ Remove frog connections.</p>
+                                    <div class="socratic-box" style="margin-top: 1rem;">
+                                        <h5>❓ Follow-up Questions:</h5>
+                                        <ul>
+                                            <li>"How would that affect insects?"</li>
+                                            <li>"How would that affect hawks?"</li>
+                                            <li>"Who is affected first? Later?"</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Pair Talk -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 4</span>
+                                    <h4>Pair Talk</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="socratic-box">
+                                        <h5>❓ Partner Discussion:</h5>
+                                        <ul>
+                                            <li>"If one animal disappears, can plants be affected too? How?"</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Exit Ticket -->
+                            <div class="day-card day-final">
+                                <div class="day-header">
+                                    <span class="day-number">Step 5</span>
+                                    <h4>Exit Ticket</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card assessment">
+                                        <h4>📝 Exit Ticket Prompt:</h4>
+                                        <div class="prompt-box">
+                                            <p class="prompt-text">"Choose one organism. Explain how two others depend on it."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ecosystem Lesson 4: Population Simulation -->
+                    <div id="lesson-ecosystem-lesson4" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 5.L.2.3 • Lesson 4</div>
+                            <h2>Population Simulation</h2>
+                            <p class="lesson-subtitle">Students reason cause → effect relationships</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Lesson Goal</h3>
+                            <div class="lesson-card highlight">
+                                <p class="big-text">Students model population changes and reason about cause and effect</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📚 Teacher Script – Step by Step</h3>
+
+                            <!-- Step 1: Scenario Setup -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 1</span>
+                                    <h4>Scenario Setup</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"Today we'll model what happens when one population changes."</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Explain Rules -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 2</span>
+                                    <h4>Explain Rules</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card essential">
+                                        <h5 style="color: var(--accent-gold); margin-bottom: 0.75rem;">🎮 Simulation Rules:</h5>
+                                        <ul class="concept-list">
+                                            <li>1 wolf can eat 2 deer each round.</li>
+                                            <li>Deer eat plants.</li>
+                                            <li>If deer become too many, plants begin to disappear.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Simulation Rounds -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 3</span>
+                                    <h4>Simulation Rounds</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"In groups, you'll play 3–4 rounds. Record how many wolves, deer, and plants you have. After each round, write one sentence: 'When ___ changed, ___ happened.'"</p>
+                                    </div>
+                                    <div class="socratic-box" style="margin-top: 1rem;">
+                                        <h5>❓ Teacher Circulates Asking:</h5>
+                                        <ul>
+                                            <li>"What pattern are you seeing?"</li>
+                                            <li>"What might happen next round?"</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: CER Writing -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 4</span>
+                                    <h4>CER Writing</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card assessment">
+                                        <h4>📝 CER Prompt:</h4>
+                                        <div class="prompt-box">
+                                            <p class="prompt-text">"What happens when the deer population increases?"</p>
+                                        </div>
+                                        <div style="margin-top: 1rem;">
+                                            <p><strong style="color: var(--accent-cyan);">Claim:</strong> Make a statement</p>
+                                            <p><strong style="color: var(--accent-magenta);">Evidence:</strong> From the simulation</p>
+                                            <p><strong style="color: var(--accent-gold);">Reasoning:</strong> Explain why</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Share -->
+                            <div class="day-card day-final">
+                                <div class="day-header">
+                                    <span class="day-number">Step 5</span>
+                                    <h4>Share</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher asks:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"Who would like to share their CER?"</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ecosystem Lesson 5: Decomposers Matter -->
+                    <div id="lesson-ecosystem-lesson5" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 5.L.2.1 • Lesson 5</div>
+                            <h2>Decomposers Matter</h2>
+                            <p class="lesson-subtitle">Students see why ecosystems collapse without decomposers</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Lesson Goal</h3>
+                            <div class="lesson-card highlight">
+                                <p class="big-text">Students understand why ecosystems need decomposers</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📚 Teacher Script – Step by Step</h3>
+
+                            <!-- Step 1: Hook -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 1</span>
+                                    <h4>Hook</h4>
+                                </div>
+                                <div class="day-content">
+                                    <p>🍞 Hold up moldy bread or show a picture.</p>
+                                    <div class="socratic-box" style="margin-top: 1rem;">
+                                        <h5>❓ Ask:</h5>
+                                        <ul>
+                                            <li>"What do you think is happening here?"</li>
+                                        </ul>
+                                    </div>
+                                    <p style="margin-top: 1rem; color: var(--text-secondary);">Students respond with their observations.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Mini-Discuss -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 2</span>
+                                    <h4>Mini-Discuss</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"A decomposer breaks down dead things into nutrients for the soil. Examples?"</p>
+                                    </div>
+                                    <p style="margin-top: 1rem;">Students name examples (mushrooms, bacteria, worms, etc.).</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Observation -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 3</span>
+                                    <h4>Observation</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Students write:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"What do decomposers do? Where does the matter go?"</p>
+                                    </div>
+                                    <div class="lesson-card essential" style="margin-top: 1rem;">
+                                        <h5 style="color: var(--accent-gold); margin-bottom: 0.75rem;">🔄 Use Diagram:</h5>
+                                        <p style="text-align: center; font-size: 1.1rem;">dead leaves → decomposers → soil nutrients → plants</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: What If They Disappear? -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Step 4</span>
+                                    <h4>What If They Disappear?</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"With your partner, answer: What happens to plants, herbivores, and carnivores if decomposers disappear?"</p>
+                                    </div>
+                                    <p style="margin-top: 1rem;">📝 Students draw arrows showing effects.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Exit Ticket -->
+                            <div class="day-card day-final">
+                                <div class="day-header">
+                                    <span class="day-number">Step 5</span>
+                                    <h4>Exit Ticket</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card assessment">
+                                        <h4>📝 Exit Ticket Prompt:</h4>
+                                        <div class="prompt-box">
+                                            <p class="prompt-text">"Decomposers are important because ____. If they disappeared, ____."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ecosystem Lesson 6: Plants as Energy Base -->
+                    <div id="lesson-ecosystem-lesson6" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 5.L.2.2 • Lesson 6</div>
+                            <h2>Plants as Energy Base</h2>
+                            <p class="lesson-subtitle">Students understand the foundation of all food chains</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Lesson Goal</h3>
+                            <div class="lesson-card highlight">
+                                <p class="big-text">Students understand that plants are the foundation of all food chains</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📚 Teacher Script – Step by Step</h3>
+
+                            <!-- Energy Role-Play -->
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Activity</span>
+                                    <h4>Energy Role-Play</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"You are the Sun. You are plants. You are animals."</p>
+                                    </div>
+                                    <div class="lesson-card essential" style="margin-top: 1rem;">
+                                        <h5 style="color: var(--accent-gold); margin-bottom: 0.75rem;">⚡ Energy Flow:</h5>
+                                        <p style="text-align: center; font-size: 1.1rem;">Sun passes energy to plants → plants to herbivores → herbivores to carnivores</p>
+                                    </div>
+                                    <div class="lesson-card" style="margin-top: 1rem; background: rgba(255, 107, 107, 0.1); border-color: rgba(255, 107, 107, 0.3);">
+                                        <p><strong>Teacher removes "plants" and repeats:</strong></p>
+                                        <p style="font-style: italic; color: #ff6b6b; padding: 1rem; background: rgba(255, 107, 107, 0.1); border-radius: 8px; margin-top: 0.5rem;">"What happened to everyone else?"</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Exit Ticket -->
+                            <div class="day-card day-final">
+                                <div class="day-header">
+                                    <span class="day-number">Exit</span>
+                                    <h4>Exit Ticket</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card assessment">
+                                        <h4>📝 Exit Ticket Prompt:</h4>
+                                        <div class="prompt-box">
+                                            <p class="prompt-text">"Why are plants the base of the food chain?"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ecosystem Lesson 7: Card Sort -->
+                    <div id="lesson-ecosystem-lesson7" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 5.L.2.3 • Lesson 7</div>
+                            <h2>Card Sort Challenge</h2>
+                            <p class="lesson-subtitle">Students struggle productively with cause/effect</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Lesson Goal</h3>
+                            <div class="lesson-card highlight">
+                                <p class="big-text">Students analyze scenarios and predict population changes</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📚 Teacher Script</h3>
+
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Task</span>
+                                    <h4>Card Sort Activity</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"Choose a scenario. Predict how at least two populations will change. Explain why using evidence."</p>
+                                    </div>
+                                    <div class="lesson-card essential" style="margin-top: 1rem;">
+                                        <h5 style="color: var(--accent-gold); margin-bottom: 0.75rem;">📋 Student Task:</h5>
+                                        <ol class="concept-list">
+                                            <li>Choose a scenario card</li>
+                                            <li>Predict how at least two populations will change</li>
+                                            <li>Explain why using evidence from previous lessons</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lesson-section">
+                                <h3>🃏 Example Scenario Cards</h3>
+                                <div class="project-options">
+                                    <div class="project-option">
+                                        <span class="project-icon">🔥</span>
+                                        <p>A forest fire destroys most plants</p>
+                                    </div>
+                                    <div class="project-option">
+                                        <span class="project-icon">🦌</span>
+                                        <p>Deer population doubles</p>
+                                    </div>
+                                    <div class="project-option">
+                                        <span class="project-icon">🐺</span>
+                                        <p>All wolves are removed</p>
+                                    </div>
+                                    <div class="project-option">
+                                        <span class="project-icon">🌧️</span>
+                                        <p>Drought kills half the plants</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ecosystem Lesson 8: Student-Led Discussion -->
+                    <div id="lesson-ecosystem-lesson8" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 5.L.2 • Lesson 8</div>
+                            <h2>Student-Led Discussion</h2>
+                            <p class="lesson-subtitle">Students teach the class how to solve test questions</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Lesson Goal</h3>
+                            <div class="lesson-card highlight">
+                                <p class="big-text">Students lead discussions and explain their reasoning</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📚 Teacher Script</h3>
+
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Setup</span>
+                                    <h4>Student-Led Teaching</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p><strong>Teacher says:</strong></p>
+                                        <p style="font-style: italic; color: var(--accent-cyan); padding: 1rem; background: rgba(0, 212, 255, 0.1); border-radius: 8px; margin-top: 0.5rem;">"Today YOU will teach the class how to solve these questions. You cannot just give a letter. You must explain why."</p>
+                                    </div>
+                                    <div class="socratic-box" style="margin-top: 1rem;">
+                                        <h5>❓ Teacher Prompts:</h5>
+                                        <ul>
+                                            <li>"What is your evidence?"</li>
+                                            <li>"Who sees it differently?"</li>
+                                            <li>"Which organisms depend on which?"</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lesson-card teacher-role" style="margin-top: 1rem;">
+                                <h5 style="color: var(--accent-magenta); margin-bottom: 0.75rem;">👨‍🏫 Teacher Role:</h5>
+                                <ul class="teacher-rules">
+                                    <li><span class="rule-icon">🚫</span> Does NOT give answers</li>
+                                    <li><span class="rule-icon">✅</span> Only facilitates discussion</li>
+                                    <li><span class="rule-icon">❓</span> Asks probing questions</li>
+                                    <li><span class="rule-icon">👂</span> Lets students explain to each other</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ecosystem Lesson 9: Final Assessment -->
+                    <div id="lesson-ecosystem-lesson9" class="lesson-plan">
+                        <div class="lesson-header">
+                            <div class="lesson-badge">NC 5.L.2 • Lesson 9</div>
+                            <h2>Final Assessment</h2>
+                            <p class="lesson-subtitle">Mini quiz + CER assessment</p>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>🎯 Assessment Goal</h3>
+                            <div class="lesson-card highlight">
+                                <p class="big-text">Students demonstrate understanding of ecosystem interdependence</p>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📝 Assessment Structure</h3>
+
+                            <div class="day-card">
+                                <div class="day-header">
+                                    <span class="day-number">Part 1</span>
+                                    <h4>Mini Quiz</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card">
+                                        <p>Multiple choice and short answer questions covering:</p>
+                                        <ul class="concept-list">
+                                            <li>Producers, consumers, decomposers</li>
+                                            <li>Food chains and food webs</li>
+                                            <li>Cause and effect relationships</li>
+                                            <li>Interdependence of organisms</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="day-card day-final">
+                                <div class="day-header">
+                                    <span class="day-number">Part 2</span>
+                                    <h4>CER Response</h4>
+                                </div>
+                                <div class="day-content">
+                                    <div class="lesson-card assessment">
+                                        <h4>📝 CER Prompt:</h4>
+                                        <div class="prompt-box">
+                                            <p class="prompt-text">"What would happen if all decomposers disappeared from a forest ecosystem?"</p>
+                                        </div>
+                                        <div style="margin-top: 1.5rem;">
+                                            <p><strong style="color: var(--accent-cyan);">Claim:</strong> State what would happen</p>
+                                            <p><strong style="color: var(--accent-magenta);">Evidence:</strong> Use what you learned about decomposers</p>
+                                            <p><strong style="color: var(--accent-gold);">Reasoning:</strong> Explain the chain of effects</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lesson-section">
+                            <h3>📊 Grading Rubric</h3>
+                            <div class="rubric-display">
+                                <table class="rubric-table">
+                                    <tr>
+                                        <td>Clear, accurate claim</td>
+                                        <td>1 point</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Relevant evidence from lessons</td>
+                                        <td>2 points</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Logical reasoning connecting evidence to claim</td>
+                                        <td>2 points</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Uses scientific vocabulary correctly</td>
+                                        <td>1 point</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="week-summary final" style="margin-top: 2rem;">
+                            <h4>🎉 Unit Complete!</h4>
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <span class="summary-icon">🌿</span>
+                                    <p>Producers</p>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-icon">🦌</span>
+                                    <p>Consumers</p>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-icon">🍄</span>
+                                    <p>Decomposers</p>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-icon">🕸️</span>
+                                    <p>Food Webs</p>
+                                </div>
+                            </div>
+                            <p class="summary-note">Students now understand how organisms depend on each other and how changes affect the entire ecosystem.</p>
                         </div>
                     </div>
 
