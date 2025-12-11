@@ -1814,9 +1814,7 @@ body {
 
 /* ===== 21st Century Skills Section ===== */
 .century-skills-section {
-    margin-top: 4rem;
-    padding-top: 3rem;
-    border-top: 1px solid var(--border-subtle);
+    padding-top: 1rem;
 }
 
 .skills-hero {
