@@ -196,7 +196,7 @@
     </style>
 </head>
 <body>
-    <!-- Auth Overlay - Simple Password Protection -->
+    <!-- Auth Overlay - Name-Based Access -->
     <div id="authOverlay" class="auth-overlay">
         <div class="auth-container">
             <div class="auth-logo">
@@ -205,24 +205,43 @@
             </div>
             
             <div style="text-align: center; margin-bottom: 24px;">
-                <p style="color: rgba(255,255,255,0.7); font-size: 15px;">🔐 This site requires a password to access</p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 15px;">👋 Welcome! Please enter your name to continue</p>
             </div>
             
-            <!-- Password Form -->
+            <!-- Name Form -->
             <form id="loginForm" onsubmit="handleLogin(event)">
                 <div class="auth-input-group">
-                    <label>Access Password</label>
-                    <input type="password" id="loginPassword" placeholder="Enter access password" required>
+                    <label>Your Full Name</label>
+                    <input type="text" id="userName" placeholder="Enter your full name" required autocomplete="off">
                 </div>
-                <button type="submit" class="auth-btn">🚀 Enter Site</button>
+                <button type="submit" class="auth-btn">🚀 Request Access</button>
                 <div id="loginMessage" class="auth-message"></div>
             </form>
             
+            <!-- Pending Screen (shown after submission) -->
+            <div id="pendingScreen" style="display: none; text-align: center; padding: 20px 0;">
+                <div style="font-size: 64px; margin-bottom: 20px; animation: pulse 2s infinite;">⏳</div>
+                <h3 style="color: #fff; font-size: 20px; margin-bottom: 12px;">Awaiting Approval</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6;">
+                    Hi <span id="pendingName" style="color: #00c8ff; font-weight: 600;"></span>!<br>
+                    Your access request has been submitted.<br>
+                    Please wait for admin approval.
+                </p>
+                <button onclick="resetForm()" style="margin-top: 20px; padding: 10px 24px; background: transparent; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; color: rgba(255,255,255,0.7); cursor: pointer;">Try Different Name</button>
+            </div>
+            
             <div class="auth-note" style="margin-top: 24px;">
-                <p>💡 <strong>Need access?</strong> Contact the administrator to get the password.</p>
+                <p>💡 <strong>First time?</strong> Enter your name and wait for admin approval.</p>
             </div>
         </div>
     </div>
+    
+    <style>
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
 
     <div class="background-effects">
         <div class="orb orb-1"></div>
@@ -244,7 +263,7 @@
             <a href="#" class="nav-link" data-section="ai-chat">🤖 AI Assistant</a>
         </div>
         <div id="userMenu" class="user-menu hidden">
-            <span style="color: rgba(255,255,255,0.6); font-size: 13px;">🔓 Access Granted</span>
+            <span style="color: rgba(255,255,255,0.8); font-size: 13px;">👋 Welcome, <strong id="userDisplayName"></strong></span>
             <button class="nav-logout-btn" onclick="handleLogout()">Logout</button>
         </div>
     </nav>
@@ -3546,44 +3565,89 @@
     <script src="app.js"></script>
     
     <script>
-        // ========== SIMPLE PASSWORD PROTECTION ==========
-        // Change this password to whatever you want
-        const ACCESS_PASSWORD = "science2025";
+        // ========== NAME-BASED ACCESS CONTROL ==========
+        // Add approved names here (lowercase for comparison)
+        const APPROVED_USERS = [
+            "selin yildiz",
+            "admin",
+            // Add more approved names below:
+            // "john doe",
+            // "jane smith",
+        ];
         
         // Check if already authenticated
         function checkAuth() {
-            const isAuthenticated = sessionStorage.getItem('scienceverse_auth') === 'true';
-            if (isAuthenticated) {
-                document.getElementById('authOverlay').classList.add('hidden');
-                document.getElementById('userMenu').classList.remove('hidden');
+            const userName = localStorage.getItem('scienceverse_user');
+            if (userName && isApproved(userName)) {
+                showMainContent(userName);
+            } else if (userName) {
+                // User submitted name but not yet approved
+                showPendingScreen(userName);
             }
+        }
+        
+        // Check if user is approved
+        function isApproved(name) {
+            return APPROVED_USERS.includes(name.toLowerCase().trim());
         }
         
         // Handle Login
         function handleLogin(e) {
             e.preventDefault();
-            const password = document.getElementById('loginPassword').value;
+            const name = document.getElementById('userName').value.trim();
             const messageEl = document.getElementById('loginMessage');
             
-            if (password === ACCESS_PASSWORD) {
-                sessionStorage.setItem('scienceverse_auth', 'true');
-                document.getElementById('authOverlay').classList.add('hidden');
-                document.getElementById('userMenu').classList.remove('hidden');
-                messageEl.textContent = 'Access granted!';
-                messageEl.className = 'auth-message success';
-            } else {
-                messageEl.textContent = 'Incorrect password. Please try again.';
+            if (!name) {
+                messageEl.textContent = 'Please enter your name.';
                 messageEl.className = 'auth-message error';
+                return;
             }
+            
+            // Save name to localStorage
+            localStorage.setItem('scienceverse_user', name);
+            
+            if (isApproved(name)) {
+                // User is approved - grant access
+                messageEl.textContent = 'Access granted! Welcome, ' + name + '!';
+                messageEl.className = 'auth-message success';
+                setTimeout(() => showMainContent(name), 1000);
+            } else {
+                // User not approved yet - show pending screen
+                showPendingScreen(name);
+            }
+        }
+        
+        // Show main content
+        function showMainContent(name) {
+            document.getElementById('authOverlay').classList.add('hidden');
+            document.getElementById('userMenu').classList.remove('hidden');
+            document.getElementById('userDisplayName').textContent = name;
+        }
+        
+        // Show pending screen
+        function showPendingScreen(name) {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('pendingScreen').style.display = 'block';
+            document.getElementById('pendingName').textContent = name;
+            document.querySelector('.auth-note').style.display = 'none';
+        }
+        
+        // Reset form to try different name
+        function resetForm() {
+            localStorage.removeItem('scienceverse_user');
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('pendingScreen').style.display = 'none';
+            document.getElementById('userName').value = '';
+            document.getElementById('loginMessage').className = 'auth-message';
+            document.querySelector('.auth-note').style.display = 'block';
         }
         
         // Handle Logout
         function handleLogout() {
-            sessionStorage.removeItem('scienceverse_auth');
+            localStorage.removeItem('scienceverse_user');
             document.getElementById('authOverlay').classList.remove('hidden');
             document.getElementById('userMenu').classList.add('hidden');
-            document.getElementById('loginPassword').value = '';
-            document.getElementById('loginMessage').className = 'auth-message';
+            resetForm();
         }
         
         // Check auth on page load
