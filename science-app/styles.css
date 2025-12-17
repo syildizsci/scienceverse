@@ -3868,3 +3868,192 @@ body {
         padding-left: 1rem;
     }
 }
+
+/* ===== 21st Century Knowledge Visual ===== */
+.knowledge-visual {
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+}
+
+.knowledge-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.knowledge-stage {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+    position: relative;
+    border: 2px solid var(--border-subtle);
+    transition: all 0.4s ease;
+}
+
+.knowledge-stage:hover {
+    transform: translateY(-5px);
+}
+
+.knowledge-stage.access {
+    border-color: rgba(0, 212, 255, 0.3);
+    background: linear-gradient(145deg, rgba(0, 212, 255, 0.08), var(--bg-card));
+}
+
+.knowledge-stage.apply {
+    border-color: rgba(255, 215, 0, 0.4);
+    background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), var(--bg-card));
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.15);
+}
+
+.knowledge-stage .stage-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.knowledge-stage h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.knowledge-stage.access h3 {
+    color: var(--accent-cyan);
+}
+
+.knowledge-stage.apply h3 {
+    color: var(--accent-gold);
+}
+
+.knowledge-stage > p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+}
+
+.stage-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.stage-items span {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.stage-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.stage-badge.easy {
+    background: rgba(0, 212, 255, 0.2);
+    color: var(--accent-cyan);
+}
+
+.stage-badge.important {
+    background: linear-gradient(135deg, var(--accent-gold), #ff8c00);
+    color: #000;
+    animation: pulseGold 2s ease-in-out infinite;
+}
+
+@keyframes pulseGold {
+    0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7); }
+}
+
+.flow-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.arrow-line {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-gold));
+    border-radius: 2px;
+}
+
+.arrow-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.arrow-head {
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: arrowPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowPulse {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+
+.knowledge-message {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 0, 170, 0.05));
+    border-radius: 16px;
+    border-left: 4px solid var(--accent-gold);
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.knowledge-message .message-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.knowledge-message p {
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.knowledge-message em {
+    color: var(--accent-gold);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .knowledge-flow {
+        flex-direction: column;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .knowledge-stage {
+        min-width: 100%;
+    }
+    
+    .knowledge-message {
+        flex-direction: column;
+        text-align: center;
+    }
+}
