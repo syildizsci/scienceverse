@@ -7,33 +7,36 @@ const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/
 // System prompt for Socratic teaching
 const SYSTEM_PROMPT = `You are a Socratic science tutor for children aged 8-14.
 
+RESPONSE FORMAT:
+1. Start with "😊 Hmm, great question!" or "😊 Ooh, interesting!" with smiley emoji
+2. Say "Let's think about this together..."
+3. Ask ONE simple question DIRECTLY about what they asked
+
 CRITICAL RULES:
-1. NEVER explain or give answers directly
-2. ALWAYS ask a RELEVANT follow-up question about EXACTLY what the child asked
-3. Your question must DIRECTLY relate to their question - stay on topic!
-4. Keep responses SHORT (1-2 sentences max)
-5. Use simple language and 1-2 emojis
-6. Guide them to discover the answer step by step
+- Ask about the EXACT thing they mentioned, not a related concept
+- Start with BASIC observations, not complex science
+- Use their everyday experience
+- Keep it SHORT (2-3 sentences max)
+- Use simple words a child knows
 
-IMPORTANT: Your question must be DIRECTLY about what they asked, not a random science question!
+EXAMPLES:
 
-Examples:
-
-Child: "Why is the sun active during the day?"
-BAD: "Why do stars look tiny?" (unrelated!)
-GOOD: "🌞 Interesting! Is the sun only there during the day, or is it always there? What do you think happens to it at night?"
+Child: "What is water?"
+BAD: "What happens to a puddle on a sunny day?" (too complex, about evaporation!)
+GOOD: "😊 Hmm, great question! Let's think together... Where do you see water every day? What does it feel like when you touch it?"
 
 Child: "Why is the sky blue?"
-BAD: "What do you know about planets?" (unrelated!)  
-GOOD: "🤔 Good question! What other colors do you see in the sky? When does the sky look different colors?"
+BAD: "What do you know about light waves?" (too complex!)
+GOOD: "😊 Ooh, interesting! Let's think together... What color is the sky right now? Does it ever look different colors?"
+
+Child: "What is the sun?"
+BAD: "Do you know about nuclear fusion?" (way too complex!)
+GOOD: "😊 Hmm, great question! Let's think together... What do you feel when you stand in sunlight? Is it warm or cold?"
 
 Child: "How do plants grow?"
-GOOD: "🌱 Great question! What do you think plants need to grow? Have you ever tried growing one?"
+GOOD: "😊 Ooh, interesting! Let's think together... What do you give a plant to keep it alive? What does it need?"
 
-Child: "What are atoms?"
-GOOD: "⚛️ Curious mind! Everything around you is made of tiny pieces. What's the smallest thing you can see with your eyes?"
-
-Stay focused on THEIR question and guide them to the answer!`;
+ALWAYS ask about what they can SEE, TOUCH, or EXPERIENCE directly!`;
 
 // Call Gemini API
 async function callGemini(userMessage, conversationHistory = []) {
@@ -76,104 +79,104 @@ let conversationHistory = [];
 // Socratic questions for each topic
 const socraticQuestions = {
     "space": [
-        "🌞 Let's think together! What do you see in the sky during the day?",
-        "🤔 If the Sun is a star, why do other stars look so tiny at night?",
-        "🌍 Why do you think we have day and night? What's moving?",
-        "🚀 If you could visit any planet, which one would you choose? Why?",
-        "⭐ How many planets can you name? Let's count together!",
-        "🌙 Why does the Moon look different on different nights?"
+        "😊 Hmm, great question! Let's think together... What do you see in the sky during the day? At night?",
+        "😊 Ooh, interesting! Let's think together... Have you ever looked at the stars? What do they look like?",
+        "😊 Hmm, great question! Let's think together... Why is it dark at night but bright during the day?",
+        "😊 Ooh, interesting! Let's think together... What planets do you know? Have you seen any in the sky?",
+        "😊 Hmm, great question! Let's think together... What does the Moon look like tonight? Is it round or not?",
+        "😊 Ooh, interesting! Let's think together... Is the Sun hot or cold? How do you know?"
     ],
     "gravity": [
-        "🍎 When you drop something, what happens? Why doesn't it float away?",
-        "🌙 Astronauts float in space! Why don't we float here on Earth?",
-        "⚽ If you throw a ball up, what happens? Why does it come back?",
-        "🤔 Do you think a feather and a rock fall at the same speed? Why?",
-        "🌍 What would happen if there was no gravity? What would your day be like?",
-        "🎈 Why do helium balloons float up but regular balloons fall down?"
+        "😊 Hmm, great question! Let's think together... When you drop something, what happens to it?",
+        "😊 Ooh, interesting! Let's think together... If you throw a ball up, does it stay up or come back down?",
+        "😊 Hmm, great question! Let's think together... Why do you stay on the ground instead of floating away?",
+        "😊 Ooh, interesting! Let's think together... When you jump, what brings you back down?",
+        "😊 Hmm, great question! Let's think together... Does a heavy thing fall faster than a light thing? What do you think?",
+        "😊 Ooh, interesting! Let's think together... Why don't things float around like they do in space videos?"
     ],
     "body": [
-        "🔬 Your body is made of tiny pieces called cells. How tiny do you think they are?",
-        "🤔 Cells need energy to work. Where do YOU get your energy from?",
-        "🧠 Your brain is made of cells too! What do you think brain cells do?",
-        "💪 Why do you think your muscles get tired when you exercise?",
-        "❤️ Can you feel your heart beating? Why do you think it never stops?",
-        "🦴 What do you think is inside your bones?"
+        "😊 Hmm, great question! Let's think together... What parts of your body can you name? Hands, eyes, heart?",
+        "😊 Ooh, interesting! Let's think together... Can you feel your heart beating? Put your hand on your chest!",
+        "😊 Hmm, great question! Let's think together... What happens when you run really fast? How does your body feel?",
+        "😊 Ooh, interesting! Let's think together... Why do you need to eat food? What does your body do with it?",
+        "😊 Hmm, great question! Let's think together... What do your eyes help you do? What about your ears?",
+        "😊 Ooh, interesting! Let's think together... Why do you think you need to sleep every night?"
     ],
     "plants": [
-        "🌱 Plants make their own food! How do you think they do it without a mouth?",
-        "☀️ Why do plants need sunlight? What happens if you put a plant in the dark?",
-        "🌿 Why are most plants green? What do you think makes that color?",
-        "💧 What happens to a plant if you forget to water it? Why?",
-        "🌳 How do you think a tiny seed becomes a huge tree?",
-        "🍃 Why do leaves fall off trees in autumn?"
+        "😊 Hmm, great question! Let's think together... What plants do you see around you? Trees, flowers, grass?",
+        "😊 Ooh, interesting! Let's think together... What do you need to keep a plant alive? What does it need?",
+        "😊 Hmm, great question! Let's think together... What color are most plants? Why do you think they look that way?",
+        "😊 Ooh, interesting! Let's think together... What happens if you don't water a plant for a long time?",
+        "😊 Hmm, great question! Let's think together... Have you ever planted a seed? What did it need to grow?",
+        "😊 Ooh, interesting! Let's think together... Where do plants get their food from? Do they eat like us?"
     ],
     "water": [
-        "💧 Where does rain come from? Where do clouds get their water?",
-        "☀️ What happens to a puddle on a sunny day? Where does the water go?",
-        "🤔 Is the water you drink today new, or has it been around before?",
-        "❄️ Why does water turn into ice when it's cold?",
-        "🌊 Where do rivers go? Do they ever run out of water?",
-        "☁️ What do you think clouds are made of?"
+        "😊 Hmm, great question! Let's think together... Where do you see water every day? In your home, outside?",
+        "😊 Ooh, interesting! Let's think together... What does water feel like? Is it hard or soft?",
+        "😊 Hmm, great question! Let's think together... What can you do with water? Can you drink it, swim in it?",
+        "😊 Ooh, interesting! Let's think together... What color is water? Can you see through it?",
+        "😊 Hmm, great question! Let's think together... Is water always liquid? What happens when it gets very cold?",
+        "😊 Ooh, interesting! Let's think together... Where does the water in your glass come from?"
     ],
     "atoms": [
-        "🔍 Everything is made of tiny things called atoms! What do you think atoms are made of?",
-        "🤔 Can you see atoms? Why or why not?",
-        "💨 Is air made of atoms too? How do you know air exists if you can't see it?",
-        "🧊 Ice and water are both made of the same atoms. What's different about them?",
-        "✨ What do you think is smaller - an atom or a grain of sand?",
-        "🎈 Why do you think some things are hard and some are soft?"
+        "😊 Hmm, great question! Let's think together... What is the smallest thing you can see with your eyes?",
+        "😊 Ooh, interesting! Let's think together... Everything around you is made of tiny pieces. What things do you see around you?",
+        "😊 Hmm, great question! Let's think together... Can you break a cookie into smaller pieces? How small can it go?",
+        "😊 Ooh, interesting! Let's think together... Is a grain of sand big or small? Could there be something even smaller?",
+        "😊 Hmm, great question! Let's think together... What's the difference between water and ice? They're made of the same stuff!",
+        "😊 Ooh, interesting! Let's think together... Can you see air? How do you know it's there?"
     ]
 };
 
 // Turkish versions
 const socraticQuestionsTR = {
     "space": [
-        "🌞 Birlikte düşünelim! Gündüz gökyüzünde ne görüyorsun?",
-        "🤔 Güneş bir yıldızsa, diğer yıldızlar gece neden çok küçük görünüyor?",
-        "🌍 Sence gece ve gündüz neden oluyor? Ne hareket ediyor?",
-        "🚀 Herhangi bir gezegene gidebilsen hangisine giderdin? Neden?",
-        "⭐ Kaç gezegen sayabilirsin? Birlikte sayalım!",
-        "🌙 Ay neden her gece farklı görünüyor?"
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Gündüz gökyüzünde ne görüyorsun? Ya gece?",
+        "😊 İlginç! Birlikte düşünelim... Yıldızlara hiç baktın mı? Nasıl görünüyorlar?",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Gece neden karanlık, gündüz neden aydınlık?",
+        "😊 İlginç! Birlikte düşünelim... Hangi gezegenleri biliyorsun? Gökyüzünde hiç gördün mü?",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Ay bu gece nasıl görünüyor? Yuvarlak mı?",
+        "😊 İlginç! Birlikte düşünelim... Güneş sıcak mı soğuk mu? Nereden biliyorsun?"
     ],
     "gravity": [
-        "🍎 Bir şeyi bıraktığında ne oluyor? Neden havada kalmıyor?",
-        "🌙 Astronotlar uzayda süzülüyor! Biz neden süzülmüyoruz?",
-        "⚽ Bir topu yukarı atarsan ne olur? Neden geri düşüyor?",
-        "🤔 Sence bir tüy ve bir taş aynı hızda mı düşer? Neden?",
-        "🌍 Yerçekimi olmasaydı ne olurdu? Günün nasıl geçerdi?",
-        "🎈 Helyum balonları neden uçuyor ama normal balonlar düşüyor?"
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Bir şeyi bıraktığında ne oluyor?",
+        "😊 İlginç! Birlikte düşünelim... Topu yukarı atınca ne oluyor? Yukarıda kalıyor mu?",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Neden yerde duruyorsun, havada süzülmüyorsun?",
+        "😊 İlginç! Birlikte düşünelim... Zıpladığında seni aşağı ne indiriyor?",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Ağır bir şey hafif bir şeyden hızlı mı düşer?",
+        "😊 İlginç! Birlikte düşünelim... Uzay videolarındaki gibi eşyalar neden etrafta süzülmüyor?"
     ],
     "body": [
-        "🔬 Vücudun hücre denen küçük parçalardan oluşuyor. Sence ne kadar küçükler?",
-        "🤔 Hücreler çalışmak için enerji gerekir. SEN enerjini nereden alıyorsun?",
-        "🧠 Beynin de hücrelerden oluşuyor! Beyin hücreleri sence ne yapıyor?",
-        "💪 Egzersiz yapınca kasların neden yoruluyor sence?",
-        "❤️ Kalbinin attığını hissedebiliyor musun? Neden hiç durmuyor?",
-        "🦴 Kemiklerinin içinde ne var sence?"
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Vücudunun hangi parçalarını sayabilirsin? Eller, gözler, kalp?",
+        "😊 İlginç! Birlikte düşünelim... Kalbinin attığını hissedebiliyor musun? Elini göğsüne koy!",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Çok hızlı koşunca ne oluyor? Vücudun nasıl hissediyor?",
+        "😊 İlginç! Birlikte düşünelim... Neden yemek yemen gerekiyor? Vücudun yemekle ne yapıyor?",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Gözlerin ne işe yarıyor? Ya kulakların?",
+        "😊 İlginç! Birlikte düşünelim... Neden her gece uyuman gerekiyor sence?"
     ],
     "plants": [
-        "🌱 Bitkiler kendi yemeklerini yapıyor! Ağızları olmadan nasıl yapıyorlar sence?",
-        "☀️ Bitkiler neden güneş ışığına ihtiyaç duyar? Karanlıkta ne olur?",
-        "🌿 Bitkilerin çoğu neden yeşil? Bu rengi ne yapıyor sence?",
-        "💧 Bir bitkiyi sulamayı unutursan ne olur? Neden?",
-        "🌳 Küçücük bir tohum nasıl kocaman bir ağaç oluyor sence?",
-        "🍃 Sonbaharda yapraklar neden dökülüyor?"
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Etrafında hangi bitkileri görüyorsun? Ağaçlar, çiçekler, çimenler?",
+        "😊 İlginç! Birlikte düşünelim... Bir bitkiyi canlı tutmak için ne yaparsın? Neye ihtiyacı var?",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Bitkilerin çoğu ne renk? Neden öyle görünüyorlar sence?",
+        "😊 İlginç! Birlikte düşünelim... Bir bitkiyi uzun süre sulamazsan ne olur?",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Hiç tohum ektin mi? Büyümek için neye ihtiyacı vardı?",
+        "😊 İlginç! Birlikte düşünelim... Bitkiler yemeklerini nereden alıyor? Bizim gibi mi yiyorlar?"
     ],
     "water": [
-        "💧 Yağmur nereden geliyor? Bulutlar suyunu nereden alıyor?",
-        "☀️ Güneşli bir günde su birikintisine ne olur? Su nereye gidiyor?",
-        "🤔 Bugün içtiğin su yeni mi, yoksa daha önce var mıydı?",
-        "❄️ Su soğuyunca neden buza dönüşüyor?",
-        "🌊 Nehirler nereye gidiyor? Suları hiç bitiyor mu?",
-        "☁️ Bulutlar sence neden oluşuyor?"
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Her gün suyu nerede görüyorsun? Evinde, dışarıda?",
+        "😊 İlginç! Birlikte düşünelim... Su nasıl hissettiriyor? Sert mi yumuşak mı?",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Su ile ne yapabilirsin? İçebilir misin, yüzebilir misin?",
+        "😊 İlginç! Birlikte düşünelim... Su ne renk? İçinden görebiliyor musun?",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Su hep sıvı mı? Çok soğuyunca ne oluyor?",
+        "😊 İlginç! Birlikte düşünelim... Bardağındaki su nereden geliyor?"
     ],
     "atoms": [
-        "🔍 Her şey atom denen küçük parçalardan oluşuyor! Atomlar neden oluşuyor sence?",
-        "🤔 Atomları görebilir misin? Neden?",
-        "💨 Hava da atomlardan mı oluşuyor? Havayı göremiyorsan var olduğunu nasıl biliyorsun?",
-        "🧊 Buz ve su aynı atomlardan oluşuyor. Farkları ne peki?",
-        "✨ Hangisi daha küçük sence - bir atom mu, bir kum tanesi mi?",
-        "🎈 Bazı şeyler neden sert, bazıları yumuşak sence?"
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Gözlerinle görebildiğin en küçük şey ne?",
+        "😊 İlginç! Birlikte düşünelim... Etrafındaki her şey küçük parçalardan oluşuyor. Etrafında neler görüyorsun?",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Bir kurabiyeyi küçük parçalara bölebilir misin? Ne kadar küçük olabilir?",
+        "😊 İlginç! Birlikte düşünelim... Bir kum tanesi büyük mü küçük mü? Daha küçük bir şey olabilir mi?",
+        "😊 Hmm, güzel soru! Birlikte düşünelim... Su ile buz arasındaki fark ne? Aynı şeyden yapılmışlar!",
+        "😊 İlginç! Birlikte düşünelim... Havayı görebiliyor musun? Orada olduğunu nasıl biliyorsun?"
     ]
 };
 
