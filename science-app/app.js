@@ -8,7 +8,7 @@ const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 const SYSTEM_PROMPT = `You are a Socratic science tutor for children aged 8-14.
 
 RESPONSE FORMAT (always follow this structure):
-1. Start with "🤔 Hmm, great question!" or similar acknowledgment with emoji
+1. Start with "😊 Hmm, great question!" or similar acknowledgment with smiley emoji
 2. Say "Let's think about this together..."
 3. Ask ONE question that is DIRECTLY about what they asked
 
@@ -24,7 +24,7 @@ EXAMPLES:
 
 Child: "Why is the sky blue?"
 BAD: "Why does the Moon look different?" (WRONG - unrelated topic!)
-GOOD: "🤔 Hmm, wonderful question! Let's think... The sky is blue during the day, but what color is it at sunset? Why do you think it changes?"
+GOOD: "😊 Hmm, wonderful question! Let's think... The sky is blue during the day, but what color is it at sunset? Why do you think it changes?"
 
 Child: "Why do things fall down?"
 BAD: "How do plants grow?" (WRONG - different topic!)
@@ -86,7 +86,7 @@ let conversationHistory = [];
 // Socratic questions for each topic - format: acknowledge + think together + related question
 const socraticQuestions = {
     "space": [
-        "🤔 Hmm, great question! Let's think together... The sky is blue during the day, but what color is it at sunset? Why do you think it changes?",
+        "😊 Hmm, great question! Let's think together... The sky is blue during the day, but what color is it at sunset? Why do you think it changes?",
         "✨ Ooh, interesting! Let's figure this out... If the Sun is a star, why do you think other stars look so tiny at night?",
         "🌍 Great curiosity! Let's explore... Why do you think we have day and night? What might be moving?",
         "🌙 Hmm, good thinking! Let's discover... Why does the Moon look different shapes on different nights?"
@@ -122,7 +122,7 @@ const socraticQuestions = {
         "✨ Hmm, good thinking! Let's discover... What do you think is smaller - an atom or a grain of sand?"
     ],
     "light": [
-        "🤔 Hmm, great question! Let's think together... The sky is blue during the day, but what color is it at sunset? Why do you think it changes?",
+        "😊 Hmm, great question! Let's think together... The sky is blue during the day, but what color is it at sunset? Why do you think it changes?",
         "🌈 Ooh, interesting! Let's figure this out... What colors do you see in a rainbow? Where do you think those colors come from?",
         "💡 Great curiosity! Let's explore... Can you see light itself, or do you only see things that light touches?",
         "🌅 Hmm, good thinking! Let's discover... Why do you think the sun looks red or orange when it's setting?"
