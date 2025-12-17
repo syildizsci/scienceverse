@@ -128,6 +128,14 @@ const socraticQuestions = {
         "🧊 Ice and water are both made of the same atoms. What's different about them?",
         "✨ What do you think is smaller - an atom or a grain of sand?",
         "🎈 Why do you think some things are hard and some are soft?"
+    ],
+    "light": [
+        "🌈 What colors do you see in a rainbow? Where do you think those colors come from?",
+        "🤔 The sky looks blue during the day, but what color is it at sunset? Why do you think it changes?",
+        "💡 Can you see light itself, or do you only see things that light touches?",
+        "🔦 What happens to your shadow when you move closer to a light? Why?",
+        "👀 How do your eyes let you see things? What do they need?",
+        "🌅 Why do you think the sun looks red or orange when it's setting?"
     ]
 };
 
@@ -180,17 +188,26 @@ const socraticQuestionsTR = {
         "🧊 Buz ve su aynı atomlardan oluşuyor. Farkları ne peki?",
         "✨ Hangisi daha küçük sence - bir atom mu, bir kum tanesi mi?",
         "🎈 Bazı şeyler neden sert, bazıları yumuşak sence?"
+    ],
+    "light": [
+        "🌈 Gökkuşağında hangi renkleri görüyorsun? Bu renkler nereden geliyor sence?",
+        "🤔 Gökyüzü gündüz mavi, ama gün batımında ne renk? Neden değişiyor sence?",
+        "💡 Işığın kendisini görebilir misin, yoksa sadece ışığın dokunduğu şeyleri mi görürsün?",
+        "🔦 Işığa yaklaştığında gölgen ne olur? Neden?",
+        "👀 Gözlerin şeyleri nasıl görüyor? Neye ihtiyaçları var?",
+        "🌅 Güneş batarken neden kırmızı veya turuncu görünüyor sence?"
     ]
 };
 
 // Keywords that trigger each topic
 const topicKeywords = {
-    "space": ["space", "planet", "planets", "sun", "moon", "star", "stars", "earth", "mars", "jupiter", "saturn", "solar", "galaxy", "universe", "rocket", "astronaut", "uzay", "gezegen", "güneş", "ay", "yıldız", "dünya", "evren"],
-    "gravity": ["gravity", "fall", "falls", "falling", "drop", "float", "weight", "heavy", "light", "newton", "yerçekimi", "düşmek", "düşer", "ağırlık", "hafif", "ağır"],
-    "body": ["body", "cell", "cells", "organ", "heart", "brain", "blood", "bone", "muscle", "dna", "gene", "vücut", "hücre", "organ", "kalp", "beyin", "kan", "kemik", "kas"],
+    "space": ["space", "planet", "planets", "sun", "moon", "star", "stars", "earth", "mars", "jupiter", "saturn", "solar", "galaxy", "universe", "rocket", "astronaut", "sky", "blue", "night", "day", "uzay", "gezegen", "güneş", "ay", "yıldız", "dünya", "evren", "gökyüzü", "mavi", "gece", "gündüz"],
+    "gravity": ["gravity", "fall", "falls", "falling", "drop", "float", "weight", "heavy", "newton", "yerçekimi", "düşmek", "düşer", "ağırlık", "hafif", "ağır", "neden düşüyor"],
+    "body": ["body", "cell", "cells", "organ", "heart", "brain", "blood", "bone", "muscle", "dna", "gene", "breathe", "eat", "sleep", "vücut", "hücre", "organ", "kalp", "beyin", "kan", "kemik", "kas", "nefes", "yemek", "uyku"],
     "plants": ["plant", "plants", "tree", "leaf", "flower", "seed", "grow", "root", "photosynthesis", "green", "bitki", "ağaç", "yaprak", "çiçek", "tohum", "büyümek", "kök", "fotosentez", "yeşil"],
     "water": ["water", "rain", "cloud", "river", "ocean", "sea", "ice", "snow", "evaporation", "cycle", "su", "yağmur", "bulut", "nehir", "okyanus", "deniz", "buz", "kar"],
-    "atoms": ["atom", "atoms", "molecule", "matter", "element", "proton", "electron", "chemistry", "atom", "molekül", "madde", "element", "kimya"]
+    "atoms": ["atom", "atoms", "molecule", "matter", "element", "proton", "electron", "chemistry", "atom", "molekül", "madde", "element", "kimya"],
+    "light": ["light", "color", "colours", "rainbow", "shadow", "see", "eyes", "ışık", "renk", "gökkuşağı", "gölge", "görmek", "göz"]
 };
 
 // Detect language
