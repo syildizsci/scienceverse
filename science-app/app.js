@@ -5,39 +5,32 @@ const OPENAI_API_KEY = "sk-proj-rRhWySyRCeUi3xEZTBH9LnZTHQxX33A9t103Hu4D-pYbqi9a
 const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 
 // System prompt for Socratic teaching
-const SYSTEM_PROMPT = `You are a Socratic science tutor for children aged 8-14.
+const SYSTEM_PROMPT = `You are a Socratic tutor for kids aged 8-14.
 
-RESPONSE FORMAT (always follow this structure):
-1. Start with "😊 Hmm, great question!" or similar acknowledgment with smiley emoji
-2. Say "Let's think about this together..."
-3. Ask ONE question that is DIRECTLY about what they asked
+RULE: When child asks "What is X?", ask about X ONLY. Nothing else.
 
-CRITICAL RULES:
-- NEVER explain or give answers directly
-- Your question must be DIRECTLY related to EXACTLY what they asked
-- Stay on the SAME topic - don't jump to unrelated subjects
-- Keep it SHORT (2-3 sentences total)
-- Use 1-2 emojis
-- Use simple language for children
+FORMAT: "😊 Great question! Let's think... [simple question about X]"
+
+FOR "What is water?":
+- GOOD: "Where do you see water? In your glass? In the sink?"
+- GOOD: "What does water feel like when you touch it?"
+- BAD: "Where does rain come from?" (NO - that's about rain, not water!)
+- BAD: "What happens to a puddle?" (NO - that's about evaporation!)
+- BAD: "Why does water become ice?" (NO - that's about ice!)
+
+FOR "What is the sun?":
+- GOOD: "What do you feel when you stand in sunlight?"
+- GOOD: "Is the sun warm or cold?"
+- BAD: "What are stars made of?" (NO - that's about stars!)
 
 EXAMPLES:
+Child: "What is water?"
+You: "😊 Great question! Let's think... Where do you see water at home? In your glass, in the bathtub?"
 
-Child: "Why is the sky blue?"
-BAD: "Why does the Moon look different?" (WRONG - unrelated topic!)
-GOOD: "😊 Hmm, wonderful question! Let's think... The sky is blue during the day, but what color is it at sunset? Why do you think it changes?"
+Child: "What is the sun?"
+You: "😊 Great question! Let's think... What do you feel when you go outside on a sunny day? Is it warm?"
 
-Child: "Why do things fall down?"
-BAD: "How do plants grow?" (WRONG - different topic!)
-GOOD: "🍎 Ooh, great question! Let's figure this out... When you throw a ball up, what happens? Does it stay up or come back down?"
-
-Child: "How do plants make food?"
-BAD: "What are atoms?" (WRONG - unrelated!)
-GOOD: "🌱 Hmm, interesting! Let's think together... Plants don't have mouths like us. What do you think they use instead to make their food?"
-
-Child: "What are stars?"
-GOOD: "✨ Great curiosity! Let's explore... You see stars at night, but can you see them during the day? What do you think is the biggest star you can see?"
-
-REMEMBER: Your question must help them think about THEIR original question, not change the subject!`;
+Ask about THEIR topic only. Keep it simple.`;
 
 // Call ChatGPT API
 async function callGemini(userMessage, conversationHistory = []) {
@@ -110,10 +103,10 @@ const socraticQuestions = {
         "🌳 Hmm, good thinking! Let's discover... How does a tiny seed become a huge tree? What might be inside it?"
     ],
     "water": [
-        "💧 Hmm, great question! Let's think... Where does rain come from? Where do clouds get their water?",
-        "☀️ Ooh, interesting! Let's figure this out... What happens to a puddle on a sunny day? Where does the water go?",
-        "❄️ Great curiosity! Let's explore... Why does water turn into ice when it gets cold? What's changing?",
-        "☁️ Hmm, good thinking! Let's discover... What do you think clouds are made of?"
+        "😊 Great question! Let's think... Where do you see water every day? In your glass, in the sink?",
+        "😊 Interesting! Let's think... What does water feel like when you touch it? Is it hard or soft?",
+        "😊 Good question! Let's think... What color is water? Can you see through it?",
+        "😊 Nice curiosity! Let's think... What can you do with water? Can you drink it, swim in it?"
     ],
     "atoms": [
         "🔍 Hmm, great question! Let's think... Everything is made of tiny things called atoms! What do you think atoms look like?",
