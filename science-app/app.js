@@ -191,13 +191,13 @@ const socraticQuestionsTR = {
 
 // Keywords that trigger each topic
 const topicKeywords = {
-    "space": ["space", "planet", "planets", "sun", "moon", "star", "stars", "earth", "mars", "jupiter", "saturn", "solar", "galaxy", "universe", "rocket", "astronaut", "sky", "blue", "night", "day", "uzay", "gezegen", "güneş", "ay", "yıldız", "dünya", "evren", "gökyüzü", "mavi", "gece", "gündüz"],
+    "light": ["light", "color", "colors", "colour", "colours", "rainbow", "shadow", "see", "eyes", "sky", "blue", "red", "sunset", "sunrise", "ışık", "renk", "gökkuşağı", "gölge", "görmek", "göz", "gökyüzü", "mavi", "kırmızı", "gün batımı"],
+    "space": ["space", "planet", "planets", "sun", "moon", "star", "stars", "earth", "mars", "jupiter", "saturn", "solar", "galaxy", "universe", "rocket", "astronaut", "night", "uzay", "gezegen", "güneş", "ay", "yıldız", "dünya", "evren", "gece"],
     "gravity": ["gravity", "fall", "falls", "falling", "drop", "float", "weight", "heavy", "newton", "yerçekimi", "düşmek", "düşer", "ağırlık", "hafif", "ağır", "neden düşüyor"],
     "body": ["body", "cell", "cells", "organ", "heart", "brain", "blood", "bone", "muscle", "dna", "gene", "breathe", "eat", "sleep", "vücut", "hücre", "organ", "kalp", "beyin", "kan", "kemik", "kas", "nefes", "yemek", "uyku"],
     "plants": ["plant", "plants", "tree", "leaf", "flower", "seed", "grow", "root", "photosynthesis", "green", "bitki", "ağaç", "yaprak", "çiçek", "tohum", "büyümek", "kök", "fotosentez", "yeşil"],
     "water": ["water", "rain", "cloud", "river", "ocean", "sea", "ice", "snow", "evaporation", "cycle", "su", "yağmur", "bulut", "nehir", "okyanus", "deniz", "buz", "kar"],
-    "atoms": ["atom", "atoms", "molecule", "matter", "element", "proton", "electron", "chemistry", "atom", "molekül", "madde", "element", "kimya"],
-    "light": ["light", "color", "colours", "rainbow", "shadow", "see", "eyes", "ışık", "renk", "gökkuşağı", "gölge", "görmek", "göz"]
+    "atoms": ["atom", "atoms", "molecule", "matter", "element", "proton", "electron", "chemistry", "atom", "molekül", "madde", "element", "kimya"]
 };
 
 // Detect language
