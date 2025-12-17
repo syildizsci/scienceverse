@@ -1,7 +1,7 @@
 // ===== Socratic Science Assistant with ChatGPT =====
 // This AI uses OpenAI ChatGPT to ask guiding questions!
 
-const OPENAI_API_KEY = "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";
+const OPENAI_API_KEY = "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";
 const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 
 // System prompt for Socratic teaching
