@@ -1,8 +1,8 @@
-// ===== Socratic Science Assistant with Gemini AI =====
-// This AI uses Google Gemini to ask guiding questions!
+// ===== Socratic Science Assistant with OpenAI =====
+// This AI uses ChatGPT to ask guiding questions!
 
-const GEMINI_API_KEY = "AIzaSyBBAenzK-yHWtVF29VrWnrXXfsd0MpSzag";
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+const OPENAI_API_KEY = "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";
+const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 
 // System prompt for Socratic teaching
 const SYSTEM_PROMPT = `You are a Socratic science tutor for children aged 8-14.
@@ -39,37 +39,42 @@ CORRECT: "😊 Hmm, great question! Let's think together... What plants can you 
 
 REMEMBER: Only ask about the EXACT thing they mentioned. Nothing else.`;
 
-// Call Gemini API
+// Call OpenAI ChatGPT API
 async function callGemini(userMessage, conversationHistory = []) {
     try {
         const messages = [
-            { role: "user", parts: [{ text: SYSTEM_PROMPT }] },
-            { role: "model", parts: [{ text: "I understand! I will be a Socratic tutor and only ask guiding questions to help children discover science themselves. I won't explain directly." }] },
-            ...conversationHistory,
-            { role: "user", parts: [{ text: userMessage }] }
+            { role: "system", content: SYSTEM_PROMPT },
+            ...conversationHistory.map(msg => ({
+                role: msg.role === "model" ? "assistant" : "user",
+                content: msg.parts ? msg.parts[0].text : msg.content
+            })),
+            { role: "user", content: userMessage }
         ];
 
-        const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+        const response = await fetch(OPENAI_API_URL, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${OPENAI_API_KEY}`
+            },
             body: JSON.stringify({
-                contents: messages,
-                generationConfig: {
-                    temperature: 0.8,
-                    maxOutputTokens: 150
-                }
+                model: "gpt-4o-mini",
+                messages: messages,
+                temperature: 0.7,
+                max_tokens: 150
             })
         });
 
         const data = await response.json();
         
-        if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-            return data.candidates[0].content.parts[0].text;
+        if (data.choices && data.choices[0]?.message?.content) {
+            return data.choices[0].message.content;
         }
         
+        console.error("OpenAI API response:", data);
         return null;
     } catch (error) {
-        console.error("Gemini API error:", error);
+        console.error("OpenAI API error:", error);
         return null;
     }
 }
