@@ -83,63 +83,49 @@ async function callGemini(userMessage, conversationHistory = []) {
 // Conversation history for context
 let conversationHistory = [];
 
-// Socratic questions for each topic
+// Socratic questions for each topic - format: acknowledge + think together + related question
 const socraticQuestions = {
     "space": [
-        "🌞 Let's think together! What do you see in the sky during the day?",
-        "🤔 If the Sun is a star, why do other stars look so tiny at night?",
-        "🌍 Why do you think we have day and night? What's moving?",
-        "🚀 If you could visit any planet, which one would you choose? Why?",
-        "⭐ How many planets can you name? Let's count together!",
-        "🌙 Why does the Moon look different on different nights?"
+        "🤔 Hmm, great question! Let's think together... The sky is blue during the day, but what color is it at sunset? Why do you think it changes?",
+        "✨ Ooh, interesting! Let's figure this out... If the Sun is a star, why do you think other stars look so tiny at night?",
+        "🌍 Great curiosity! Let's explore... Why do you think we have day and night? What might be moving?",
+        "🌙 Hmm, good thinking! Let's discover... Why does the Moon look different shapes on different nights?"
     ],
     "gravity": [
-        "🍎 When you drop something, what happens? Why doesn't it float away?",
-        "🌙 Astronauts float in space! Why don't we float here on Earth?",
-        "⚽ If you throw a ball up, what happens? Why does it come back?",
-        "🤔 Do you think a feather and a rock fall at the same speed? Why?",
-        "🌍 What would happen if there was no gravity? What would your day be like?",
-        "🎈 Why do helium balloons float up but regular balloons fall down?"
+        "🍎 Hmm, great question! Let's think... When you drop something, what happens to it? Why doesn't it float away?",
+        "🤔 Ooh, interesting! Let's figure this out... If you throw a ball up, what happens? Why does it come back down?",
+        "🌙 Great curiosity! Let's explore... Astronauts float in space, but why don't we float here on Earth?",
+        "🎈 Hmm, good thinking! Let's discover... Why do helium balloons go up but regular balloons fall down?"
     ],
     "body": [
-        "🔬 Your body is made of tiny pieces called cells. How tiny do you think they are?",
-        "🤔 Cells need energy to work. Where do YOU get your energy from?",
-        "🧠 Your brain is made of cells too! What do you think brain cells do?",
-        "💪 Why do you think your muscles get tired when you exercise?",
-        "❤️ Can you feel your heart beating? Why do you think it never stops?",
-        "🦴 What do you think is inside your bones?"
+        "🔬 Hmm, great question! Let's think... Your body is made of tiny pieces called cells. How tiny do you think they are?",
+        "🤔 Ooh, interesting! Let's figure this out... Where do YOU get your energy from? What gives your body power?",
+        "🧠 Great curiosity! Let's explore... Your brain controls everything! What do you think happens inside your brain when you think?",
+        "❤️ Hmm, good thinking! Let's discover... Can you feel your heart beating? Why do you think it never stops?"
     ],
     "plants": [
-        "🌱 Plants make their own food! How do you think they do it without a mouth?",
-        "☀️ Why do plants need sunlight? What happens if you put a plant in the dark?",
-        "🌿 Why are most plants green? What do you think makes that color?",
-        "💧 What happens to a plant if you forget to water it? Why?",
-        "🌳 How do you think a tiny seed becomes a huge tree?",
-        "🍃 Why do leaves fall off trees in autumn?"
+        "🌱 Hmm, great question! Let's think... Plants make their own food, but they don't have mouths! What do you think they use instead?",
+        "☀️ Ooh, interesting! Let's figure this out... Why do plants need sunlight? What happens if you put a plant in the dark?",
+        "🌿 Great curiosity! Let's explore... Most plants are green. What do you think makes them that color?",
+        "🌳 Hmm, good thinking! Let's discover... How does a tiny seed become a huge tree? What might be inside it?"
     ],
     "water": [
-        "💧 Where does rain come from? Where do clouds get their water?",
-        "☀️ What happens to a puddle on a sunny day? Where does the water go?",
-        "🤔 Is the water you drink today new, or has it been around before?",
-        "❄️ Why does water turn into ice when it's cold?",
-        "🌊 Where do rivers go? Do they ever run out of water?",
-        "☁️ What do you think clouds are made of?"
+        "💧 Hmm, great question! Let's think... Where does rain come from? Where do clouds get their water?",
+        "☀️ Ooh, interesting! Let's figure this out... What happens to a puddle on a sunny day? Where does the water go?",
+        "❄️ Great curiosity! Let's explore... Why does water turn into ice when it gets cold? What's changing?",
+        "☁️ Hmm, good thinking! Let's discover... What do you think clouds are made of?"
     ],
     "atoms": [
-        "🔍 Everything is made of tiny things called atoms! What do you think atoms are made of?",
-        "🤔 Can you see atoms? Why or why not?",
-        "💨 Is air made of atoms too? How do you know air exists if you can't see it?",
-        "🧊 Ice and water are both made of the same atoms. What's different about them?",
-        "✨ What do you think is smaller - an atom or a grain of sand?",
-        "🎈 Why do you think some things are hard and some are soft?"
+        "🔍 Hmm, great question! Let's think... Everything is made of tiny things called atoms! What do you think atoms look like?",
+        "💨 Ooh, interesting! Let's figure this out... Is air made of atoms too? If you can't see air, how do you know it exists?",
+        "🧊 Great curiosity! Let's explore... Ice and water are made of the same atoms. So what's different about them?",
+        "✨ Hmm, good thinking! Let's discover... What do you think is smaller - an atom or a grain of sand?"
     ],
     "light": [
-        "🌈 What colors do you see in a rainbow? Where do you think those colors come from?",
-        "🤔 The sky looks blue during the day, but what color is it at sunset? Why do you think it changes?",
-        "💡 Can you see light itself, or do you only see things that light touches?",
-        "🔦 What happens to your shadow when you move closer to a light? Why?",
-        "👀 How do your eyes let you see things? What do they need?",
-        "🌅 Why do you think the sun looks red or orange when it's setting?"
+        "🤔 Hmm, great question! Let's think together... The sky is blue during the day, but what color is it at sunset? Why do you think it changes?",
+        "🌈 Ooh, interesting! Let's figure this out... What colors do you see in a rainbow? Where do you think those colors come from?",
+        "💡 Great curiosity! Let's explore... Can you see light itself, or do you only see things that light touches?",
+        "🌅 Hmm, good thinking! Let's discover... Why do you think the sun looks red or orange when it's setting?"
     ]
 };
 
