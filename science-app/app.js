@@ -5,38 +5,35 @@ const OPENAI_API_KEY = "sk-proj-rRhWySyRCeUi3xEZTBH9LnZTHQxX33A9t103Hu4D-pYbqi9a
 const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 
 // System prompt for Socratic teaching
-const SYSTEM_PROMPT = `You are a Socratic science tutor for kids.
+const SYSTEM_PROMPT = `You are a friendly science tutor for kids.
 
-YOUR JOB: Ask questions about the SPECIFIC TOPIC the child mentioned.
+GREETINGS: If child says "hi", "hello", "hey", respond warmly and ask what science topic interests them.
+Example: "😊 Hi there! What science topic are you curious about today? Space, animals, plants, or something else?"
 
-FORBIDDEN RESPONSES (never say these):
+SCIENCE QUESTIONS: When child asks about a topic, ask a SPECIFIC question about THAT topic.
+
+FORBIDDEN (never say):
 - "What made you say that?"
 - "What do you think happens next?"
+- "What else do you know about this?"
 - "Tell me more"
-- "Why do you think so?"
-- Any generic question that could apply to anything
+- Any generic question
 
-GOOD RESPONSES (always specific to their topic):
-- For water: "Where do you see water at home?"
-- For sun: "Is the sun warm or cold?"
-- For plants: "What color are most plants?"
-
-FORMAT: "😊 Great question! Let's think... [SPECIFIC question about THEIR topic]"
+FORMAT FOR SCIENCE: "😊 Great question! Let's think... [question about THEIR topic]"
 
 EXAMPLES:
 
-Child: "What is water?"
-WRONG: "What made you say that?" (FORBIDDEN - too generic!)
-CORRECT: "😊 Great question! Let's think... Where do you see water at home? In your glass, in the sink?"
+Child: "hi" or "hello"
+CORRECT: "😊 Hi there! What science topic are you curious about? Space, water, plants, animals?"
 
-Child: "I saw different kinds of water today"
-WRONG: "What happens next?" (FORBIDDEN - generic!)
-CORRECT: "😊 Interesting! Let's think... What did the different water look like? Was some clear and some not?"
+Child: "What is water?"
+WRONG: "What else do you know?" (FORBIDDEN!)
+CORRECT: "😊 Great question! Let's think... Where do you see water at home?"
 
 Child: "What is the sun?"
-CORRECT: "😊 Great question! Let's think... What do you feel when you stand outside on a sunny day?"
+CORRECT: "😊 Great question! Let's think... Is the sun warm or cold when you go outside?"
 
-ALWAYS ask about the SPECIFIC thing they mentioned. Never be generic.`;
+Be friendly and specific. Never generic.`;
 
 // Call ChatGPT API
 async function callGemini(userMessage, conversationHistory = []) {
@@ -300,16 +297,16 @@ const followUpQuestions = {
     // Generic follow-ups for any topic
     "generic": {
         en: [
-            "🤔 Interesting answer! Can you tell me more about why you think that?",
-            "💡 Good thinking! What made you say that?",
-            "🧠 I like how you're thinking! What else do you know about this?",
-            "👏 Nice! And what do you think happens next?"
+            "😊 Great! Let's think... What science topic interests you? Space, water, plants, or animals?",
+            "😊 Nice! What would you like to explore? Pick a topic and let's discover together!",
+            "😊 Interesting! Tell me - are you curious about space, nature, or how things work?",
+            "😊 Cool! What do you want to learn about today?"
         ],
         tr: [
-            "🤔 İlginç cevap! Neden böyle düşündüğünü anlatır mısın?",
-            "💡 Güzel düşünce! Bunu neden söyledin?",
-            "🧠 Düşünme şeklini beğendim! Bu konuda başka ne biliyorsun?",
-            "👏 Güzel! Sence sonra ne oluyor?"
+            "😊 Harika! Hangi bilim konusu seni ilgilendiriyor? Uzay, su, bitkiler veya hayvanlar?",
+            "😊 Güzel! Ne keşfetmek istersin? Bir konu seç, birlikte öğrenelim!",
+            "😊 İlginç! Söyle bana - uzay mı, doğa mı, yoksa şeyler nasıl çalışır mı merak ediyorsun?",
+            "😊 Süper! Bugün ne hakkında öğrenmek istiyorsun?"
         ]
     }
 };
@@ -353,6 +350,16 @@ function findBestAnswer(question) {
     const lang = detectLanguage(question);
     const lower = question.toLowerCase();
     
+    // FIRST: Check for greetings (hi, hello, etc.)
+    if (lower.match(/^(hi|hello|hey|merhaba|selam|hii|hiii|yo)[\s\!\.\?]*$/i) || lower === "hi" || lower === "hello") {
+        awaitingResponse = false;
+        currentTopic = null;
+        const greeting = lang === 'tr' 
+            ? "😊 Merhaba! Hangi bilim konusu seni meraklandırıyor?<br>• Uzay 🚀<br>• Yerçekimi 🍎<br>• Su 💧<br>• Bitkiler 🌱"
+            : "😊 Hi there! What science topic are you curious about?<br>• Space 🚀<br>• Gravity 🍎<br>• Water 💧<br>• Plants 🌱";
+        return greeting;
+    }
+    
     // If we're waiting for child's response to a question
     if (awaitingResponse && currentTopic) {
         const followUp = getFollowUp(question, lang);
@@ -367,14 +374,6 @@ function findBestAnswer(question) {
         const nextQuestion = getSocraticQuestion(currentTopic, lang);
         lastQuestion = nextQuestion;
         return encouragement + "<br><br>" + nextQuestion;
-    }
-    
-    // Check for greetings
-    if (lower.match(/^(hi|hello|hey|merhaba|selam)/)) {
-        const greeting = lang === 'tr' 
-            ? "👋 Merhaba! Ben ScienceVerse AI!<br><br>Birlikte bilim keşfedelim! Ne hakkında merak ediyorsun?<br>• Uzay 🚀<br>• Yerçekimi 🍎<br>• Vücudumuz 🧬<br>• Bitkiler 🌱"
-            : "👋 Hello! I'm ScienceVerse AI!<br><br>Let's discover science together! What are you curious about?<br>• Space 🚀<br>• Gravity 🍎<br>• Our body 🧬<br>• Plants 🌱";
-        return greeting;
     }
     
     // Find topic and ask Socratic question
