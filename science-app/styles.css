@@ -4303,11 +4303,56 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     background: linear-gradient(135deg, var(--accent-gold), var(--accent-magenta));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+/* Download Button */
+.rubric-download {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, var(--accent-gold), #ff8c00);
+    color: #1a1a2e;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.download-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.5);
+}
+
+.download-icon {
+    font-size: 1.8rem;
+}
+
+.download-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.download-text strong {
+    font-size: 1.1rem;
+}
+
+.download-text small {
+    font-size: 0.8rem;
+    opacity: 0.8;
 }
 
 .rubric-intro {

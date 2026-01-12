@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science Fair Project Rubric - TMSA STEAM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            padding: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1a1a2e;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #00d4ff;
+            padding-bottom: 15px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #1a1a2e;
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .intro {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #00d4ff;
+        }
+        
+        .intro p {
+            margin-bottom: 12px;
+        }
+        
+        .intro p:last-child {
+            margin-bottom: 0;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .criteria-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .criteria-table th {
+            background: #1a1a2e;
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .criteria-table th:first-child {
+            width: 25%;
+        }
+        
+        .criteria-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        .criteria-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .criteria-name {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        
+        .criteria-note {
+            font-size: 0.8rem;
+            color: #666;
+            font-style: italic;
+            display: block;
+            margin-top: 4px;
+        }
+        
+        .level-exceeds {
+            background: #d4edda !important;
+        }
+        
+        .level-sufficient {
+            background: #d1ecf1 !important;
+        }
+        
+        .level-developing {
+            background: #fff3cd !important;
+        }
+        
+        .level-not-yet {
+            background: #f8d7da !important;
+        }
+        
+        .presentation-section {
+            margin-top: 40px;
+        }
+        
+        .presentation-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        
+        .presentation-table th {
+            background: #1a1a2e;
+            color: white;
+            padding: 10px 8px;
+            text-align: left;
+        }
+        
+        .presentation-table td {
+            padding: 10px 8px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        
+        .presentation-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .help-col {
+            background: #d4edda !important;
+        }
+        
+        .avoid-col {
+            background: #f8d7da !important;
+        }
+        
+        .overall {
+            background: linear-gradient(135deg, #fff9e6, #e6f7ff);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border: 2px solid #ffd700;
+        }
+        
+        .overall h3 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+        
+        .note {
+            background: #f0f0f0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #00d4ff, #ff00aa);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .print-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        @media print {
+            body {
+                padding: 20px;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .criteria-table, .presentation-table {
+                font-size: 0.8rem;
+            }
+            
+            .criteria-table th, .criteria-table td,
+            .presentation-table th, .presentation-table td {
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+    
+    <h1>📋 Science Fair Project Rubric</h1>
+    <p class="subtitle">TMSA STEAM Project Evaluation Guide</p>
+    
+    <div class="intro">
+        <h2>What Is a Science Fair Project?</h2>
+        <p>A science fair project is your chance to explore something you are curious about and think like a scientist. Every project begins with <strong>one important question</strong>—a question that matters to <em>you</em> and makes you wonder, "Why does this happen?" or "What would happen if…?" A good science fair question is clear, focused, and something you can test or investigate.</p>
+        <p>After choosing your question, you will <strong>research what other scientists have already learned</strong> about your topic. This is called background research or a literature review, and it helps you understand your topic better and plan a smart experiment. You will use this research to make a <strong>hypothesis</strong>, which is your best guess about what you think will happen and why. Then, you will design and carry out an experiment, collect and analyze data, and explain what your results mean.</p>
+        <p>Throughout the project, remember: this is <em>your</em> work, your thinking, and your learning journey as a scientist.</p>
+    </div>
+    
+    <h2>📝 Evaluation Criteria</h2>
+    
+    <table class="criteria-table">
+        <thead>
+            <tr>
+                <th>Criteria</th>
+                <th class="level-exceeds">Exceeds Expectations</th>
+                <th class="level-sufficient">Sufficient</th>
+                <th class="level-developing">Developing</th>
+                <th class="level-not-yet">Not Yet Evident</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="criteria-name">1. Project Title</span></td>
+                <td>Title is clear, specific, and accurately reflects the research question.</td>
+                <td>Title matches the project but may be somewhat general.</td>
+                <td>Title is unclear, too broad, or does not reflect the project.</td>
+                <td>Title is missing.</td>
+            </tr>
+            <tr>
+                <td><span class="criteria-name">2. Research Question & Background</span></td>
+                <td>Research question is clear and testable; background research is accurate, relevant, and helps explain why the question matters.</td>
+                <td>Research question is clear; background research is present but may be limited or missing key details.</td>
+                <td>Research question and/or background information is weak, unclear, or minimal.</td>
+                <td>Research question and background are missing.</td>
+            </tr>
+            <tr>
+                <td><span class="criteria-name">3. Hypothesis</span></td>
+                <td>Hypothesis is clear, testable, and includes strong reasoning based on background research.</td>
+                <td>Hypothesis is testable and understandable but reasoning is limited.</td>
+                <td>Hypothesis is unclear, not well connected to research, or weakly testable.</td>
+                <td>Hypothesis is missing.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="criteria-name">4. Methods and Procedures</span>
+                    <span class="criteria-note">Includes what was done, how data were collected, variables and controls</span>
+                </td>
+                <td>Procedures are clear, detailed, and replicable; variables and controls are correctly identified; data-collection plan is clear.</td>
+                <td>Procedures are mostly clear; minor details about variables, controls, or data collection may be missing.</td>
+                <td>Procedures are unclear or missing key parts (variables, controls, or data-collection plan).</td>
+                <td>Methods/procedures are missing.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="criteria-name">5. Results</span>
+                    <span class="criteria-note">Tables, figures, and/or graphs</span>
+                </td>
+                <td>Data are clearly organized using accurate, well-labeled tables, figures, and/or graphs.</td>
+                <td>Data are present and understandable, but organization, labels, or clarity may need improvement.</td>
+                <td>Data are incomplete, unclear, or poorly displayed.</td>
+                <td>Results are missing.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="criteria-name">6. Analysis / Interpretation</span>
+                    <span class="criteria-note">Explains results, connects to background research, identifies sources of error</span>
+                </td>
+                <td>Thoughtful interpretation of results with strong connections to background research and clear discussion of possible errors.</td>
+                <td>Adequate interpretation with some connection to research and limited discussion of error.</td>
+                <td>Interpretation is unclear, minimal, or weakly connected to research.</td>
+                <td>Analysis is missing.</td>
+            </tr>
+            <tr>
+                <td><span class="criteria-name">7. Conclusions</span></td>
+                <td>Clearly explains whether results support the hypothesis and discusses meaningful applications.</td>
+                <td>Conclusion states whether the hypothesis was supported but lacks depth or detail.</td>
+                <td>Conclusion is weak or unclear.</td>
+                <td>Conclusion is missing.</td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="criteria-name">8. References</span>
+                    <span class="criteria-note">≤1 page; most important sources</span>
+                </td>
+                <td>Uses credible, relevant sources; citations are clear and consistent; includes only sources used.</td>
+                <td>Sources are included and mostly credible; formatting may need improvement.</td>
+                <td>Few sources, weak credibility, or unclear citation formatting.</td>
+                <td>References are missing.</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="presentation-section">
+        <h2>🎯 TMSA STEAM Project Presentation Expectations</h2>
+        <p style="margin-bottom: 15px;">This section clarifies how each part of the project aligns with the scientific method and explains appropriate ways families can support student learning.</p>
+        
+        <table class="presentation-table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Presentation Section</th>
+                    <th style="width: 20%;">Scientific Method Step(s)</th>
+                    <th style="width: 30%;" class="help-col">✅ Where to Help</th>
+                    <th style="width: 30%;" class="avoid-col">❌ What Not to Do</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1) Project Title</strong></td>
+                    <td>Ask a question (framing the focus)</td>
+                    <td class="help-col">Brainstorm a clear, specific title that matches the research question; check spelling and clarity.</td>
+                    <td class="avoid-col">Writing the title for your child or making it catchy but misleading.</td>
+                </tr>
+                <tr>
+                    <td><strong>2) Research Question, Background & Hypothesis</strong></td>
+                    <td>Ask a question; Do background research; Construct a hypothesis</td>
+                    <td class="help-col">Discuss feasibility; visit the library; help identify search keywords; ask how the hypothesis connects to a testable experiment.</td>
+                    <td class="avoid-col">Picking the project idea; completing internet searches; printing articles; writing the hypothesis for the student.</td>
+                </tr>
+                <tr>
+                    <td><strong>3) Methods and Procedures</strong></td>
+                    <td>Test the hypothesis (conduct experiment)</td>
+                    <td class="help-col">Help locate materials; monitor safety; help plan how data will be recorded (tables, units).</td>
+                    <td class="avoid-col">Writing procedures; performing the experiment; giving step-by-step instructions.</td>
+                </tr>
+                <tr>
+                    <td><strong>4) Results</strong></td>
+                    <td>Test the hypothesis (record data/observations)</td>
+                    <td class="help-col">Ask how data will be organized; check labels, units, and axes.</td>
+                    <td class="avoid-col">Creating spreadsheets or graphs for the student (even if they type the data).</td>
+                </tr>
+                <tr>
+                    <td><strong>5) Analysis / Interpretation</strong></td>
+                    <td>Analyze data and draw conclusions</td>
+                    <td class="help-col">Prompt thinking with questions: "What patterns do you see? How does this compare to your research? What errors may have affected results?"</td>
+                    <td class="avoid-col">Stating or writing the analysis for the student.</td>
+                </tr>
+                <tr>
+                    <td><strong>6) Conclusions</strong></td>
+                    <td>Analyze data and draw a conclusion (claim)</td>
+                    <td class="help-col">Encourage a clear claim about whether results support the hypothesis using one or two pieces of evidence.</td>
+                    <td class="avoid-col">Writing the conclusion for the student.</td>
+                </tr>
+                <tr>
+                    <td><strong>7) References</strong></td>
+                    <td>Do background research (credit sources)</td>
+                    <td class="help-col">Show how to cite sources; discuss credibility; remind that all facts and figures must be cited.</td>
+                    <td class="avoid-col">Writing the bibliography or adding unused sources.</td>
+                </tr>
+                <tr>
+                    <td><strong>Final Display / Presentation</strong></td>
+                    <td>Communicate results</td>
+                    <td class="help-col">Be the audience for practice; help transport the display; check readability and organization.</td>
+                    <td class="avoid-col">Writing any text on the board/slides; choosing graphics or color schemes.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="overall">
+        <h3>🌟 Overall Expectations</h3>
+        <p>This rubric emphasizes <strong>student ownership</strong>, <strong>scientific thinking</strong>, <strong>ethical research practices</strong>, and <strong>classroom-based investigation skills</strong>, aligned with TMSA STEAM expectations.</p>
+        <div class="note">
+            <strong>📌 Note:</strong> This rubric is <em>standards-based (no points)</em> and focuses on the quality of each required section.
+        </div>
+    </div>
+</body>
+</html>
+
